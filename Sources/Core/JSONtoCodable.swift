@@ -85,7 +85,6 @@ private extension JSONtoCodable {
             .map { "\(indent)case \($0)" }
         content.insert(prefix, at: 0)
         content.append(suffix)
-        print(content.map { "\(indent)\($0)" }.joined(separator: line))
         return content.map { "\(indent)\($0)" }.joined(separator: line)
     }
 }
@@ -219,7 +218,6 @@ public extension JSONtoCodable {
             try endStruct()
         }
 
-        print(self.createResult(properties))
         return self.createResult(properties)
     }
 }
