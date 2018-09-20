@@ -17,31 +17,6 @@ class CaseTests: XCTestCase {
         self.base = JSONtoCodable()
     }
 
-//    case upper, pascal, camel, snake
-    func testUpperCase() {
-        let json: String = """
-        {
-            "Hello": "Hello, world!!"
-            "HelloWorld": "Hello, world!!"
-        }
-        """
-        let structString: String = """
-        struct Result: Codable {
-            let HELLO: String
-            let HELLO_WORLD: String
-
-            private enum CodingKeys: String, CodingKey {
-                case HELLO = "Hello"
-                case HELLO_WORLD = "HelloWorld"
-            }
-        }
-        """
-        self.base.config.caseType.variable = .upper
-        let result: String? = try? self.base.translate(json)
-        XCTAssertEqual(result?.count, structString.count)
-        XCTAssertEqual(result, structString)
-    }
-
     func testPascalCase() {
         let json: String = """
         {
@@ -57,7 +32,6 @@ class CaseTests: XCTestCase {
         """
         self.base.config.caseType.variable = .pascal
         let result: String? = try? self.base.translate(json)
-        XCTAssertEqual(result?.count, structString.count)
         XCTAssertEqual(result, structString)
     }
     
@@ -81,7 +55,6 @@ class CaseTests: XCTestCase {
         """
         self.base.config.caseType.variable = .camel
         let result: String? = try? self.base.translate(json)
-        XCTAssertEqual(result?.count, structString.count)
         XCTAssertEqual(result, structString)
     }
 
@@ -105,7 +78,29 @@ class CaseTests: XCTestCase {
         """
         self.base.config.caseType.variable = .snake
         let result: String? = try? self.base.translate(json)
-        XCTAssertEqual(result?.count, structString.count)
+        XCTAssertEqual(result, structString)
+    }
+
+    func testScreamingSnakeCase() {
+        let json: String = """
+        {
+            "Hello": "Hello, world!!"
+            "HelloWorld": "Hello, world!!"
+        }
+        """
+        let structString: String = """
+        struct Result: Codable {
+            let HELLO: String
+            let HELLO_WORLD: String
+
+            private enum CodingKeys: String, CodingKey {
+                case HELLO = "Hello"
+                case HELLO_WORLD = "HelloWorld"
+            }
+        }
+        """
+        self.base.config.caseType.variable = .screamingSnake
+        let result: String? = try? self.base.translate(json)
         XCTAssertEqual(result, structString)
     }
 }
