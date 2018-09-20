@@ -8,7 +8,10 @@
 import Foundation
 
 public enum LineType: String {
-    case n = "\n"
-    case r = "\r"
-    case rn = "\r\n"
+    /// \n
+    case lineFeed = "\n"
+    /// \r
+    case carriageReturn = "\r"
+    /// \r\n
+    case both = "\r\n"
 }
