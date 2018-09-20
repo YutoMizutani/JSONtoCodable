@@ -49,6 +49,7 @@ class LineTests: XCTestCase {
         let structString: String = """
         struct Result: Codable {\n    let hello: String\n    let helloWorld: String\n\n    private enum CodingKeys: String, CodingKey {\n        case hello = "Hello"\n        case helloWorld = "HelloWorld"\n    }\n}
         """
+        self.base.config.lineType = .n
         let result: String? = try? self.base.translate(json)
         XCTAssertEqual(result, structString)
     }
@@ -63,6 +64,7 @@ class LineTests: XCTestCase {
         let structString: String = """
         struct Result: Codable {\r    let hello: String\r    let helloWorld: String\r\r    private enum CodingKeys: String, CodingKey {\r        case hello = "Hello"\r        case helloWorld = "HelloWorld"\r    }\r}
         """
+        self.base.config.lineType = .r
         let result: String? = try? self.base.translate(json)
         XCTAssertEqual(result, structString)
     }
@@ -77,6 +79,7 @@ class LineTests: XCTestCase {
         let structString: String = """
         struct Result: Codable {\r\n    let hello: String\r\n    let helloWorld: String\r\n\r\n    private enum CodingKeys: String, CodingKey {\r\n        case hello = "Hello"\r\n        case helloWorld = "HelloWorld"\r\n    }\r\n}
         """
+        self.base.config.lineType = .rn
         let result: String? = try? self.base.translate(json)
         XCTAssertEqual(result, structString)
     }
