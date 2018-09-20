@@ -9,7 +9,14 @@
 import Foundation
 
 public enum CaseType {
-    case upper, pascal, camel, snake
+    /// UPPER_CASE
+    case upper
+    /// PascalCase
+    case pascal
+    /// camelCase
+    case camel
+    /// snake_case
+    case snake
 }
 
 public extension Array where Element == String {

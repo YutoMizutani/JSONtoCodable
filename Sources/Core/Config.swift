@@ -11,7 +11,7 @@ import Foundation
 public struct Config {
     public var name: String = "Result"
     public var accessModifer: AccessModifer = .default
-    public var caseType: (variable: CaseType, `struct`: CaseType) = (.camel, .pascal)
+    public var caseType: (`struct`: CaseType, variable: CaseType) = (.pascal, .camel)
     public var lineType: LineType = .n
     public var indentType: IndentType = .space(4)
 }

@@ -33,25 +33,6 @@ class JSONtoCodableTests: XCTestCase {
         XCTAssertEqual(result, structString)
     }
 
-    func testPascalCase() {
-        let json: String = """
-        {
-            "Hello": "World"
-        }
-        """
-        let structString: String = """
-        struct Result: Codable {
-            let hello: String
-
-            private enum CodingKeys: String, CodingKey {
-                case hello = "Hello"
-            }
-        }
-        """
-        let result: String? = try? self.base.translate(json)
-        XCTAssertEqual(result, structString)
-    }
-
     func testNoBracket() {
         let json: String = """
         "Hello": "World"
