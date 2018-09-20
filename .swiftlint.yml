@@ -1,0 +1,71 @@
+disabled_rules:
+  - colon
+  - object_literal
+  - file_length
+  - file_header
+  - identifier_name
+  - file_name
+  - nesting
+opt_in_rules:
+  - array_init
+  - attributes
+  - closure_end_indentation
+  - closure_spacing
+  - contains_over_first_not_nil
+  - empty_count
+  - explicit_init
+  - extension_access_modifier
+  - fatal_error_message
+  - file_header
+  - file_name
+  - first_where
+  - joined_default_parameter
+  - let_var_whitespace
+  - literal_expression_end_indentation
+  - nimble_operator
+  - object_literal
+  - operator_usage_whitespace
+  - overridden_super_call
+  - override_in_extension
+  - pattern_matching_keywords
+  - private_action
+  - private_outlet
+  - prohibited_super_call
+  - quick_discouraged_call
+  - quick_discouraged_focused_test
+  - quick_discouraged_pending_test
+  - redundant_nil_coalescing
+  - single_test_class
+  - sorted_first_last
+  - sorted_imports
+  - switch_case_on_newline  
+  - unneeded_parentheses_in_closure_argument
+  - vertical_parameter_alignment_on_call
+  - yoda_condition
+excluded:
+  - Package.swift
+  - Carthage
+  - Demo
+  - Tests
+  - .build
+
+line_length: 
+  warning: 160
+  ignores_comments: true
+type_body_length:
+  - 300 # warning
+  - 400 # error
+function_body_length:
+  warning: 100
+  error: 150
+file_length:
+  warning: 500
+  error: 1200
+cyclomatic_complexity:
+  warning: 25
+  error: 30
+
+# SwiftLint
+# https://github.com/realm/SwiftLint
+# JP - doc
+# https://qiita.com/kagemiku/items/80e6d905dc0059c342b3
