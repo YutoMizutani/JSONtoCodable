@@ -56,11 +56,14 @@ type_body_length:
   - 300 # warning
   - 400 # error
 function_body_length:
-  warning: 60
-  error: 100
+  warning: 100
+  error: 150
 file_length:
   warning: 500
   error: 1200
+cyclomatic_complexity:
+  warning: 25
+  error: 30
 
 # SwiftLint
 # https://github.com/realm/SwiftLint

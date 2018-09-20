@@ -74,7 +74,7 @@ private extension JSONtoCodable {
     }
 
     private func createCodingKeysString(_ codingKeys: [(key: String, value: String)]) -> String? {
-        guard codingKeys.filter({ $0.key != $0.value }).count > 0 else { return nil }
+        guard !codingKeys.filter({ $0.key != $0.value }).isEmpty else { return nil }
 
         let indent: String = config.indentType.rawValue
         let line: String = config.lineType.rawValue
@@ -94,13 +94,13 @@ private extension JSONtoCodable {
 
 public extension JSONtoCodable {
     func translate(_ json: String) throws -> String {
-        var isStartCurlyBracket: Bool? = nil
+        var isStartCurlyBracket: Bool?
 
         var properties: [Property] = [self.createStruct(config.name), ([], [])]
         var codingKeys: [[(key: String, value: String)]] = [[]]
         var state: TranslateState = .prepareKey
 
-        var register: Register? = nil
+        var register: Register?
         var stack: [String] = []
 
         func ignore() {}
@@ -133,16 +133,16 @@ public extension JSONtoCodable {
 
             let seed: ImmutableSeed = createSeed(key, register: regist)
             let immutable = createImmutable(seed)
-            properties[properties.count-1].0.append(immutable.value)
-            codingKeys[codingKeys.count-1].append((immutable.translatedKey, seed.key))
-            stack.remove(at: stack.count-1)
+            properties[properties.count - 1].0.append(immutable.value)
+            codingKeys[codingKeys.count - 1].append((immutable.translatedKey, seed.key))
+            stack.remove(at: stack.count - 1)
             register = nil
             state = .prepareKey
         }
 
         func startStruct() throws {
             guard let name = stack.last else { throw JSONError.wrongFormat }
-            stack.remove(at: stack.count-1)
+            stack.remove(at: stack.count - 1)
             let property = createStruct(name)
             properties.append(property)
             codingKeys.append([])
@@ -150,10 +150,10 @@ public extension JSONtoCodable {
         }
         func endStruct() throws {
             guard !properties.isEmpty, !codingKeys.isEmpty else { throw JSONError.wrongFormat }
-            if let codingKeyString: String = createCodingKeysString(codingKeys[codingKeys.count-1]) {
-                properties[properties.count-1].1.insert(codingKeyString, at: 0)
+            if let codingKeyString: String = createCodingKeysString(codingKeys[codingKeys.count - 1]) {
+                properties[properties.count - 1].1.insert(codingKeyString, at: 0)
             }
-            codingKeys.remove(at: codingKeys.count-1)
+            codingKeys.remove(at: codingKeys.count - 1)
         }
 
         for character in json {
@@ -207,7 +207,7 @@ public extension JSONtoCodable {
                 default:
                     addValue(character)
                 }
-            case .inArray(let content):
+            case .inArray:
                 switch character {
                 default:
                     break
