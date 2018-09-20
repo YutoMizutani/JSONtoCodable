@@ -10,6 +10,10 @@ public class JSONtoCodable {
     private typealias Register = (isString: Bool, value: String)
     private typealias ImmutableSeed = (key: String, type: Type)
 
+    private enum TranslateState {
+        case prepareKey, inKey, prepareValue, inValue, inArray(Any)
+    }
+
     public var config: Config = Config()
 }
 
