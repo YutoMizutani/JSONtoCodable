@@ -57,6 +57,7 @@ class IndentTests: XCTestCase {
         }
         }
         """
+        self.base.config.indentType = .space(0)
         let result: String? = try? self.base.translate(json)
         XCTAssertEqual(result, structString)
     }
@@ -79,6 +80,7 @@ class IndentTests: XCTestCase {
           }
         }
         """
+        self.base.config.indentType = .space(2)
         let result: String? = try? self.base.translate(json)
         XCTAssertEqual(result, structString)
     }
@@ -101,6 +103,7 @@ class IndentTests: XCTestCase {
             }
         }
         """
+        self.base.config.indentType = .space(4)
         let result: String? = try? self.base.translate(json)
         XCTAssertEqual(result, structString)
     }
@@ -123,6 +126,7 @@ class IndentTests: XCTestCase {
                 }
         }
         """
+        self.base.config.indentType = .space(8)
         let result: String? = try? self.base.translate(json)
         XCTAssertEqual(result, structString)
     }
@@ -145,6 +149,7 @@ class IndentTests: XCTestCase {
         }
         }
         """
+        self.base.config.indentType = .tab(0)
         let result: String? = try? self.base.translate(json)
         XCTAssertEqual(result, structString)
     }
@@ -167,6 +172,7 @@ class IndentTests: XCTestCase {
         \t}
         }
         """
+        self.base.config.indentType = .tab(1)
         let result: String? = try? self.base.translate(json)
         XCTAssertEqual(result, structString)
     }
@@ -186,9 +192,10 @@ class IndentTests: XCTestCase {
         \t\tprivate enum CodingKeys: String, CodingKey {
         \t\t\t\tcase hello = "Hello"
         \t\t\t\tcase helloWorld = "HelloWorld"
-        \t}
+        \t\t}
         }
         """
+        self.base.config.indentType = .tab(2)
         let result: String? = try? self.base.translate(json)
         XCTAssertEqual(result, structString)
     }
