@@ -53,7 +53,6 @@ private extension JSONtoCodable {
         }
 
         var seed: ImmutableSeed = (key, .any)
-        print("###", #function, "'\(register.value)'")
         switch register.value.lowercased() {
         case "true", "false":
             seed.type = .bool
@@ -64,7 +63,6 @@ private extension JSONtoCodable {
         case let value where value == Double(value)?.description:
             seed.type = .double
         default:
-            print("default!")
             seed.type = .any
         }
 
@@ -78,11 +76,13 @@ private extension JSONtoCodable {
         let line: String = config.lineType.rawValue
         let prefix: String = "private enum CodingKeys: String, CodingKey {"
         let suffix: String = "}"
-        let content = codingKeys
+        var content = codingKeys
             .map { $0.key == $0.value ? "\($0.key)" : "\($0.key) = \"\($0.value)\"" }
             .map { "\(indent)case \($0)" }
-            .joined(separator: line)
-        return [prefix, content, suffix].map { "\(indent)\($0)" }.joined(separator: line)
+        content.insert(prefix, at: 0)
+        content.append(suffix)
+        print(content.map { "\(indent)\($0)" }.joined(separator: line))
+        return content.map { "\(indent)\($0)" }.joined(separator: line)
     }
 }
 
@@ -215,6 +215,7 @@ public extension JSONtoCodable {
             try endStruct()
         }
 
+        print(self.createResult(properties))
         return self.createResult(properties)
     }
 }

@@ -21,8 +21,8 @@ class CaseTests: XCTestCase {
     func testUpperCase() {
         let json: String = """
         {
-            "HELLO": "Hello, world!!"
-            "HELLO_WORLD": "Hello, world!!"
+            "Hello": "Hello, world!!"
+            "HelloWorld": "Hello, world!!"
         }
         """
         let structString: String = """
@@ -38,6 +38,7 @@ class CaseTests: XCTestCase {
         """
         self.base.config.caseType.variable = .upper
         let result: String? = try? self.base.translate(json)
+        XCTAssertEqual(result?.count, structString.count)
         XCTAssertEqual(result, structString)
     }
 
@@ -51,11 +52,12 @@ class CaseTests: XCTestCase {
         let structString: String = """
         struct Result: Codable {
             let Hello: String
-            let WelloWorld: String
+            let HelloWorld: String
         }
         """
         self.base.config.caseType.variable = .pascal
         let result: String? = try? self.base.translate(json)
+        XCTAssertEqual(result?.count, structString.count)
         XCTAssertEqual(result, structString)
     }
     
@@ -68,8 +70,8 @@ class CaseTests: XCTestCase {
         """
         let structString: String = """
         struct Result: Codable {
-            let Hello: String
-            let HelloWorld: String
+            let hello: String
+            let helloWorld: String
 
             private enum CodingKeys: String, CodingKey {
                 case hello = "Hello"
@@ -79,6 +81,7 @@ class CaseTests: XCTestCase {
         """
         self.base.config.caseType.variable = .camel
         let result: String? = try? self.base.translate(json)
+        XCTAssertEqual(result?.count, structString.count)
         XCTAssertEqual(result, structString)
     }
 
@@ -102,6 +105,7 @@ class CaseTests: XCTestCase {
         """
         self.base.config.caseType.variable = .snake
         let result: String? = try? self.base.translate(json)
+        XCTAssertEqual(result?.count, structString.count)
         XCTAssertEqual(result, structString)
     }
 }

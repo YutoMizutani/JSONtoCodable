@@ -29,7 +29,7 @@ public extension Array where Element == String {
         case .camel:
             return self.enumerated().map { $0.offset == 0 ? $0.element.lowercased() : $0.element.capitalized }.joined()
         case .snake:
-            return self.joined(separator: "_")
+            return self.map { $0.lowercased() }.joined(separator: "_")
         }
     }
 }

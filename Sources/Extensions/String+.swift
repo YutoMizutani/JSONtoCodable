@@ -9,10 +9,20 @@
 import Foundation
 
 extension String {
+    func changeCased() -> String {
+        return (self as NSString).replacingOccurrences(of: "([A-Z])",
+                                                       with: "-$1",
+                                                       options: .regularExpression,
+                                                       range: NSRange(location: 0, length: count)
+            )
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+            .capitalized
+    }
+
     var separated: [String] {
         let replaceWords: [Character] = ["-", "_"]
         let last: Character = replaceWords.last!
-        var text = self
+        var text = self != self.uppercased() ? self.changeCased() : self
         Array(replaceWords.dropLast()).forEach { key in
             text = text.replacingOccurrences(of: String(key), with: String(last))
         }
