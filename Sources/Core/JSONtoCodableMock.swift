@@ -21,6 +21,19 @@ public class JSONtoCodableMock {
 
 extension JSONtoCodableMock {
     func decisionType(value: String, isString: Bool) -> Type {
-        return .any
+        guard !isString else { return Type.string }
+
+        switch value.lowercased() {
+        case "true", "false":
+            return .bool
+        case "nil", "null":
+            return.optionalAny
+        case let value where value == Int(value)?.description:
+            return .int
+        case let value where value == Double(value)?.description:
+            return .double
+        default:
+            return .any
+        }
     }
 }
