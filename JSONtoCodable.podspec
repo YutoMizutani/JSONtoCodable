@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.homepage         = "https://github.com/YutoMizutani/JSONtoCodable"
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { "Yuto Mizutani" => "yuto.mizutani.dev@gmail.com" }
-  s.source           = { :git => "https://github.com/YutoMizutani/CiNiiKit.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/YutoMizutani/JSONtoCodable.git", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/EXPENSIVE_MAN'
 
   s.ios.deployment_target = '8.0'
