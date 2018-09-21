@@ -16,6 +16,10 @@ public class JSONtoCodable {
     }
 
     public var config: Config = Config()
+
+    // MARK: - Initializers
+
+    public init() {}
 }
 
 // MARK: - public methods
