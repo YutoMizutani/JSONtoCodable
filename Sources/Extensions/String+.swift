@@ -13,7 +13,7 @@ extension String {
         return self.separated.joined(with: caseType)
     }
 
-    func changeCased() -> String {
+    private func changeCased() -> String {
         return (self as NSString).replacingOccurrences(of: "([A-Z])",
                                                        with: "-$1",
                                                        options: .regularExpression,
@@ -23,7 +23,7 @@ extension String {
             .capitalized
     }
 
-    var separated: [String] {
+    private var separated: [String] {
         let replaceWords: [Character] = ["-", "_"]
         let last: Character = replaceWords.last!
         var text = self != self.uppercased() ? self.changeCased() : self
