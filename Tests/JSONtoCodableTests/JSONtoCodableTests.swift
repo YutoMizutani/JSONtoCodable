@@ -55,7 +55,8 @@ class JSONtoCodableTests: XCTestCase {
 
         // NOTE: There will occur compile errors when create the .swift file, but it is not interested this method
         key = "1234"
-        expectation = "struct 1234: Codable {"
+        expectation = "open struct 1234: Codable {"
+        self.base.config.accessModifer = .open
         XCTAssertEqual(self.base.createStructFrame(key).prefix, expectation)
     }
 

@@ -38,7 +38,8 @@ extension JSONtoCodableMock {
     }
 
     func createStructFrame(_ key: String) -> Property {
-        return ("", "")
+        let accessModifer: String = config.accessModifer == .default ? "" : "\(config.accessModifer.rawValue) "
+        return ("\(accessModifer)struct \(key): Codable {", "}")
     }
 
     func createImmutable(_ seed: ImmutableSeed) -> String {
