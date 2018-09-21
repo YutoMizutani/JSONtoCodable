@@ -8,7 +8,7 @@
 import Foundation
 
 public class JSONtoCodableMock {
-    typealias Property = (prefix: String, structs: String?, suffix: String?)
+    typealias Property = (prefix: String, structs: [String], suffix: String?)
     typealias Register = (isString: Bool, value: String)
     typealias ImmutableSeed = (key: String, type: Type)
 
@@ -39,7 +39,7 @@ extension JSONtoCodableMock {
 
     func createStructFrame(_ key: String) -> Property {
         let accessModifer: String = config.accessModifer == .default ? "" : "\(config.accessModifer.rawValue) "
-        return ("\(accessModifer)struct \(key): Codable {", nil, "}")
+        return ("\(accessModifer)struct \(key): Codable {", [], "}")
     }
 
     func createImmutable(_ seed: ImmutableSeed) -> String {
@@ -80,7 +80,7 @@ extension JSONtoCodableMock {
         let suffix: String = frame.suffix ?? ""
 
         let immutableString: String = immutables.joined(separator: line)
-        let internalStructString: String? = frame.structs
+        let internalStructString: String? = !frame.structs.isEmpty ? frame.structs.joined(separator: "\(line)\(line)") : nil
         let codingKeyString: String? = self.createCodingKeyScope(codingKeys)
 
         var contents: String = [immutableString, internalStructString, codingKeyString]

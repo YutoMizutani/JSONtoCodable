@@ -207,7 +207,7 @@ class JSONtoCodableTests: XCTestCase {
         frame = self.base.createStructFrame(structTitle)
         internalStructString = "struct Single2: Codable {\n    let double1: String\n\n    private enum CodingKeys: String, CodingKey {\n        case double1 = \"Double1\"\n    }\n}"
         seed = (
-            frame: (frame.prefix, internalStructString, frame.suffix),
+            frame: (frame.prefix, [internalStructString], frame.suffix),
             immutables: values.map { (key: $0, type: $0 != "Single2" ? .string : .struct) }.map { self.base.createImmutable($0) },
             codingKeys: values.map { self.base.createCodingKey($0) }
         )
@@ -238,7 +238,7 @@ class JSONtoCodableTests: XCTestCase {
         frame = self.base.createStructFrame(structTitle)
         internalStructString = "struct Single2: Codable {\n    let double1: String\n    let double2: Double2\n    let double3: String\n\n    struct Double2: Codable {\n        let triple1: String\n\n        private enum CodingKeys: String, CodingKey {\n            case triple1 = \"Triple1\"\n        }\n    }\n\n    private enum CodingKeys: String, CodingKey {\n        case double1 = \"Double1\"\n        case double2 = \"Double2\"\n        case double3 = \"Double3\"\n    }\n}"
         seed = (
-            frame: (frame.prefix, internalStructString, frame.suffix),
+            frame: (frame.prefix, [internalStructString], frame.suffix),
             immutables: values.map { (key: $0, type: $0 != "Single2" ? .string : .struct) }.map { self.base.createImmutable($0) },
             codingKeys: values.map { self.base.createCodingKey($0) }
         )
