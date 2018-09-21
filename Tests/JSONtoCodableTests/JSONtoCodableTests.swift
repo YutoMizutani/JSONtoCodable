@@ -9,11 +9,11 @@ import XCTest
 @testable import JSONtoCodable
 
 class JSONtoCodableTests: XCTestCase {
-    var base: JSONtoCodableMock!
+    var base: JSONtoCodable!
 
     override func setUp() {
         super.setUp()
-        self.base = JSONtoCodableMock()
+        self.base = JSONtoCodable()
     }
 
     func testDecisionType() {
