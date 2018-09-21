@@ -23,7 +23,7 @@ class IndentTests: XCTestCase {
             "HelloWorld": "Hello, world!!"
         }
         """
-        let structString: String = """
+        let expectation: String = """
         struct Result: Codable {
             let hello: String
             let helloWorld: String
@@ -35,7 +35,7 @@ class IndentTests: XCTestCase {
         }
         """
         let result: String? = try? self.base.translate(json)
-        XCTAssertEqual(result, structString)
+        XCTAssertEqual(result, expectation)
     }
 
     func testZeroSpace() {
@@ -45,7 +45,7 @@ class IndentTests: XCTestCase {
             "HelloWorld": "Hello, world!!"
         }
         """
-        let structString: String = """
+        let expectation: String = """
         struct Result: Codable {
         let hello: String
         let helloWorld: String
@@ -58,7 +58,7 @@ class IndentTests: XCTestCase {
         """
         self.base.config.indentType = .space(0)
         let result: String? = try? self.base.translate(json)
-        XCTAssertEqual(result, structString)
+        XCTAssertEqual(result, expectation)
     }
 
     func testTwoSpace() {
@@ -68,7 +68,7 @@ class IndentTests: XCTestCase {
             "HelloWorld": "Hello, world!!"
         }
         """
-        let structString: String = """
+        let expectation: String = """
         struct Result: Codable {
           let hello: String
           let helloWorld: String
@@ -81,7 +81,7 @@ class IndentTests: XCTestCase {
         """
         self.base.config.indentType = .space(2)
         let result: String? = try? self.base.translate(json)
-        XCTAssertEqual(result, structString)
+        XCTAssertEqual(result, expectation)
     }
 
     func testFourSpace() {
@@ -91,7 +91,7 @@ class IndentTests: XCTestCase {
             "HelloWorld": "Hello, world!!"
         }
         """
-        let structString: String = """
+        let expectation: String = """
         struct Result: Codable {
             let hello: String
             let helloWorld: String
@@ -104,7 +104,7 @@ class IndentTests: XCTestCase {
         """
         self.base.config.indentType = .space(4)
         let result: String? = try? self.base.translate(json)
-        XCTAssertEqual(result, structString)
+        XCTAssertEqual(result, expectation)
     }
 
     func testEightSpace() {
@@ -114,7 +114,7 @@ class IndentTests: XCTestCase {
             "HelloWorld": "Hello, world!!"
         }
         """
-        let structString: String = """
+        let expectation: String = """
         struct Result: Codable {
                 let hello: String
                 let helloWorld: String
@@ -127,7 +127,7 @@ class IndentTests: XCTestCase {
         """
         self.base.config.indentType = .space(8)
         let result: String? = try? self.base.translate(json)
-        XCTAssertEqual(result, structString)
+        XCTAssertEqual(result, expectation)
     }
 
     func testZeroTab() {
@@ -137,7 +137,7 @@ class IndentTests: XCTestCase {
             "HelloWorld": "Hello, world!!"
         }
         """
-        let structString: String = """
+        let expectation: String = """
         struct Result: Codable {
         let hello: String
         let helloWorld: String
@@ -150,7 +150,7 @@ class IndentTests: XCTestCase {
         """
         self.base.config.indentType = .tab(0)
         let result: String? = try? self.base.translate(json)
-        XCTAssertEqual(result, structString)
+        XCTAssertEqual(result, expectation)
     }
 
     func testOneTab() {
@@ -160,7 +160,7 @@ class IndentTests: XCTestCase {
             "HelloWorld": "Hello, world!!"
         }
         """
-        let structString: String = """
+        let expectation: String = """
         struct Result: Codable {
         \tlet hello: String
         \tlet helloWorld: String
@@ -173,7 +173,7 @@ class IndentTests: XCTestCase {
         """
         self.base.config.indentType = .tab(1)
         let result: String? = try? self.base.translate(json)
-        XCTAssertEqual(result, structString)
+        XCTAssertEqual(result, expectation)
     }
 
     func testTwoTab() {
@@ -183,7 +183,7 @@ class IndentTests: XCTestCase {
             "HelloWorld": "Hello, world!!"
         }
         """
-        let structString: String = """
+        let expectation: String = """
         struct Result: Codable {
         \t\tlet hello: String
         \t\tlet helloWorld: String
@@ -196,6 +196,6 @@ class IndentTests: XCTestCase {
         """
         self.base.config.indentType = .tab(2)
         let result: String? = try? self.base.translate(json)
-        XCTAssertEqual(result, structString)
+        XCTAssertEqual(result, expectation)
     }
 }

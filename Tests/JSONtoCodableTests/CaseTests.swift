@@ -23,7 +23,7 @@ class CaseTests: XCTestCase {
             "HelloWorld": "Hello, world!!"
         }
         """
-        let structString: String = """
+        let expectation: String = """
         struct Result: Codable {
             let Hello: String
             let HelloWorld: String
@@ -31,7 +31,7 @@ class CaseTests: XCTestCase {
         """
         self.base.config.caseType.variable = .pascal
         let result: String? = try? self.base.translate(json)
-        XCTAssertEqual(result, structString)
+        XCTAssertEqual(result, expectation)
     }
     
     func testCamelCase() {
@@ -41,7 +41,7 @@ class CaseTests: XCTestCase {
             "HelloWorld": "Hello, world!!"
         }
         """
-        let structString: String = """
+        let expectation: String = """
         struct Result: Codable {
             let hello: String
             let helloWorld: String
@@ -54,7 +54,7 @@ class CaseTests: XCTestCase {
         """
         self.base.config.caseType.variable = .camel
         let result: String? = try? self.base.translate(json)
-        XCTAssertEqual(result, structString)
+        XCTAssertEqual(result, expectation)
     }
 
     func testSnakeCase() {
@@ -64,7 +64,7 @@ class CaseTests: XCTestCase {
             "HelloWorld": "Hello, world!!"
         }
         """
-        let structString: String = """
+        let expectation: String = """
         struct Result: Codable {
             let hello: String
             let hello_world: String
@@ -77,7 +77,7 @@ class CaseTests: XCTestCase {
         """
         self.base.config.caseType.variable = .snake
         let result: String? = try? self.base.translate(json)
-        XCTAssertEqual(result, structString)
+        XCTAssertEqual(result, expectation)
     }
 
     func testScreamingSnakeCase() {
@@ -87,7 +87,7 @@ class CaseTests: XCTestCase {
             "HelloWorld": "Hello, world!!"
         }
         """
-        let structString: String = """
+        let expectation: String = """
         struct Result: Codable {
             let HELLO: String
             let HELLO_WORLD: String
@@ -100,6 +100,6 @@ class CaseTests: XCTestCase {
         """
         self.base.config.caseType.variable = .screamingSnake
         let result: String? = try? self.base.translate(json)
-        XCTAssertEqual(result, structString)
+        XCTAssertEqual(result, expectation)
     }
 }
