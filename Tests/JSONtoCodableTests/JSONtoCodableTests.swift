@@ -106,4 +106,35 @@ class JSONtoCodableTests: XCTestCase {
         self.base.config.caseType.variable = .screamingSnake
         XCTAssertEqual(self.base.createCodingKey(jsonKey), expectation)
     }
+
+    func testCreateCodingKeyScope() {
+        var keys: [String]
+        var expectation: String
+
+        let hello = "case hello = \"Hello\""
+        keys = Array<String>(repeating: hello, count: 1)
+        expectation = """
+        private enum CodingKeys: String, CodingKey {
+            case hello = "Hello"
+        }
+        """
+        XCTAssertEqual(self.base.createCodingKeyScope(keys), expectation)
+        keys = Array<String>(repeating: hello, count: 2)
+        expectation = """
+        private enum CodingKeys: String, CodingKey {
+            case hello = "Hello"
+            case hello = "Hello"
+        }
+        """
+        XCTAssertEqual(self.base.createCodingKeyScope(keys), expectation)
+        keys = Array<String>(repeating: hello, count: 3)
+        expectation = """
+        private enum CodingKeys: String, CodingKey {
+            case hello = "Hello"
+            case hello = "Hello"
+            case hello = "Hello"
+        }
+        """
+        XCTAssertEqual(self.base.createCodingKeyScope(keys), expectation)
+    }
 }
