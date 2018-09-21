@@ -37,4 +37,41 @@ class JSONtoCodableTests: XCTestCase {
         XCTAssertEqual(self.base.decisionType(value: "NULL", isString: false), .optionalAny)
         XCTAssertEqual(self.base.decisionType(value: "Hello", isString: false), .any)
     }
+
+    func testCreateImmutable() {
+        var seed: (key: String, type: Type)
+        var expectation: String
+
+        self.base.config.caseType.struct = CaseType.pascal
+
+        seed = ("hello", .string)
+        expectation = "let hello: String"
+        XCTAssertEqual(self.base.createImmutable(seed), expectation)
+        seed = ("hello", .bool)
+        expectation = "let hello: Bool"
+        XCTAssertEqual(self.base.createImmutable(seed), expectation)
+        seed = ("hello", .int)
+        expectation = "let hello: Int"
+        XCTAssertEqual(self.base.createImmutable(seed), expectation)
+        seed = ("hello", .double)
+        expectation = "let hello: Double"
+        XCTAssertEqual(self.base.createImmutable(seed), expectation)
+        seed = ("hello", .optionalAny)
+        expectation = "let hello: Any?"
+        XCTAssertEqual(self.base.createImmutable(seed), expectation)
+        seed = ("hello", .any)
+        expectation = "let hello: Any"
+        XCTAssertEqual(self.base.createImmutable(seed), expectation)
+
+        seed = ("hello", .struct)
+        expectation = "let hello: Hello"
+        XCTAssertEqual(self.base.createImmutable(seed), expectation)
+        seed = ("Hello", .struct)
+        expectation = "let Hello: Hello"
+        XCTAssertEqual(self.base.createImmutable(seed), expectation)
+        seed = ("hello", .struct)
+        expectation = "let hello: hello"
+        self.base.config.caseType.struct = CaseType.camel
+        XCTAssertEqual(self.base.createImmutable(seed), expectation)
+    }
 }

@@ -36,4 +36,8 @@ extension JSONtoCodableMock {
             return .any
         }
     }
+
+    func createImmutable(_ seed: ImmutableSeed) -> String {
+        return ""
+    }
 }
