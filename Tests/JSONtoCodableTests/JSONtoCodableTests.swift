@@ -38,74 +38,72 @@ class JSONtoCodableTests: XCTestCase {
         XCTAssertEqual(self.base.decisionType("Hello", isString: false), .any)
     }
 
-    func testCreateStructFrame() {
+    func testCreateStructproperty() {
         var key: String
         var expectation: String
 
         key = "HelloWorld"
-        XCTAssertEqual(self.base.createStructFrame(key).suffix, "}")
+        XCTAssertEqual(Property(key).suffix, "}")
 
         key = "HelloWorld"
         expectation = "struct HelloWorld: Codable {"
-        XCTAssertEqual(self.base.createStructFrame(key).prefix, expectation)
+        XCTAssertEqual(Property(key).prefix, expectation)
         key = "HelloWorld"
         expectation = "fileprivate struct HelloWorld: Codable {"
-        self.base.config.accessModifer = .fileprivate
-        XCTAssertEqual(self.base.createStructFrame(key).prefix, expectation)
+        XCTAssertEqual(Property(key, accessModifer: .fileprivate).prefix, expectation)
 
         // NOTE: There will occur compile errors when create the .swift file, but it is not interested this method
         key = "1234"
         expectation = "open struct 1234: Codable {"
-        self.base.config.accessModifer = .open
-        XCTAssertEqual(self.base.createStructFrame(key).prefix, expectation)
+        XCTAssertEqual(Property(key, accessModifer: .open).prefix, expectation)
     }
 
     func testCreateImmutable() {
-        var seed: (key: String, type: Type)
+        var seed: (key: String, value: String, type: Type?)
         var expectation: String
 
-        seed = ("hello", .string)
+        seed = ("hello", "", .string)
         expectation = "let hello: String"
         XCTAssertEqual(self.base.createImmutable(seed), expectation)
-        seed = ("hello", .bool)
+        seed = ("hello", "", .bool)
         expectation = "let hello: Bool"
         XCTAssertEqual(self.base.createImmutable(seed), expectation)
-        seed = ("hello", .int)
+        seed = ("hello", "", .int)
         expectation = "let hello: Int"
         XCTAssertEqual(self.base.createImmutable(seed), expectation)
-        seed = ("hello", .double)
+        seed = ("hello", "", .double)
         expectation = "let hello: Double"
         XCTAssertEqual(self.base.createImmutable(seed), expectation)
-        seed = ("hello", .optionalAny)
+        seed = ("hello", "", .optionalAny)
         expectation = "let hello: Any?"
         XCTAssertEqual(self.base.createImmutable(seed), expectation)
-        seed = ("hello", .any)
+        seed = ("hello", "", .any)
         expectation = "let hello: Any"
         XCTAssertEqual(self.base.createImmutable(seed), expectation)
 
-        seed = ("HelloWorld", .struct)
+        seed = ("HelloWorld", "", .struct)
         expectation = "let HelloWorld: helloWorld"
         self.base.config.caseType = (variable: CaseType.pascal, struct: CaseType.camel)
         XCTAssertEqual(self.base.createImmutable(seed), expectation)
-        seed = ("HelloWorld", .struct)
+        seed = ("HelloWorld", "", .struct)
         expectation = "let HELLO_WORLD: hello_world"
         self.base.config.caseType = (variable: CaseType.screamingSnake, struct: CaseType.snake)
         XCTAssertEqual(self.base.createImmutable(seed), expectation)
-        seed = ("HELLO_WORLD", .struct)
+        seed = ("HELLO_WORLD", "", .struct)
         expectation = "let helloWorld: HELLO_WORLD"
         self.base.config.caseType = (variable: CaseType.camel, struct: CaseType.screamingSnake)
         XCTAssertEqual(self.base.createImmutable(seed), expectation)
-        seed = ("HELLO_WORLD", .struct)
+        seed = ("HELLO_WORLD", "", .struct)
         expectation = "let hello_world: HelloWorld"
         self.base.config.caseType = (variable: CaseType.snake, struct: CaseType.pascal)
         XCTAssertEqual(self.base.createImmutable(seed), expectation)
 
         // NOTE: There will occur compile errors when create the .swift file, but it is not interested this method
-        seed = ("HelloWorld", .struct)
+        seed = ("HelloWorld", "", .struct)
         expectation = "let HelloWorld: HelloWorld"
         self.base.config.caseType = (variable: CaseType.pascal, struct: CaseType.pascal)
         XCTAssertEqual(self.base.createImmutable(seed), expectation)
-        seed = ("1234", .struct)
+        seed = ("1234", "", .struct)
         expectation = "let 1234: 1234"
         self.base.config.caseType = (variable: CaseType.camel, struct: CaseType.pascal)
         XCTAssertEqual(self.base.createImmutable(seed), expectation)
@@ -163,15 +161,13 @@ class JSONtoCodableTests: XCTestCase {
     func testCreateStructScope() {
         let structTitle: String = "Result"
         var values: [String]
-        var seed: (frame: JSONtoCodableMock.Property, immutables: [String], codingKeys: [String])
+        var property: Property
         var expectation: String
 
         values = ["Single1", "Single2"]
-        seed = (
-            frame: self.base.createStructFrame(structTitle),
-            immutables: values.map { (key: $0, type: .string) }.map { self.base.createImmutable($0) },
-            codingKeys: values.map { self.base.createCodingKey($0) }
-        )
+        property = Property(structTitle)
+        property.immutables = values.map { (key: $0, "", type: .string) }.map { self.base.createImmutable($0)! }
+        property.codingKeys = values.map { self.base.createCodingKey($0) }
         expectation = """
         struct Result: Codable {
             let single1: String
@@ -183,14 +179,11 @@ class JSONtoCodableTests: XCTestCase {
             }
         }
         """
-        XCTAssertEqual(self.base.createStructScope(seed.frame, immutables: seed.immutables, codingKeys: seed.codingKeys), expectation)
+        XCTAssertEqual(self.base.createStructScope(property), expectation)
 
         values = ["single1", "single2", "single3"]
-        seed = (
-            frame: self.base.createStructFrame(structTitle),
-            immutables: values.map { (key: $0, type: .string) }.map { self.base.createImmutable($0) },
-            codingKeys: []
-        )
+        property = Property(structTitle)
+        property.immutables = values.map { (key: $0, "", type: .string) }.map { self.base.createImmutable($0)! }
         expectation = """
         struct Result: Codable {
             let single1: String
@@ -198,19 +191,17 @@ class JSONtoCodableTests: XCTestCase {
             let single3: String
         }
         """
-        XCTAssertEqual(self.base.createStructScope(seed.frame, immutables: seed.immutables, codingKeys: seed.codingKeys), expectation)
+        XCTAssertEqual(self.base.createStructScope(property), expectation)
 
-        var frame: JSONtoCodableMock.Property
         var internalStructString: String
 
         values = ["Single1", "Single2", "Single3"]
-        frame = self.base.createStructFrame(structTitle)
+        property = Property(structTitle)
         internalStructString = "struct Single2: Codable {\n    let double1: String\n\n    private enum CodingKeys: String, CodingKey {\n        case double1 = \"Double1\"\n    }\n}"
-        seed = (
-            frame: (frame.prefix, [internalStructString], frame.suffix),
-            immutables: values.map { (key: $0, type: $0 != "Single2" ? .string : .struct) }.map { self.base.createImmutable($0) },
-            codingKeys: values.map { self.base.createCodingKey($0) }
-        )
+        property = Property(structTitle)
+        property.structs = [internalStructString]
+        property.immutables = values.map { (key: $0, "", type: $0 != "Single2" ? .string : .struct) }.map { self.base.createImmutable($0)! }
+        property.codingKeys = values.map { self.base.createCodingKey($0) }
         expectation = """
         struct Result: Codable {
             let single1: String
@@ -232,16 +223,15 @@ class JSONtoCodableTests: XCTestCase {
             }
         }
         """
-        XCTAssertEqual(self.base.createStructScope(seed.frame, immutables: seed.immutables, codingKeys: seed.codingKeys), expectation)
+        XCTAssertEqual(self.base.createStructScope(property), expectation)
 
         values = ["Single1", "Single2", "Single3"]
-        frame = self.base.createStructFrame(structTitle)
+        property = Property(structTitle)
         internalStructString = "struct Single2: Codable {\n    let double1: String\n    let double2: Double2\n    let double3: String\n\n    struct Double2: Codable {\n        let triple1: String\n\n        private enum CodingKeys: String, CodingKey {\n            case triple1 = \"Triple1\"\n        }\n    }\n\n    private enum CodingKeys: String, CodingKey {\n        case double1 = \"Double1\"\n        case double2 = \"Double2\"\n        case double3 = \"Double3\"\n    }\n}"
-        seed = (
-            frame: (frame.prefix, [internalStructString], frame.suffix),
-            immutables: values.map { (key: $0, type: $0 != "Single2" ? .string : .struct) }.map { self.base.createImmutable($0) },
-            codingKeys: values.map { self.base.createCodingKey($0) }
-        )
+        property = Property(structTitle)
+        property.structs = [internalStructString]
+        property.immutables = values.map { (key: $0, "", type: $0 != "Single2" ? .string : .struct) }.map { self.base.createImmutable($0)! }
+        property.codingKeys = values.map { self.base.createCodingKey($0) }
         expectation = """
         struct Result: Codable {
             let single1: String
@@ -275,6 +265,6 @@ class JSONtoCodableTests: XCTestCase {
             }
         }
         """
-        XCTAssertEqual(self.base.createStructScope(seed.frame, immutables: seed.immutables, codingKeys: seed.codingKeys), expectation)
+        XCTAssertEqual(self.base.createStructScope(property), expectation)
     }
 }

@@ -9,11 +9,11 @@ import XCTest
 @testable import JSONtoCodable
 
 class NoCodingkeysTests: XCTestCase {
-    var base: JSONtoCodable!
+    var base: JSONtoCodableMock!
 
     override func setUp() {
         super.setUp()
-        self.base = JSONtoCodable()
+        self.base = JSONtoCodableMock()
     }
 
     func testNoCodingkeys() {
