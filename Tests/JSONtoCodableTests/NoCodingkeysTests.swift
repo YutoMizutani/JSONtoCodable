@@ -22,12 +22,12 @@ class NoCodingkeysTests: XCTestCase {
             "hello": "World"
         }
         """
-        let structString: String = """
+        let expectation: String = """
         struct Result: Codable {
             let hello: String
         }
         """
         let result: String? = try? self.base.translate(json)
-        XCTAssertEqual(result, structString)
+        XCTAssertEqual(result, expectation)
     }
 }
