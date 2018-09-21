@@ -96,13 +96,13 @@ class JSONtoCodableTests: XCTestCase {
         expectation = "case HelloWorld"
         self.base.config.caseType.variable = .pascal
         XCTAssertEqual(self.base.createCodingKey(key), expectation)
-        expectation = "case helloWorld = HelloWorld"
+        expectation = "case helloWorld = \"HelloWorld\""
         self.base.config.caseType.variable = .camel
         XCTAssertEqual(self.base.createCodingKey(key), expectation)
-        expectation = "case hello_world = HelloWorld"
+        expectation = "case hello_world = \"HelloWorld\""
         self.base.config.caseType.variable = .snake
         XCTAssertEqual(self.base.createCodingKey(key), expectation)
-        expectation = "case HELLO_WORLD = HelloWorld"
+        expectation = "case HELLO_WORLD = \"HelloWorld\""
         self.base.config.caseType.variable = .screamingSnake
         XCTAssertEqual(self.base.createCodingKey(key), expectation)
     }
