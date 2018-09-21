@@ -37,6 +37,10 @@ extension JSONtoCodableMock {
         }
     }
 
+    func createStructFrame(_ key: String) -> Property {
+        return ("", "")
+    }
+
     func createImmutable(_ seed: ImmutableSeed) -> String {
         let accessModifer: AccessModifer = config.accessModifer
         let caseTypes = config.caseType

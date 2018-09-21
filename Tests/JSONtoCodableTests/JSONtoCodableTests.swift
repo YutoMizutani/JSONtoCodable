@@ -38,6 +38,27 @@ class JSONtoCodableTests: XCTestCase {
         XCTAssertEqual(self.base.decisionType(value: "Hello", isString: false), .any)
     }
 
+    func testCreateStructFrame() {
+        var key: String
+        var expectation: String
+
+        key = "HelloWorld"
+        XCTAssertEqual(self.base.createStructFrame(key).suffix, "}")
+
+        key = "HelloWorld"
+        expectation = "struct HelloWorld: Codable {"
+        XCTAssertEqual(self.base.createStructFrame(key).prefix, expectation)
+        key = "HelloWorld"
+        expectation = "fileprivate struct HelloWorld: Codable {"
+        self.base.config.accessModifer = .fileprivate
+        XCTAssertEqual(self.base.createStructFrame(key).prefix, expectation)
+
+        // NOTE: There will occur compile errors when create the .swift file, but it is not interested this method
+        key = "1234"
+        expectation = "struct 1234: Codable {"
+        XCTAssertEqual(self.base.createStructFrame(key).prefix, expectation)
+    }
+
     func testCreateImmutable() {
         var seed: (key: String, type: Type)
         var expectation: String
