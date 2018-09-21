@@ -46,4 +46,8 @@ extension JSONtoCodableMock {
         let type: String = seed.type != .struct ? seed.type.rawValue : seed.key.separated.joined(with: caseTypes.struct)
         return "\(prefix)let \(key): \(type)"
     }
+
+    func createCodingKey(_ key: String) -> String {
+        return ""
+    }
 }
