@@ -27,7 +27,7 @@ class TypeTests: XCTestCase {
             "optionalany": nil
         }
         """
-        let structString: String = """
+        let expectation: String = """
         struct Result: Codable {
             let string: String
             let bool: Bool
@@ -38,7 +38,7 @@ class TypeTests: XCTestCase {
         }
         """
         let result: String? = try? self.base.translate(json)
-        XCTAssertEqual(result, structString)
+        XCTAssertEqual(result, expectation)
     }
 
     func testString() {
@@ -47,13 +47,13 @@ class TypeTests: XCTestCase {
             "string": "String"
         }
         """
-        let structString: String = """
+        let expectation: String = """
         struct Result: Codable {
             let string: String
         }
         """
         let result: String? = try? self.base.translate(json)
-        XCTAssertEqual(result, structString)
+        XCTAssertEqual(result, expectation)
     }
 
     func testBool() {
@@ -63,14 +63,14 @@ class TypeTests: XCTestCase {
             "boolfalse": false
         }
         """
-        let structString: String = """
+        let expectation: String = """
         struct Result: Codable {
             let booltrue: Bool
             let boolfalse: Bool
         }
         """
         let result: String? = try? self.base.translate(json)
-        XCTAssertEqual(result, structString)
+        XCTAssertEqual(result, expectation)
     }
 
     func testInt() {
@@ -79,13 +79,13 @@ class TypeTests: XCTestCase {
             "int": 0
         }
         """
-        let structString: String = """
+        let expectation: String = """
         struct Result: Codable {
             let int: Int
         }
         """
         let result: String? = try? self.base.translate(json)
-        XCTAssertEqual(result, structString)
+        XCTAssertEqual(result, expectation)
     }
 
     func testDouble() {
@@ -94,13 +94,13 @@ class TypeTests: XCTestCase {
             "double": 1.0
         }
         """
-        let structString: String = """
+        let expectation: String = """
         struct Result: Codable {
             let double: Double
         }
         """
         let result: String? = try? self.base.translate(json)
-        XCTAssertEqual(result, structString)
+        XCTAssertEqual(result, expectation)
     }
 
     func testAny() {
@@ -109,13 +109,13 @@ class TypeTests: XCTestCase {
             "any": any
         }
         """
-        let structString: String = """
+        let expectation: String = """
         struct Result: Codable {
             let any: Any
         }
         """
         let result: String? = try? self.base.translate(json)
-        XCTAssertEqual(result, structString)
+        XCTAssertEqual(result, expectation)
     }
 
     func testOptionalAny() {
@@ -124,12 +124,12 @@ class TypeTests: XCTestCase {
             "optionalany": nil
         }
         """
-        let structString: String = """
+        let expectation: String = """
         struct Result: Codable {
             let optionalany: Any?
         }
         """
         let result: String? = try? self.base.translate(json)
-        XCTAssertEqual(result, structString)
+        XCTAssertEqual(result, expectation)
     }
 }

@@ -14,4 +14,5 @@ public enum Type: String {
     case double = "Double"
     case any = "Any"
     case optionalAny = "Any?"
+    case `struct` = ""
 }

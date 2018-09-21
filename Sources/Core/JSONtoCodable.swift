@@ -2,160 +2,84 @@
 //  JSONtoCodable.swift
 //  JSONtoCodable
 //
-//  Created by Yuto Mizutani on 2018/09/20.
+//  Created by Yuto Mizutani on 2018/09/21.
 //
 
-public class JSONtoCodable {
-    private typealias Property = ([String], [String])
-    private typealias Register = (isString: Bool, value: String)
-    private typealias ImmutableSeed = (key: String, type: Type)
+import Foundation
 
-    private enum TranslateState {
+public class JSONtoCodable {
+    typealias RawJSON = (key: String, value: String, type: Type?)
+    typealias ImmutableSeed = (key: String, type: Type)
+
+    enum TranslateState {
         case prepareKey, inKey, prepareValue, inValue, inArray(Any)
     }
 
     public var config: Config = Config()
 }
 
-// MARK: - private methods
-
-private extension JSONtoCodable {
-    private func createResult(_ properties: [Property]) -> String {
-        let line: String = config.lineType.rawValue
-        let indent: String = config.indentType.rawValue
-        var result: (prefix: String, suffix: String) = ("", "")
-        for property in properties.enumerated() {
-            // Add line
-            if property.offset != 0 {
-                result.prefix += line
-                result.suffix = !property.element.1.isEmpty ? line + result.suffix : result.suffix
-            }
-
-            let indents = String(repeating: indent, count: property.offset)
-            result.prefix += property.element.0.map { $0 != "" ? indents + $0 : $0 }.joined(separator: line)
-            result.suffix = !property.element.1.isEmpty ? property.element.1.joined(separator: line) + result.suffix : result.suffix
-        }
-        return "\(result.prefix)\(line)\(result.suffix != "}" ? line : "")\(result.suffix)"
-    }
-
-    private func createStruct(_ name: String) -> Property {
-        let accessModifer: String = config.accessModifer == .default ? "" : "\(config.accessModifer.rawValue) "
-        return (["\(accessModifer)struct \(name): Codable {"], ["}"])
-    }
-
-    private func createImmutable(_ seed: ImmutableSeed) -> (translatedKey: String, value: String) {
-        let accessModifer: AccessModifer = config.accessModifer
-        let caseType: CaseType = config.caseType.variable
-        let prefix: String = accessModifer == .default ? "" : "\(accessModifer.rawValue) "
-        let key: String = seed.key.separated.joined(with: caseType)
-        return (key, "\(prefix)let \(key): \(seed.type.rawValue)")
-    }
-
-    private func createSeed(_ key: String, register: Register) -> ImmutableSeed {
-        guard !register.isString else {
-            return (key: key, type: .string)
-        }
-
-        var seed: ImmutableSeed = (key, .any)
-        switch register.value.lowercased() {
-        case "true", "false":
-            seed.type = .bool
-        case "nil", "null":
-            seed.type = .optionalAny
-        case let value where value == Int(value)?.description:
-            seed.type = .int
-        case let value where value == Double(value)?.description:
-            seed.type = .double
-        default:
-            seed.type = .any
-        }
-
-        return seed
-    }
-
-    private func createCodingKeysString(_ codingKeys: [(key: String, value: String)]) -> String? {
-        guard !codingKeys.filter({ $0.key != $0.value }).isEmpty else { return nil }
-
-        let indent: String = config.indentType.rawValue
-        let line: String = config.lineType.rawValue
-        let prefix: String = "private enum CodingKeys: String, CodingKey {"
-        let suffix: String = "}"
-        var content = codingKeys
-            .map { $0.key == $0.value ? "\($0.key)" : "\($0.key) = \"\($0.value)\"" }
-            .map { "\(indent)case \($0)" }
-        content.insert(prefix, at: 0)
-        content.append(suffix)
-        return content.map { "\(indent)\($0)" }.joined(separator: line)
-    }
-}
-
 // MARK: - public methods
 
 public extension JSONtoCodable {
-    func translate(_ json: String) throws -> String {
+    func translate(_ text: String) throws -> String {
         var isStartCurlyBracket: Bool?
 
-        var properties: [Property] = [self.createStruct(config.name), ([], [])]
-        var codingKeys: [[(key: String, value: String)]] = [[]]
+        var properties: [Property] = []
         var state: TranslateState = .prepareKey
-
-        var register: Register?
-        var stack: [String] = []
+        var json: RawJSON = (key: "", value: "", type: nil)
 
         func ignore() {}
         func startKey() {
             state = .inKey
-            register = (true, "")
+            json = ("", "", nil)
         }
         func addKey(_ c: Character) {
-            register?.value.append(c)
+            json.key.append(c)
         }
-        func endKey() throws {
-            guard let key = register?.value else { throw JSONError.wrongFormat }
-            stack.append(key)
-            register = nil
+        func endKey() {
             state = .prepareValue
         }
 
         func startValue(isString: Bool) {
-            register = (isString, "")
+            json.type = isString ? .string : nil
             state = .inValue
         }
         func addValue(_ c: Character) {
-            register?.value.append(c)
+            json.value.append(c)
         }
         func endValue() throws {
-            guard
-                let key = stack.last, let regist = register,
-                !properties.isEmpty, !codingKeys.isEmpty
-                else { throw JSONError.wrongFormat }
+            guard !properties.isEmpty else { throw JSONError.wrongFormat }
 
-            let seed: ImmutableSeed = createSeed(key, register: regist)
-            let immutable = createImmutable(seed)
-            properties[properties.count - 1].0.append(immutable.value)
-            codingKeys[codingKeys.count - 1].append((immutable.translatedKey, seed.key))
-            stack.remove(at: stack.count - 1)
-            register = nil
+            if json.type == nil {
+                json.type = self.decisionType(json.value, isString: json.type == .string)
+            }
+            guard let immutable = createImmutable(json) else { throw JSONError.wrongFormat }
+            properties[properties.count - 1].immutables.append(immutable)
+            properties[properties.count - 1].codingKeys.append(createCodingKey(json.key))
+
             state = .prepareKey
         }
 
         func startStruct() throws {
-            guard let name = stack.last else { throw JSONError.wrongFormat }
-            stack.remove(at: stack.count - 1)
-            let property = createStruct(name)
+            // end value
+            json.type = .struct
+            try endValue()
+
+            // add property
+            let caseType = config.caseType.struct
+            let property = Property(json.key.updateCased(with: caseType), accessModifer: config.accessModifer)
             properties.append(property)
-            codingKeys.append([])
             state = .prepareKey
         }
-        func endStruct() throws {
-            guard !properties.isEmpty, !codingKeys.isEmpty else { throw JSONError.wrongFormat }
-            if let codingKeyString: String = createCodingKeysString(codingKeys[codingKeys.count - 1]) {
-                properties[properties.count - 1].1.insert(codingKeyString, at: 0)
-            }
-            codingKeys.remove(at: codingKeys.count - 1)
+        func endStruct() {
+            guard properties.count >= 2 else { return }
+            let structString: String = self.createStructScope(properties.last!)
+            properties.remove(at: properties.count - 1)
+            properties[properties.count - 1].structs.append(structString)
         }
 
-        for character in json {
+        properties.append(Property(config.name, accessModifer: config.accessModifer))
+        for character in text {
             switch state {
             case .prepareKey:
                 if isStartCurlyBracket == nil {
@@ -168,14 +92,14 @@ public extension JSONtoCodable {
                 case " ":
                     ignore()
                 case "}":
-                    try endStruct()
+                    endStruct()
                 default:
                     ignore()
                 }
             case .inKey:
                 switch character {
                 case "\"":
-                    try endKey()
+                    endKey()
                 default:
                     addKey(character)
                 }
@@ -189,7 +113,7 @@ public extension JSONtoCodable {
                     let isString = character == "\""
                     startValue(isString: isString)
                     if !isString {
-                        register?.value.append(character)
+                        json.value.append(character)
                     }
                 }
             case .inValue:
@@ -197,8 +121,7 @@ public extension JSONtoCodable {
                 case "\"":
                     try endValue()
                 case " ", "\r", "\n":
-                    guard let regist = register else { throw JSONError.wrongFormat }
-                    if regist.isString {
+                    if json.type == .string {
                         addValue(character)
                     } else {
                         try endValue()
@@ -215,9 +138,81 @@ public extension JSONtoCodable {
         }
 
         if let isStartCurlyBracket = isStartCurlyBracket, !isStartCurlyBracket {
-            try endStruct()
+            endStruct()
         }
 
-        return self.createResult(properties)
+        return self.createStructScope(properties.first!)
+    }
+}
+
+// MARK: - internal methods
+
+extension JSONtoCodable {
+    func decisionType(_ value: String, isString: Bool) -> Type {
+        guard !isString else { return Type.string }
+
+        switch value.lowercased() {
+        case "true", "false":
+            return .bool
+        case "nil", "null":
+            return.optionalAny
+        case let value where value == Int(value)?.description:
+            return .int
+        case let value where value == Double(value)?.description:
+            return .double
+        default:
+            return .any
+        }
+    }
+
+    func createImmutable(_ json: RawJSON) -> String? {
+        guard let seedType = json.type else { return nil }
+        let accessModifer: AccessModifer = config.accessModifer
+        let caseTypes = config.caseType
+
+        let prefix: String = accessModifer == .default ? "" : "\(accessModifer.rawValue) "
+        let key: String = json.key.updateCased(with: caseTypes.variable)
+        let type: String = json.type != .struct ? seedType.rawValue : json.key.updateCased(with: caseTypes.struct)
+        return "\(prefix)let \(key): \(type)"
+    }
+
+    func createCodingKey(_ jsonKey: String) -> String {
+        let caseType = config.caseType.variable
+
+        let key: String = jsonKey.updateCased(with: caseType)
+        return "case \(key == jsonKey ? key : "\(key) = \"\(jsonKey)\"")"
+    }
+
+    func createCodingKeyScope(_ keys: [String]) -> String? {
+        guard !keys.filter({ $0.contains("=") }).isEmpty else { return nil }
+
+        let indent: String = config.indentType.rawValue
+        let line: String = config.lineType.rawValue
+        let prefix: String = "private enum CodingKeys: String, CodingKey {"
+        let suffix: String = "}"
+
+        let contents: String = keys.map { indent + $0 }.joined(separator: line)
+
+        return [prefix, contents, suffix].joined(separator: line)
+    }
+
+    func createStructScope(_ property: Property) -> String {
+        let line: String = config.lineType.rawValue
+        let indent: String = config.indentType.rawValue
+
+        let prefix: String = property.prefix
+        let suffix: String = property.suffix ?? ""
+
+        let immutableString: String = property.immutables.joined(separator: line)
+        let internalStructString: String? = !property.structs.isEmpty ? property.structs.joined(separator: "\(line)\(line)") : nil
+        let codingKeyString: String? = self.createCodingKeyScope(property.codingKeys)
+
+        var contents: String = [immutableString, internalStructString, codingKeyString]
+            .filter { $0 != nil }.map { $0! }
+            .joined(separator: "\(line)\(line)")
+            .replacingOccurrences(of: line, with: "\(line)\(indent)")
+            .replacingOccurrences(of: "\(line)\(indent)\(line)", with: "\(line)\(line)")
+        contents = indent + contents
+        return [prefix, contents, suffix].joined(separator: line)
     }
 }
