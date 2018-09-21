@@ -38,6 +38,12 @@ extension JSONtoCodableMock {
     }
 
     func createImmutable(_ seed: ImmutableSeed) -> String {
-        return ""
+        let accessModifer: AccessModifer = config.accessModifer
+        let caseTypes = config.caseType
+
+        let prefix: String = accessModifer == .default ? "" : "\(accessModifer.rawValue) "
+        let key: String = seed.key.separated.joined(with: caseTypes.variable)
+        let type: String = seed.type != .struct ? seed.type.rawValue : seed.key.separated.joined(with: caseTypes.struct)
+        return "\(prefix)let \(key): \(type)"
     }
 }
