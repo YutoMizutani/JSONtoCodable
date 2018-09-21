@@ -20,7 +20,7 @@ public class JSONtoCodableMock {
 }
 
 extension JSONtoCodableMock {
-    func decisionType(value: String, isString: Bool) -> Type {
+    func decisionType(_ value: String, isString: Bool) -> Type {
         guard !isString else { return Type.string }
 
         switch value.lowercased() {
