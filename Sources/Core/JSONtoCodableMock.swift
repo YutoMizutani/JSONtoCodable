@@ -69,4 +69,8 @@ extension JSONtoCodableMock {
 
         return [prefix, contents, suffix].joined(separator: line)
     }
+
+    func createStructScope(_ frame: Property, immutables: [String], codingKeys: [String]) -> String {
+        return ""
+    }
 }

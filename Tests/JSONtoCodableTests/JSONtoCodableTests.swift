@@ -159,4 +159,122 @@ class JSONtoCodableTests: XCTestCase {
         """
         XCTAssertEqual(self.base.createCodingKeyScope(keys), expectation)
     }
+
+    func testCreateStructScope() {
+        let structTitle: String = "Result"
+        var values: [String]
+        var seed: (frame: JSONtoCodableMock.Property, immutables: [String], codingKeys: [String])
+        var expectation: String
+
+        values = ["Single1", "Single2"]
+        seed = (
+            frame: self.base.createStructFrame(structTitle),
+            immutables: values.map { (key: $0, type: .string) }.map { self.base.createImmutable($0) },
+            codingKeys: values.map { self.base.createCodingKey($0) }
+        )
+        expectation = """
+        struct Result: Codable {
+            let single1: String
+            let single2: String
+
+            private enum CodingKeys: String, CodingKey {
+                case single1 = "Single1"
+                case single2 = "Single2"
+            }
+        }
+        """
+        XCTAssertEqual(self.base.createStructScope(seed.frame, immutables: seed.immutables, codingKeys: seed.codingKeys), expectation)
+
+        values = ["single1", "single2", "single3"]
+        seed = (
+            frame: self.base.createStructFrame(structTitle),
+            immutables: values.map { (key: $0, type: .string) }.map { self.base.createImmutable($0) },
+            codingKeys: []
+        )
+        expectation = """
+        struct Result: Codable {
+            let single1: String
+            let single2: String
+            let single3: String
+        }
+        """
+        XCTAssertEqual(self.base.createStructScope(seed.frame, immutables: seed.immutables, codingKeys: seed.codingKeys), expectation)
+
+        var frame: JSONtoCodableMock.Property
+        var internalStructString: String
+
+        values = ["single1", "single2", "single3"]
+        frame = self.base.createStructFrame(structTitle)
+        internalStructString = "struct Single2: Codable {\n    let double1: String\n\n    private enum CodingKeys: String, CodingKey {\n        case double1 = \"Double1\"\n    }\n}"
+        seed = (
+            frame: (frame.prefix, internalStructString, frame.suffix),
+            immutables: values.map { (key: $0, type: .string) }.map { self.base.createImmutable($0) },
+            codingKeys: []
+        )
+        expectation = """
+        struct Result: Codable {
+            let single1: String
+            let single2: Single2
+            let single3: String
+
+            struct Single2: Codable {
+                let double1: String
+
+                private enum CodingKeys: String, CodingKey {
+                    case double1 = "Double1"
+                }
+            }
+
+            private enum CodingKeys: String, CodingKey {
+                case single1 = "Single1"
+                case single2 = "Single2"
+                case single3 = "Single3"
+            }
+        }
+        """
+        XCTAssertEqual(self.base.createStructScope(seed.frame, immutables: seed.immutables, codingKeys: seed.codingKeys), expectation)
+
+        values = ["single1", "single2", "single3"]
+        frame = self.base.createStructFrame(structTitle)
+        internalStructString = "struct Single2: Codable {\n    let double1: String\n    let double2: Double2\n    let double3: String\n\n    struct Double2: Codable {\n        let triple1: String\n\n        private enum CodingKeys: String, CodingKey {\n            case triple1 = \"Triple1\"\n        }\n    }\n\n    private enum CodingKeys: String, CodingKey {\n        case double1 = \"Double1\"\n        case double2 = \"Double2\"\n        case double3 = \"Double3\"\n    }\n}"
+        seed = (
+            frame: (frame.prefix, internalStructString, frame.suffix),
+            immutables: values.map { (key: $0, type: .string) }.map { self.base.createImmutable($0) },
+            codingKeys: []
+        )
+        expectation = """
+        struct Result: Codable {
+            let single1: String
+            let single2: Single2
+            let single3: String
+
+            struct Single2: Codable {
+                let double1: String
+                let double2: Double2
+                let double3: String
+
+                struct Double2: Codable {
+                    let triple1: String
+
+                    private enum CodingKeys: String, CodingKey {
+                        case triple1 = "Triple1"
+                    }
+                }
+
+                private enum CodingKeys: String, CodingKey {
+                    case double1 = "Double1"
+                    case double2 = "Double2"
+                    case double3 = "Double3"
+                }
+            }
+
+            private enum CodingKeys: String, CodingKey {
+                case single1 = "Single1"
+                case single2 = "Single2"
+                case single3 = "Single3"
+            }
+        }
+        """
+        XCTAssertEqual(self.base.createStructScope(seed.frame, immutables: seed.immutables, codingKeys: seed.codingKeys), expectation)
+    }
 }
