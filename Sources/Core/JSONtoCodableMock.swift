@@ -55,6 +55,13 @@ extension JSONtoCodableMock {
     }
 
     func createCodingKeyScope(_ keys: [String]) -> String {
-        return ""
+        let indent: String = config.indentType.rawValue
+        let line: String = config.lineType.rawValue
+        let prefix: String = "private enum CodingKeys: String, CodingKey {"
+        let suffix: String = "}"
+
+        let contents: String = keys.map { indent + $0 }.joined(separator: line)
+
+        return [prefix, contents, suffix].joined(separator: line)
     }
 }
