@@ -73,6 +73,22 @@ extension JSONtoCodableMock {
     }
 
     func createStructScope(_ frame: Property, immutables: [String], codingKeys: [String]) -> String {
-        return ""
+        let line: String = config.lineType.rawValue
+        let indent: String = config.indentType.rawValue
+
+        let prefix: String = frame.prefix
+        let suffix: String = frame.suffix ?? ""
+
+        let immutableString: String = immutables.joined(separator: line)
+        let internalStructString: String? = frame.structs
+        let codingKeyString: String? = self.createCodingKeyScope(codingKeys)
+
+        var contents: String = [immutableString, internalStructString, codingKeyString]
+            .filter { $0 != nil }.map { $0! }
+            .joined(separator: "\(line)\(line)")
+            .replacingOccurrences(of: line, with: "\(line)\(indent)")
+            .replacingOccurrences(of: "\(line)\(indent)\(line)", with: "\(line)\(line)")
+        contents = indent + contents
+        return [prefix, contents, suffix].joined(separator: line)
     }
 }
