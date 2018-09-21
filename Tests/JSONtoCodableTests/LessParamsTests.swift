@@ -20,7 +20,7 @@ class NoBracketTests: XCTestCase {
         let json: String = """
         "Hello": "World"
         """
-        let structString: String = """
+        let expectation: String = """
         struct Result: Codable {
             let hello: String
 
@@ -30,14 +30,14 @@ class NoBracketTests: XCTestCase {
         }
         """
         let result: String? = try? self.base.translate(json)
-        XCTAssertEqual(structString, result)
+        XCTAssertEqual(expectation, result)
     }
 
     func testNoLines() {
         let json: String = """
         {"Hello": "World"}
         """
-        let structString: String = """
+        let expectation: String = """
         struct Result: Codable {
             let hello: String
 
@@ -47,6 +47,6 @@ class NoBracketTests: XCTestCase {
         }
         """
         let result: String? = try? self.base.translate(json)
-        XCTAssertEqual(result, structString)
+        XCTAssertEqual(result, expectation)
     }
 }

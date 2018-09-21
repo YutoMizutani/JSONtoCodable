@@ -13,7 +13,7 @@
 		99BEE69C215385C000985499 /* CaseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE690215385C000985499 /* CaseType.swift */; };
 		99BEE69D215385C000985499 /* ErrorHandring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE691215385C000985499 /* ErrorHandring.swift */; };
 		99BEE69E215385C000985499 /* IndentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE692215385C000985499 /* IndentType.swift */; };
-		99BEE69F215385C000985499 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE693215385C000985499 /* Types.swift */; };
+		99BEE69F215385C000985499 /* Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE693215385C000985499 /* Type.swift */; };
 		99BEE6A1215385C000985499 /* AccessModifer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE695215385C000985499 /* AccessModifer.swift */; };
 		99BEE6A2215385C000985499 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE697215385C000985499 /* String+.swift */; };
 		99BEE6AB215385CB00985499 /* TypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE6A8215385CB00985499 /* TypeTests.swift */; };
@@ -34,7 +34,7 @@
 		99BEE6DD2153A53800985499 /* LineType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE68F215385C000985499 /* LineType.swift */; };
 		99BEE6DE2153A53800985499 /* CaseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE690215385C000985499 /* CaseType.swift */; };
 		99BEE6DF2153A53800985499 /* IndentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE692215385C000985499 /* IndentType.swift */; };
-		99BEE6E02153A53800985499 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE693215385C000985499 /* Types.swift */; };
+		99BEE6E02153A53800985499 /* Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE693215385C000985499 /* Type.swift */; };
 		99BEE6E12153A53800985499 /* AccessModifer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE695215385C000985499 /* AccessModifer.swift */; };
 		99BEE6E22153A53800985499 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE68C215385C000985499 /* Config.swift */; };
 		99BEE6E32153A53800985499 /* JSONtoCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE68D215385C000985499 /* JSONtoCodable.swift */; };
@@ -44,7 +44,7 @@
 		99BEE70F2153A5D400985499 /* LineType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE68F215385C000985499 /* LineType.swift */; };
 		99BEE7102153A5D400985499 /* CaseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE690215385C000985499 /* CaseType.swift */; };
 		99BEE7112153A5D400985499 /* IndentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE692215385C000985499 /* IndentType.swift */; };
-		99BEE7122153A5D400985499 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE693215385C000985499 /* Types.swift */; };
+		99BEE7122153A5D400985499 /* Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE693215385C000985499 /* Type.swift */; };
 		99BEE7132153A5D400985499 /* AccessModifer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE695215385C000985499 /* AccessModifer.swift */; };
 		99BEE7142153A5D400985499 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE68C215385C000985499 /* Config.swift */; };
 		99BEE7152153A5D400985499 /* JSONtoCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE68D215385C000985499 /* JSONtoCodable.swift */; };
@@ -53,7 +53,7 @@
 		99BEE7182153A5D500985499 /* LineType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE68F215385C000985499 /* LineType.swift */; };
 		99BEE7192153A5D500985499 /* CaseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE690215385C000985499 /* CaseType.swift */; };
 		99BEE71A2153A5D500985499 /* IndentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE692215385C000985499 /* IndentType.swift */; };
-		99BEE71B2153A5D500985499 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE693215385C000985499 /* Types.swift */; };
+		99BEE71B2153A5D500985499 /* Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE693215385C000985499 /* Type.swift */; };
 		99BEE71C2153A5D500985499 /* AccessModifer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE695215385C000985499 /* AccessModifer.swift */; };
 		99BEE71D2153A5D500985499 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE68C215385C000985499 /* Config.swift */; };
 		99BEE71E2153A5D500985499 /* JSONtoCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE68D215385C000985499 /* JSONtoCodable.swift */; };
@@ -63,6 +63,16 @@
 		99BEE7222153A5DA00985499 /* IndentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE6B321539A4200985499 /* IndentTests.swift */; };
 		99BEE7232153A5DA00985499 /* LessParamsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE6B52153A38C00985499 /* LessParamsTests.swift */; };
 		99BEE7242153A5DA00985499 /* NoCodingkeysTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE6B72153A40A00985499 /* NoCodingkeysTests.swift */; };
+		99BEE72E2154943E00985499 /* JSONtoCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE72D2154943E00985499 /* JSONtoCodableTests.swift */; };
+		99BEE72F2154943E00985499 /* JSONtoCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE72D2154943E00985499 /* JSONtoCodableTests.swift */; };
+		99BEE7302154943E00985499 /* JSONtoCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE72D2154943E00985499 /* JSONtoCodableTests.swift */; };
+		99BEE7382154D3B700985499 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE7372154D3B700985499 /* Property.swift */; };
+		99BEE7392154D3B700985499 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE7372154D3B700985499 /* Property.swift */; };
+		99BEE73A2154D3B700985499 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE7372154D3B700985499 /* Property.swift */; };
+		99BEE73B2154D3B700985499 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE7372154D3B700985499 /* Property.swift */; };
+		99BEE73D2154E76300985499 /* NestingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE73C2154E76300985499 /* NestingTests.swift */; };
+		99BEE73E2154E76300985499 /* NestingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE73C2154E76300985499 /* NestingTests.swift */; };
+		99BEE73F2154E76300985499 /* NestingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE73C2154E76300985499 /* NestingTests.swift */; };
 		99CD24DF2153275800BB5C2A /* JSONtoCodable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99CD24D62153275700BB5C2A /* JSONtoCodable.framework */; };
 /* End PBXBuildFile section */
 
@@ -97,7 +107,7 @@
 		99BEE690215385C000985499 /* CaseType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaseType.swift; sourceTree = "<group>"; };
 		99BEE691215385C000985499 /* ErrorHandring.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorHandring.swift; sourceTree = "<group>"; };
 		99BEE692215385C000985499 /* IndentType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndentType.swift; sourceTree = "<group>"; };
-		99BEE693215385C000985499 /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
+		99BEE693215385C000985499 /* Type.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Type.swift; sourceTree = "<group>"; };
 		99BEE695215385C000985499 /* AccessModifer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessModifer.swift; sourceTree = "<group>"; };
 		99BEE697215385C000985499 /* String+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		99BEE698215385C000985499 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -113,6 +123,9 @@
 		99BEE6E92153A55D00985499 /* JSONtoCodable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSONtoCodable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		99BEE6F62153A56E00985499 /* JSONtoCodable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSONtoCodable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		99BEE6FE2153A56E00985499 /* JSONtoCodable tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "JSONtoCodable tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		99BEE72D2154943E00985499 /* JSONtoCodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONtoCodableTests.swift; sourceTree = "<group>"; };
+		99BEE7372154D3B700985499 /* Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
+		99BEE73C2154E76300985499 /* NestingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NestingTests.swift; sourceTree = "<group>"; };
 		99CD24D62153275700BB5C2A /* JSONtoCodable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSONtoCodable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		99CD24DE2153275800BB5C2A /* JSONtoCodable macOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "JSONtoCodable macOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
@@ -190,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				99BEE68C215385C000985499 /* Config.swift */,
+				99BEE7372154D3B700985499 /* Property.swift */,
 				99BEE68D215385C000985499 /* JSONtoCodable.swift */,
 			);
 			path = Core;
@@ -201,7 +215,7 @@
 				99BEE68F215385C000985499 /* LineType.swift */,
 				99BEE690215385C000985499 /* CaseType.swift */,
 				99BEE692215385C000985499 /* IndentType.swift */,
-				99BEE693215385C000985499 /* Types.swift */,
+				99BEE693215385C000985499 /* Type.swift */,
 				99BEE695215385C000985499 /* AccessModifer.swift */,
 			);
 			path = Enum;
@@ -227,12 +241,14 @@
 		99BEE6A6215385CB00985499 /* JSONtoCodableTests */ = {
 			isa = PBXGroup;
 			children = (
+				99BEE72D2154943E00985499 /* JSONtoCodableTests.swift */,
 				99BEE6A8215385CB00985499 /* TypeTests.swift */,
 				99BEE6AE215386BD00985499 /* CaseTests.swift */,
 				99BEE6B12153971C00985499 /* LineTests.swift */,
 				99BEE6B321539A4200985499 /* IndentTests.swift */,
 				99BEE6B52153A38C00985499 /* LessParamsTests.swift */,
 				99BEE6B72153A40A00985499 /* NoCodingkeysTests.swift */,
+				99BEE73C2154E76300985499 /* NestingTests.swift */,
 			);
 			path = JSONtoCodableTests;
 			sourceTree = "<group>";
@@ -629,11 +645,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				99BEE6E32153A53800985499 /* JSONtoCodable.swift in Sources */,
+				99BEE7392154D3B700985499 /* Property.swift in Sources */,
 				99BEE6DD2153A53800985499 /* LineType.swift in Sources */,
 				99BEE6DC2153A53800985499 /* String+.swift in Sources */,
 				99BEE6E12153A53800985499 /* AccessModifer.swift in Sources */,
 				99BEE6DB2153A53800985499 /* ErrorHandring.swift in Sources */,
-				99BEE6E02153A53800985499 /* Types.swift in Sources */,
+				99BEE6E02153A53800985499 /* Type.swift in Sources */,
 				99BEE6E22153A53800985499 /* Config.swift in Sources */,
 				99BEE6DE2153A53800985499 /* CaseType.swift in Sources */,
 				99BEE6DF2153A53800985499 /* IndentType.swift in Sources */,
@@ -644,10 +661,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99BEE73E2154E76300985499 /* NestingTests.swift in Sources */,
 				99BEE6DA2153A52200985499 /* NoCodingkeysTests.swift in Sources */,
 				99BEE6D52153A52200985499 /* TypeTests.swift in Sources */,
 				99BEE6D82153A52200985499 /* IndentTests.swift in Sources */,
 				99BEE6D72153A52200985499 /* LineTests.swift in Sources */,
+				99BEE72F2154943E00985499 /* JSONtoCodableTests.swift in Sources */,
 				99BEE6D92153A52200985499 /* LessParamsTests.swift in Sources */,
 				99BEE6D62153A52200985499 /* CaseTests.swift in Sources */,
 			);
@@ -658,11 +677,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				99BEE71E2153A5D500985499 /* JSONtoCodable.swift in Sources */,
+				99BEE73B2154D3B700985499 /* Property.swift in Sources */,
 				99BEE7182153A5D500985499 /* LineType.swift in Sources */,
 				99BEE7172153A5D500985499 /* String+.swift in Sources */,
 				99BEE71C2153A5D500985499 /* AccessModifer.swift in Sources */,
 				99BEE7162153A5D500985499 /* ErrorHandring.swift in Sources */,
-				99BEE71B2153A5D500985499 /* Types.swift in Sources */,
+				99BEE71B2153A5D500985499 /* Type.swift in Sources */,
 				99BEE71D2153A5D500985499 /* Config.swift in Sources */,
 				99BEE7192153A5D500985499 /* CaseType.swift in Sources */,
 				99BEE71A2153A5D500985499 /* IndentType.swift in Sources */,
@@ -674,11 +694,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				99BEE7152153A5D400985499 /* JSONtoCodable.swift in Sources */,
+				99BEE73A2154D3B700985499 /* Property.swift in Sources */,
 				99BEE70F2153A5D400985499 /* LineType.swift in Sources */,
 				99BEE70E2153A5D400985499 /* String+.swift in Sources */,
 				99BEE7132153A5D400985499 /* AccessModifer.swift in Sources */,
 				99BEE70D2153A5D400985499 /* ErrorHandring.swift in Sources */,
-				99BEE7122153A5D400985499 /* Types.swift in Sources */,
+				99BEE7122153A5D400985499 /* Type.swift in Sources */,
 				99BEE7142153A5D400985499 /* Config.swift in Sources */,
 				99BEE7102153A5D400985499 /* CaseType.swift in Sources */,
 				99BEE7112153A5D400985499 /* IndentType.swift in Sources */,
@@ -689,10 +710,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99BEE73F2154E76300985499 /* NestingTests.swift in Sources */,
 				99BEE7222153A5DA00985499 /* IndentTests.swift in Sources */,
 				99BEE7242153A5DA00985499 /* NoCodingkeysTests.swift in Sources */,
 				99BEE7212153A5DA00985499 /* LineTests.swift in Sources */,
 				99BEE71F2153A5DA00985499 /* TypeTests.swift in Sources */,
+				99BEE7302154943E00985499 /* JSONtoCodableTests.swift in Sources */,
 				99BEE7232153A5DA00985499 /* LessParamsTests.swift in Sources */,
 				99BEE7202153A5DA00985499 /* CaseTests.swift in Sources */,
 			);
@@ -703,11 +726,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				99BEE69B215385C000985499 /* LineType.swift in Sources */,
+				99BEE7382154D3B700985499 /* Property.swift in Sources */,
 				99BEE69E215385C000985499 /* IndentType.swift in Sources */,
 				99BEE6A2215385C000985499 /* String+.swift in Sources */,
 				99BEE699215385C000985499 /* Config.swift in Sources */,
 				99BEE6A1215385C000985499 /* AccessModifer.swift in Sources */,
-				99BEE69F215385C000985499 /* Types.swift in Sources */,
+				99BEE69F215385C000985499 /* Type.swift in Sources */,
 				99BEE69D215385C000985499 /* ErrorHandring.swift in Sources */,
 				99BEE69A215385C000985499 /* JSONtoCodable.swift in Sources */,
 				99BEE69C215385C000985499 /* CaseType.swift in Sources */,
@@ -718,10 +742,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99BEE73D2154E76300985499 /* NestingTests.swift in Sources */,
 				99BEE6B421539A4200985499 /* IndentTests.swift in Sources */,
 				99BEE6B82153A40A00985499 /* NoCodingkeysTests.swift in Sources */,
 				99BEE6B22153971C00985499 /* LineTests.swift in Sources */,
 				99BEE6AB215385CB00985499 /* TypeTests.swift in Sources */,
+				99BEE72E2154943E00985499 /* JSONtoCodableTests.swift in Sources */,
 				99BEE6AF215386BD00985499 /* CaseTests.swift in Sources */,
 				99BEE6B62153A38C00985499 /* LessParamsTests.swift in Sources */,
 			);
