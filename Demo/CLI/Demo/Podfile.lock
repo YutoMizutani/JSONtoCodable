@@ -1,0 +1,16 @@
+PODS:
+  - JSONtoCodable (1.0.2)
+
+DEPENDENCIES:
+  - JSONtoCodable
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - JSONtoCodable
+
+SPEC CHECKSUMS:
+  JSONtoCodable: e581bba0fc51e4d80e7992b03741a6dd6c95c89e
+
+PODFILE CHECKSUM: 99baa25f1516bff6436884ffecd28ac37ba6e832
+
+COCOAPODS: 1.5.3

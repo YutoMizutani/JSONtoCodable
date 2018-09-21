@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import JSONtoCodable
 
 print("Hello, World!")
 
+let codable = JSONtoCodable()
