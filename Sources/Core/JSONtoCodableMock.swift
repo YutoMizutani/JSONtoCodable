@@ -47,10 +47,10 @@ extension JSONtoCodableMock {
         return "\(prefix)let \(key): \(type)"
     }
 
-    func createCodingKey(_ key: String) -> String {
+    func createCodingKey(_ jsonKey: String) -> String {
         let caseType = config.caseType.variable
 
-        let value: String = key.separated.joined(with: caseType)
-        return "case \(key == value ? key : "\(value) = \"\(key)\"")"
+        let key: String = jsonKey.separated.joined(with: caseType)
+        return "case \(key == jsonKey ? key : "\(key) = \"\(jsonKey)\"")"
     }
 }

@@ -90,20 +90,20 @@ class JSONtoCodableTests: XCTestCase {
     }
 
     func testCreateCodingKey() {
-        let key: String = "HelloWorld"
+        let jsonKey: String = "HelloWorld"
         var expectation: String
 
         expectation = "case HelloWorld"
         self.base.config.caseType.variable = .pascal
-        XCTAssertEqual(self.base.createCodingKey(key), expectation)
+        XCTAssertEqual(self.base.createCodingKey(jsonKey), expectation)
         expectation = "case helloWorld = \"HelloWorld\""
         self.base.config.caseType.variable = .camel
-        XCTAssertEqual(self.base.createCodingKey(key), expectation)
+        XCTAssertEqual(self.base.createCodingKey(jsonKey), expectation)
         expectation = "case hello_world = \"HelloWorld\""
         self.base.config.caseType.variable = .snake
-        XCTAssertEqual(self.base.createCodingKey(key), expectation)
+        XCTAssertEqual(self.base.createCodingKey(jsonKey), expectation)
         expectation = "case HELLO_WORLD = \"HelloWorld\""
         self.base.config.caseType.variable = .screamingSnake
-        XCTAssertEqual(self.base.createCodingKey(key), expectation)
+        XCTAssertEqual(self.base.createCodingKey(jsonKey), expectation)
     }
 }
