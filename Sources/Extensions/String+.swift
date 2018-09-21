@@ -9,6 +9,10 @@
 import Foundation
 
 extension String {
+    func updateCased(with caseType: CaseType) -> String {
+        return self.separated.joined(with: caseType)
+    }
+
     func changeCased() -> String {
         return (self as NSString).replacingOccurrences(of: "([A-Z])",
                                                        with: "-$1",

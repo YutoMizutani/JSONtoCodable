@@ -47,15 +47,15 @@ extension JSONtoCodableMock {
         let caseTypes = config.caseType
 
         let prefix: String = accessModifer == .default ? "" : "\(accessModifer.rawValue) "
-        let key: String = seed.key.separated.joined(with: caseTypes.variable)
-        let type: String = seed.type != .struct ? seed.type.rawValue : seed.key.separated.joined(with: caseTypes.struct)
+        let key: String = seed.key.updateCased(with: caseTypes.variable)
+        let type: String = seed.type != .struct ? seed.type.rawValue : seed.key.updateCased(with: caseTypes.struct)
         return "\(prefix)let \(key): \(type)"
     }
 
     func createCodingKey(_ jsonKey: String) -> String {
         let caseType = config.caseType.variable
 
-        let key: String = jsonKey.separated.joined(with: caseType)
+        let key: String = jsonKey.updateCased(with: caseType)
         return "case \(key == jsonKey ? key : "\(key) = \"\(jsonKey)\"")"
     }
 
