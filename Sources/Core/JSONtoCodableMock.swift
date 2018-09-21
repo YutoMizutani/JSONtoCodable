@@ -8,7 +8,7 @@
 import Foundation
 
 public class JSONtoCodableMock {
-    typealias Property = (prefix: String, structs: String, suffix: String?)
+    typealias Property = (prefix: String, structs: String?, suffix: String?)
     typealias Register = (isString: Bool, value: String)
     typealias ImmutableSeed = (key: String, type: Type)
 
@@ -39,7 +39,7 @@ extension JSONtoCodableMock {
 
     func createStructFrame(_ key: String) -> Property {
         let accessModifer: String = config.accessModifer == .default ? "" : "\(config.accessModifer.rawValue) "
-        return ("\(accessModifer)struct \(key): Codable {", "", "}")
+        return ("\(accessModifer)struct \(key): Codable {", nil, "}")
     }
 
     func createImmutable(_ seed: ImmutableSeed) -> String {
@@ -59,7 +59,9 @@ extension JSONtoCodableMock {
         return "case \(key == jsonKey ? key : "\(key) = \"\(jsonKey)\"")"
     }
 
-    func createCodingKeyScope(_ keys: [String]) -> String {
+    func createCodingKeyScope(_ keys: [String]) -> String? {
+        guard !keys.isEmpty else { return nil }
+
         let indent: String = config.indentType.rawValue
         let line: String = config.lineType.rawValue
         let prefix: String = "private enum CodingKeys: String, CodingKey {"
