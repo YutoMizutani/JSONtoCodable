@@ -26,8 +26,6 @@ public extension JSONtoCodable {
 
         var properties: [Property] = []
         var state: TranslateState = .prepareKey
-
-        // raw JSON
         var json: RawJSON = (key: "", value: "", type: nil)
 
         func ignore() {}
@@ -52,7 +50,9 @@ public extension JSONtoCodable {
         func endValue() throws {
             guard !properties.isEmpty else { throw JSONError.wrongFormat }
 
-            json.type = self.decisionType(json.value, isString: json.type == .string)
+            if json.type == nil {
+                json.type = self.decisionType(json.value, isString: json.type == .string)
+            }
             guard let immutable = createImmutable(json) else { throw JSONError.wrongFormat }
             properties[properties.count - 1].immutables.append(immutable)
             properties[properties.count - 1].codingKeys.append(createCodingKey(json.key))
@@ -63,9 +63,7 @@ public extension JSONtoCodable {
         func startStruct() throws {
             // end value
             json.type = .struct
-            guard let immutable = createImmutable(json) else { throw JSONError.wrongFormat }
-            properties[properties.count - 1].immutables.append(immutable)
-            properties[properties.count - 1].codingKeys.append(createCodingKey(json.key))
+            try endValue()
 
             // add property
             let caseType = config.caseType.struct
