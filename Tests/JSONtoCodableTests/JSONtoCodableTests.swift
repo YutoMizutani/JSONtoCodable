@@ -63,29 +63,29 @@ class JSONtoCodableTests: XCTestCase {
 
         seed = ("HelloWorld", .struct)
         expectation = "let HelloWorld: helloWorld"
-        self.base.config.caseType = (struct: CaseType.camel, variable: CaseType.pascal)
+        self.base.config.caseType = (variable: CaseType.pascal, struct: CaseType.camel)
         XCTAssertEqual(self.base.createImmutable(seed), expectation)
         seed = ("HelloWorld", .struct)
         expectation = "let HELLO_WORLD: hello_world"
-        self.base.config.caseType = (struct: CaseType.snake, variable: CaseType.screamingSnake)
+        self.base.config.caseType = (variable: CaseType.screamingSnake, struct: CaseType.snake)
         XCTAssertEqual(self.base.createImmutable(seed), expectation)
         seed = ("HELLO_WORLD", .struct)
         expectation = "let helloWorld: HELLO_WORLD"
-        self.base.config.caseType = (struct: CaseType.screamingSnake, variable: CaseType.camel)
+        self.base.config.caseType = (variable: CaseType.camel, struct: CaseType.screamingSnake)
         XCTAssertEqual(self.base.createImmutable(seed), expectation)
         seed = ("HELLO_WORLD", .struct)
         expectation = "let hello_world: HelloWorld"
-        self.base.config.caseType = (struct: CaseType.pascal, variable: CaseType.snake)
+        self.base.config.caseType = (variable: CaseType.snake, struct: CaseType.pascal)
         XCTAssertEqual(self.base.createImmutable(seed), expectation)
 
         // NOTE: There will occur compile errors when create the .swift file, but it is not interested this method
         seed = ("HelloWorld", .struct)
         expectation = "let HelloWorld: HelloWorld"
-        self.base.config.caseType = (struct: CaseType.pascal, variable: CaseType.pascal)
+        self.base.config.caseType = (variable: CaseType.pascal, struct: CaseType.pascal)
         XCTAssertEqual(self.base.createImmutable(seed), expectation)
         seed = ("1234", .struct)
         expectation = "let 1234: 1234"
-        self.base.config.caseType = (struct: CaseType.pascal, variable: CaseType.camel)
+        self.base.config.caseType = (variable: CaseType.camel, struct: CaseType.pascal)
         XCTAssertEqual(self.base.createImmutable(seed), expectation)
     }
 }
