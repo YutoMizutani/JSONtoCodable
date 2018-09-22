@@ -27,7 +27,7 @@ class NoCodingkeysTests: XCTestCase {
             let hello: String
         }
         """
-        let result: String? = try? self.base.translate(json)
+        let result: String? = try? self.base.generate(json)
         XCTAssertEqual(result, expectation)
     }
 }

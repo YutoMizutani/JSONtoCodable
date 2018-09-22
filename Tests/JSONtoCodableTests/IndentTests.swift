@@ -34,7 +34,7 @@ class IndentTests: XCTestCase {
             }
         }
         """
-        let result: String? = try? self.base.translate(json)
+        let result: String? = try? self.base.generate(json)
         XCTAssertEqual(result, expectation)
     }
 
@@ -57,7 +57,7 @@ class IndentTests: XCTestCase {
         }
         """
         self.base.config.indentType = .space(0)
-        let result: String? = try? self.base.translate(json)
+        let result: String? = try? self.base.generate(json)
         XCTAssertEqual(result, expectation)
     }
 
@@ -80,7 +80,7 @@ class IndentTests: XCTestCase {
         }
         """
         self.base.config.indentType = .space(2)
-        let result: String? = try? self.base.translate(json)
+        let result: String? = try? self.base.generate(json)
         XCTAssertEqual(result, expectation)
     }
 
@@ -103,7 +103,7 @@ class IndentTests: XCTestCase {
         }
         """
         self.base.config.indentType = .space(4)
-        let result: String? = try? self.base.translate(json)
+        let result: String? = try? self.base.generate(json)
         XCTAssertEqual(result, expectation)
     }
 
@@ -126,7 +126,7 @@ class IndentTests: XCTestCase {
         }
         """
         self.base.config.indentType = .space(8)
-        let result: String? = try? self.base.translate(json)
+        let result: String? = try? self.base.generate(json)
         XCTAssertEqual(result, expectation)
     }
 
@@ -149,7 +149,7 @@ class IndentTests: XCTestCase {
         }
         """
         self.base.config.indentType = .tab(0)
-        let result: String? = try? self.base.translate(json)
+        let result: String? = try? self.base.generate(json)
         XCTAssertEqual(result, expectation)
     }
 
@@ -172,7 +172,7 @@ class IndentTests: XCTestCase {
         }
         """
         self.base.config.indentType = .tab(1)
-        let result: String? = try? self.base.translate(json)
+        let result: String? = try? self.base.generate(json)
         XCTAssertEqual(result, expectation)
     }
 
@@ -195,7 +195,7 @@ class IndentTests: XCTestCase {
         }
         """
         self.base.config.indentType = .tab(2)
-        let result: String? = try? self.base.translate(json)
+        let result: String? = try? self.base.generate(json)
         XCTAssertEqual(result, expectation)
     }
 }

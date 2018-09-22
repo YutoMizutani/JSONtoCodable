@@ -30,7 +30,7 @@ class CaseTests: XCTestCase {
         }
         """
         self.base.config.caseType.variable = .pascal
-        let result: String? = try? self.base.translate(json)
+        let result: String? = try? self.base.generate(json)
         XCTAssertEqual(result, expectation)
     }
     
@@ -53,7 +53,7 @@ class CaseTests: XCTestCase {
         }
         """
         self.base.config.caseType.variable = .camel
-        let result: String? = try? self.base.translate(json)
+        let result: String? = try? self.base.generate(json)
         XCTAssertEqual(result, expectation)
     }
 
@@ -76,7 +76,7 @@ class CaseTests: XCTestCase {
         }
         """
         self.base.config.caseType.variable = .snake
-        let result: String? = try? self.base.translate(json)
+        let result: String? = try? self.base.generate(json)
         XCTAssertEqual(result, expectation)
     }
 
@@ -99,7 +99,7 @@ class CaseTests: XCTestCase {
         }
         """
         self.base.config.caseType.variable = .screamingSnake
-        let result: String? = try? self.base.translate(json)
+        let result: String? = try? self.base.generate(json)
         XCTAssertEqual(result, expectation)
     }
 }
