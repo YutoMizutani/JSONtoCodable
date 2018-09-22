@@ -59,6 +59,22 @@ public struct Result: Codable {
 }
 ```
 
+## Translations
+
+|JSON Value|Swift Type|
+|:-:|:-:|
+|"text"|String|
+|true|Bool|
+|0|Int|
+|1.0|Double|
+|any|Any|
+|null|Any?|
+
+## Demo
+
+- [CLI](https://github.com/YutoMizutani/JSONtoCodable/tree/master/Demo/CLI)
+- [macOS](https://github.com/YutoMizutani/JSONtoCodable/tree/master/Demo/macOS)
+
 ## Installation
 
 #### Cocoapods
