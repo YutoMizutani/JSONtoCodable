@@ -37,7 +37,7 @@ class TypeTests: XCTestCase {
             let optionalany: Any?
         }
         """
-        let result: String? = try? self.base.translate(json)
+        let result: String? = try? self.base.generate(json)
         XCTAssertEqual(result, expectation)
     }
 
@@ -52,7 +52,7 @@ class TypeTests: XCTestCase {
             let string: String
         }
         """
-        let result: String? = try? self.base.translate(json)
+        let result: String? = try? self.base.generate(json)
         XCTAssertEqual(result, expectation)
     }
 
@@ -69,7 +69,7 @@ class TypeTests: XCTestCase {
             let boolfalse: Bool
         }
         """
-        let result: String? = try? self.base.translate(json)
+        let result: String? = try? self.base.generate(json)
         XCTAssertEqual(result, expectation)
     }
 
@@ -84,7 +84,7 @@ class TypeTests: XCTestCase {
             let int: Int
         }
         """
-        let result: String? = try? self.base.translate(json)
+        let result: String? = try? self.base.generate(json)
         XCTAssertEqual(result, expectation)
     }
 
@@ -99,7 +99,7 @@ class TypeTests: XCTestCase {
             let double: Double
         }
         """
-        let result: String? = try? self.base.translate(json)
+        let result: String? = try? self.base.generate(json)
         XCTAssertEqual(result, expectation)
     }
 
@@ -114,7 +114,7 @@ class TypeTests: XCTestCase {
             let any: Any
         }
         """
-        let result: String? = try? self.base.translate(json)
+        let result: String? = try? self.base.generate(json)
         XCTAssertEqual(result, expectation)
     }
 
@@ -129,7 +129,7 @@ class TypeTests: XCTestCase {
             let optionalany: Any?
         }
         """
-        let result: String? = try? self.base.translate(json)
+        let result: String? = try? self.base.generate(json)
         XCTAssertEqual(result, expectation)
     }
 }
