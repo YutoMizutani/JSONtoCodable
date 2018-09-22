@@ -29,7 +29,7 @@ class NoBracketTests: XCTestCase {
             }
         }
         """
-        let result: String? = try? self.base.translate(json)
+        let result: String? = try? self.base.generate(json)
         XCTAssertEqual(expectation, result)
     }
 
@@ -46,7 +46,7 @@ class NoBracketTests: XCTestCase {
             }
         }
         """
-        let result: String? = try? self.base.translate(json)
+        let result: String? = try? self.base.generate(json)
         XCTAssertEqual(result, expectation)
     }
 }

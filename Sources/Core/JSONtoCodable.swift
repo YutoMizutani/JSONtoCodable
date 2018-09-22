@@ -11,7 +11,7 @@ public class JSONtoCodable {
     typealias RawJSON = (key: String, value: String, type: Type?)
     typealias ImmutableSeed = (key: String, type: Type)
 
-    enum TranslateState {
+    enum GenerateState {
         case prepareKey, inKey, prepareValue, inValue, inArray(Any)
     }
 
@@ -25,11 +25,11 @@ public class JSONtoCodable {
 // MARK: - public methods
 
 public extension JSONtoCodable {
-    func translate(_ text: String) throws -> String {
+    func generate(_ text: String) throws -> String {
         var isStartCurlyBracket: Bool?
 
         var properties: [Property] = []
-        var state: TranslateState = .prepareKey
+        var state: GenerateState = .prepareKey
         var json: RawJSON = (key: "", value: "", type: nil)
 
         func ignore() {}
