@@ -711,7 +711,7 @@
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Cdp-qu-yFN">
                                 <rect key="frame" x="-6" y="-7" width="492" height="32"/>
-                                <buttonCell key="cell" type="push" title="Translate!" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="83m-vG-ElW">
+                                <buttonCell key="cell" type="push" title="Generate!" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="83m-vG-ElW">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -720,14 +720,14 @@
                                 <rect key="frame" x="0.0" y="21" width="480" height="249"/>
                                 <clipView key="contentView" id="d29-iI-LBp">
                                     <rect key="frame" x="1" y="1" width="478" height="247"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <textView importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="QXp-4w-LnS">
                                             <rect key="frame" x="0.0" y="0.0" width="478" height="247"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <size key="minSize" width="478" height="247"/>
-                                            <size key="maxSize" width="478" height="10000000"/>
+                                            <size key="maxSize" width="480" height="10000000"/>
                                             <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </textView>
                                     </subviews>
@@ -754,8 +754,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="generateButton" destination="Cdp-qu-yFN" id="0bS-lY-NG1"/>
                         <outlet property="textView" destination="QXp-4w-LnS" id="8CX-gz-9At"/>
-                        <outlet property="translateButton" destination="Cdp-qu-yFN" id="0bS-lY-NG1"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

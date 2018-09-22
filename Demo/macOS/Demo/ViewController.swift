@@ -11,7 +11,7 @@ import JSONtoCodable
 
 class ViewController: NSViewController {
     @IBOutlet weak var textView: NSTextView!
-    @IBOutlet weak var translateButton: NSButton!
+    @IBOutlet weak var generateButton: NSButton!
 
     var codable: JSONtoCodable = JSONtoCodable()
 
@@ -49,16 +49,16 @@ private extension ViewController {
     }
 
     private func configureAction() {
-        self.translateButton.action = #selector(self.translate)
+        self.generateButton.action = #selector(self.generate)
     }
 }
 
 // MARK: - actions
 
 private extension ViewController {
-    @objc private func translate() {
+    @objc private func generate() {
         print(self.textView.string)
-        guard let text = try? self.codable.translate(self.textView.string) else { return }
+        guard let text = try? self.codable.generate(self.textView.string) else { return }
         self.textView.string = text
     }
 }
