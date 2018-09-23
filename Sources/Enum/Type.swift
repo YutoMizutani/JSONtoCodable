@@ -161,7 +161,7 @@ public extension Type {
 
 public extension Array where Element == Type {
     func unique() -> [Type] {
-        return Array(Set(self))
+        return Array(Set(self)).sorted(by: { $0.hashValue < $1.hashValue })
     }
 
     func hasOptional() -> Bool {
