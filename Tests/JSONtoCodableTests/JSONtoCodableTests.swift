@@ -17,25 +17,25 @@ class JSONtoCodableTests: XCTestCase {
     }
 
     func testDecisionType() {
-        XCTAssertEqual(self.base.decisionType("True", isString: true), .string)
-        XCTAssertEqual(self.base.decisionType("false", isString: true), .string)
-        XCTAssertEqual(self.base.decisionType("0", isString: true), .string)
-        XCTAssertEqual(self.base.decisionType("1000", isString: true), .string)
-        XCTAssertEqual(self.base.decisionType("1.0", isString: true), .string)
-        XCTAssertEqual(self.base.decisionType("1000.5", isString: true), .string)
-        XCTAssertEqual(self.base.decisionType("nil", isString: true), .string)
-        XCTAssertEqual(self.base.decisionType("NULL", isString: true), .string)
-        XCTAssertEqual(self.base.decisionType("Hello", isString: true), .string)
+        XCTAssertEqual(self.base.decisionType("\"True\""), .string)
+        XCTAssertEqual(self.base.decisionType("\"false\""), .string)
+        XCTAssertEqual(self.base.decisionType("\"0\""), .string)
+        XCTAssertEqual(self.base.decisionType("\"1000\""), .string)
+        XCTAssertEqual(self.base.decisionType("\"1.0\""), .string)
+        XCTAssertEqual(self.base.decisionType("\"1000.5\""), .string)
+        XCTAssertEqual(self.base.decisionType("\"null\""), .string)
+        XCTAssertEqual(self.base.decisionType("\"NULL\""), .string)
+        XCTAssertEqual(self.base.decisionType("\"Hello\""), .string)
 
-        XCTAssertEqual(self.base.decisionType("True", isString: false), .bool)
-        XCTAssertEqual(self.base.decisionType("false", isString: false), .bool)
-        XCTAssertEqual(self.base.decisionType("0", isString: false), .int)
-        XCTAssertEqual(self.base.decisionType("1000", isString: false), .int)
-        XCTAssertEqual(self.base.decisionType("1.0", isString: false), .double)
-        XCTAssertEqual(self.base.decisionType("1000.5", isString: false), .double)
-        XCTAssertEqual(self.base.decisionType("nil", isString: false), .optionalAny)
-        XCTAssertEqual(self.base.decisionType("NULL", isString: false), .optionalAny)
-        XCTAssertEqual(self.base.decisionType("Hello", isString: false), .any)
+        XCTAssertEqual(self.base.decisionType("True"), .bool)
+        XCTAssertEqual(self.base.decisionType("false"), .bool)
+        XCTAssertEqual(self.base.decisionType("0"), .int)
+        XCTAssertEqual(self.base.decisionType("1000"), .int)
+        XCTAssertEqual(self.base.decisionType("1.0"), .double)
+        XCTAssertEqual(self.base.decisionType("1000.5"), .double)
+        XCTAssertEqual(self.base.decisionType("null"), .optionalAny)
+        XCTAssertEqual(self.base.decisionType("NULL"), .optionalAny)
+        XCTAssertEqual(self.base.decisionType("Hello"), .any)
     }
 
     func testCreateStructproperty() {

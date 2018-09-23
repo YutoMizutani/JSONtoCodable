@@ -44,8 +44,7 @@ public extension JSONtoCodable {
             state = .prepareValue
         }
 
-        func startValue(isString: Bool) {
-            json.type = isString ? .string : nil
+        func startValue() {
             state = .inValue
         }
         func addValue(_ c: Character) {
@@ -55,7 +54,7 @@ public extension JSONtoCodable {
             guard !properties.isEmpty else { throw JSONError.wrongFormat }
 
             if json.type == nil {
-                json.type = self.decisionType(json.value, isString: json.type == .string)
+                json.type = self.decisionType(json.value)
             }
             guard let immutable = createImmutable(json) else { throw JSONError.wrongFormat }
             properties[properties.count - 1].immutables.append(immutable)
@@ -125,18 +124,16 @@ public extension JSONtoCodable {
                 case "[":
                     startArray()
                 default:
-                    let isString = character == "\""
-                    startValue(isString: isString)
-                    if !isString {
-                        json.value.append(character)
-                    }
+                    startValue()
+                    addValue(character)
                 }
             case .inValue:
                 switch character {
                 case "\"":
+                    addValue(character)
                     try endValue()
                 case " ", "\r", "\n":
-                    if json.type == .string {
+                    if decisionType(json.value) == .string {
                         addValue(character)
                     } else {
                         try endValue()
@@ -165,8 +162,10 @@ public extension JSONtoCodable {
 // MARK: - internal methods
 
 extension JSONtoCodable {
-    func decisionType(_ value: String, isString: Bool) -> Type {
-        guard !isString else { return Type.string }
+    func decisionType(_ value: String) -> Type {
+        if String(value.prefix(1)) == "\"" {
+            return .string
+        }
 
         switch value.lowercased() {
         case "true", "false":
