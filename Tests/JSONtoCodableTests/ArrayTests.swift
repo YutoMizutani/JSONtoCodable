@@ -16,6 +16,21 @@ class ArrayTests: XCTestCase {
         self.base = JSONtoCodable()
     }
 
+    func testRawEmptyArray() {
+        let json: String = """
+        {
+            "a": []
+        }
+        """
+        let expectation: String = """
+        struct Result: Codable {
+            let a: [Any]
+        }
+        """
+        let result: String? = try? self.base.generate(json)
+        XCTAssertEqual(result, expectation)
+    }
+
     func testRawStringArray() {
         let json: String = """
         {
@@ -428,7 +443,7 @@ class ArrayTests: XCTestCase {
     func testArrayOptionalWithAllCodingKeys() {
         let json: String = """
         {
-            "array": [
+            "Array": [
                 {
                     "A": 1
                     "B": 2
@@ -448,6 +463,46 @@ class ArrayTests: XCTestCase {
                 let a: Int
                 let b: Int?
                 let c: Int?
+
+                private enum CodingKeys: String, CodingKey {
+                    case a = "A"
+                    case b = "B"
+                    case c = "C"
+                }
+            }
+
+            private enum CodingKeys: String, CodingKey {
+                case array = "Array"
+            }
+        }
+        """
+        let result: String? = try? self.base.generate(json)
+        XCTAssertEqual(result, expectation)
+    }
+
+    func testArrayOptionalArrayWithAllCodingKeys() {
+        let json: String = """
+        {
+            "Array": [
+                {
+                    "A": 1
+                    "B": [2]
+                },
+                {
+                    "A": 1
+                    "C": [3]
+                },
+            ]
+        }
+        """
+        let expectation: String = """
+        struct Result: Codable {
+            let array: [Array]
+
+            struct Array: Codable {
+                let a: Int
+                let b: [Int]?
+                let c: [Int]?
 
                 private enum CodingKeys: String, CodingKey {
                     case a = "A"
@@ -513,6 +568,7 @@ class ArrayTests: XCTestCase {
             }
 
             private enum CodingKeys: String, CodingKey {
+                case test
                 case array = "Array"
             }
         }
