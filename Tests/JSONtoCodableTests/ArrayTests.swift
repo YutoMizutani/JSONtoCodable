@@ -16,6 +16,124 @@ class ArrayTests: XCTestCase {
         self.base = JSONtoCodable()
     }
 
+    func testRawStringArray() {
+        let json: String = """
+        {
+            "a": ["b", "c", "d"]
+        }
+        """
+        let expectation: String = """
+        struct Result: Codable {
+            let a: [String]
+        }
+        """
+        let result: String? = try? self.base.generate(json)
+        XCTAssertEqual(result, expectation)
+    }
+
+    func testRawFormattedStringArray() {
+        let json: String = """
+        {
+            "a": [
+                    "b",
+                    "c",
+                    "d"
+                ]
+        }
+        """
+        let expectation: String = """
+        struct Result: Codable {
+            let a: [String]
+        }
+        """
+        let result: String? = try? self.base.generate(json)
+        XCTAssertEqual(result, expectation)
+    }
+
+    func testRawIntArray() {
+        let json: String = """
+        {
+            "a": [1, 2, 3]
+        }
+        """
+        let expectation: String = """
+        struct Result: Codable {
+            let a: [String]
+        }
+        """
+        let result: String? = try? self.base.generate(json)
+        XCTAssertEqual(result, expectation)
+    }
+
+    func testRawFormattedIntArray() {
+        let json: String = """
+        {
+            "a": [
+                    1,
+                    2,
+                    3
+                ]
+        }
+        """
+        let expectation: String = """
+        struct Result: Codable {
+            let a: [Int]
+        }
+        """
+        let result: String? = try? self.base.generate(json)
+        XCTAssertEqual(result, expectation)
+    }
+
+    func testRawMultTypesArray() {
+        let json: String = """
+        {
+            "a": ["b", 1, true, []]
+        }
+        """
+        let expectation: String = """
+        struct Result: Codable {
+            let a: [Any]
+        }
+        """
+        let result: String? = try? self.base.generate(json)
+        XCTAssertEqual(result, expectation)
+    }
+
+    func testRawMultTypesWithNullArray() {
+        let json: String = """
+        {
+            "a": ["b", 1, true, null]
+        }
+        """
+        let expectation: String = """
+        struct Result: Codable {
+            let a: [Any?]
+        }
+        """
+        let result: String? = try? self.base.generate(json)
+        XCTAssertEqual(result, expectation)
+    }
+
+    func testRawFormattedMultTypesWithOojectArray() {
+        let json: String = """
+        {
+            "a": [
+                    "b",
+                    {
+                        "c": "d"
+                    }
+                ]
+        }
+        """
+        let expectation: String = """
+        struct Result: Codable {
+            let a: [Any]
+        }
+        """
+        let result: String? = try? self.base.generate(json)
+        XCTAssertEqual(result, expectation)
+    }
+
     func testBeginArray() {
         let json: String = """
         [
