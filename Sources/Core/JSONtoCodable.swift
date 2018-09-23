@@ -12,7 +12,7 @@ public class JSONtoCodable {
     typealias ImmutableSeed = (key: String, type: Type)
 
     enum GenerateState {
-        case prepareKey, inKey, prepareValue, inValue, inArray(Any)
+        case prepareKey, inKey, prepareValue, inValue, inArray(Any?)
     }
 
     public var config: Config = Config()
@@ -61,6 +61,13 @@ public extension JSONtoCodable {
             properties[properties.count - 1].immutables.append(immutable)
             properties[properties.count - 1].codingKeys.append(createCodingKey(json.key))
 
+            state = .prepareKey
+        }
+
+        func startArray() {
+            state = .inArray(nil)
+        }
+        func endArray() {
             state = .prepareKey
         }
 
@@ -115,6 +122,8 @@ public extension JSONtoCodable {
                     ignore()
                 case "{":
                     try startStruct()
+                case "[":
+                    startArray()
                 default:
                     let isString = character == "\""
                     startValue(isString: isString)
@@ -137,6 +146,8 @@ public extension JSONtoCodable {
                 }
             case .inArray:
                 switch character {
+                case "]":
+                    endArray()
                 default:
                     break
                 }
