@@ -65,13 +65,15 @@ public extension JSONtoCodable {
         }
 
         func startStruct() throws {
+            let caseType: CaseType = config.caseType.struct
+            let type: String = json.key.updateCased(with: caseType)
+
             // end value
-            json.type = .struct
+            json.type = .struct(type)
             try endValue()
 
             // add property
-            let caseType = config.caseType.struct
-            let property = Property(json.key.updateCased(with: caseType), accessModifer: config.accessModifer)
+            let property = Property(type, accessModifer: config.accessModifer)
             properties.append(property)
             state = .prepareKey
         }
@@ -170,13 +172,12 @@ extension JSONtoCodable {
     }
 
     func createImmutable(_ json: RawJSON) -> String? {
-        guard let seedType = json.type else { return nil }
+        guard let type = json.type?.rawValue else { return nil }
         let accessModifer: AccessModifer = config.accessModifer
         let caseTypes = config.caseType
 
         let prefix: String = accessModifer == .default ? "" : "\(accessModifer.rawValue) "
         let key: String = json.key.updateCased(with: caseTypes.variable)
-        let type: String = json.type != .struct ? seedType.rawValue : json.key.updateCased(with: caseTypes.struct)
         return "\(prefix)let \(key): \(type)"
     }
 
