@@ -38,6 +38,62 @@ public enum Type: Hashable {
 }
 
 public extension Type {
+    var order: Int {
+        switch self {
+        case .string:
+            return 0
+        case .bool:
+            return 1
+        case .int:
+            return 2
+        case .double:
+            return 3
+        case .any:
+            return 4
+        case .struct:
+            return 5
+
+        case .stringArray:
+            return 6
+        case .boolArray:
+            return 7
+        case .intArray:
+            return 8
+        case .doubleArray:
+            return 9
+        case .anyArray:
+            return 10
+        case .structArray:
+            return 11
+
+        case .optionalString:
+            return 12
+        case .optionalBool:
+            return 13
+        case .optionalInt:
+            return 14
+        case .optionalDouble:
+            return 15
+        case .optionalAny:
+            return 16
+        case .optionalStruct:
+            return 17
+
+        case .stringOptionalArray:
+            return 18
+        case .boolOptionalArray:
+            return 19
+        case .intOptionalArray:
+            return 20
+        case .doubleOptionalArray:
+            return 21
+        case .anyOptionalArray:
+            return 22
+        case .structOptionalArray:
+            return 23
+        }
+    }
+
     var rawValue: String {
         switch self {
         case .string:
@@ -95,7 +151,7 @@ public extension Type {
     }
 
     var isOptional: Bool {
-        return self.hashValue >= Type.optionalString.hashValue
+        return self.order >= Type.optionalString.order
     }
 
     func optional() -> Type {
@@ -161,7 +217,7 @@ public extension Type {
 
 public extension Array where Element == Type {
     func unique() -> [Type] {
-        return Array(Set(self)).sorted(by: { $0.hashValue < $1.hashValue })
+        return Array(Set(self)).sorted(by: { $0.order < $1.order })
     }
 
     func hasOptional() -> Bool {
@@ -176,8 +232,8 @@ public extension Array where Element == Type {
         case 1:
             return types[0].toArray()
         case 2:
-            if types[0].hashValue < Type.optionalString.hashValue &&
-                types[1].hashValue - types[0].hashValue == Type.optionalString.hashValue {
+            if types[0].order < Type.optionalString.order &&
+                types[1].order - types[0].order == Type.optionalString.order {
                 return types[1].toArray()
             } else {
                 fallthrough
