@@ -16,6 +16,22 @@ class TypeTests: XCTestCase {
         self.base = JSONtoCodable()
     }
 
+    func testOptionalTypes() {
+        XCTAssertEqual(Type.string.optional(), Type.optionalString)
+        XCTAssertEqual(Type.bool.optional(), Type.optionalBool)
+        XCTAssertEqual(Type.int.optional(), Type.optionalInt)
+        XCTAssertEqual(Type.double.optional(), Type.optionalDouble)
+        XCTAssertEqual(Type.any.optional(), Type.optionalAny)
+        XCTAssertEqual(Type.struct("").optional(), Type.optionalStruct(""))
+
+        XCTAssertEqual(Type.optionalString.optional(), Type.optionalString)
+        XCTAssertEqual(Type.optionalBool.optional(), Type.optionalBool)
+        XCTAssertEqual(Type.optionalInt.optional(), Type.optionalInt)
+        XCTAssertEqual(Type.optionalDouble.optional(), Type.optionalDouble)
+        XCTAssertEqual(Type.optionalAny.optional(), Type.optionalAny)
+        XCTAssertEqual(Type.optionalStruct("").optional(), Type.optionalStruct(""))
+    }
+
     func testTypes() {
         let json: String = """
         {
