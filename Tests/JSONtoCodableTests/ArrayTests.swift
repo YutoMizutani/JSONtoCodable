@@ -73,7 +73,7 @@ class ArrayTests: XCTestCase {
         """
         let expectation: String = """
         struct Result: Codable {
-            let a: [String]
+            let a: [Int]
         }
         """
         let result: String? = try? self.base.generate(json)
