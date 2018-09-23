@@ -12,7 +12,7 @@ public class JSONtoCodable {
     typealias ImmutableSeed = (key: String, type: Type)
 
     enum GenerateState {
-        case prepareKey, inKey, prepareValue, inValue, inArray(Any?)
+        case prepareKey, inKey, prepareValue, inValue, inArray
     }
 
     public var config: Config = Config()
@@ -32,6 +32,9 @@ public extension JSONtoCodable {
         var state: GenerateState = .prepareKey
         var json: RawJSON = (key: "", value: "", type: nil)
 
+        /// Array values
+        var values: [String] = []
+
         func ignore() {}
         func startKey() {
             state = .inKey
@@ -47,8 +50,13 @@ public extension JSONtoCodable {
         func startValue() {
             state = .inValue
         }
-        func addValue(_ c: Character) {
-            json.value.append(c)
+        func addValue(_ c: Character) throws {
+            if case GenerateState.inArray = state {
+                guard !values.isEmpty else { throw JSONError.wrongFormat }
+                values[values.count - 1].append(c)
+            } else {
+                json.value.append(c)
+            }
         }
         func endValue() throws {
             guard !properties.isEmpty else { throw JSONError.wrongFormat }
@@ -64,9 +72,19 @@ public extension JSONtoCodable {
         }
 
         func startArray() {
-            state = .inArray(nil)
+            state = .inArray
+            values = [""]
         }
-        func endArray() {
+        func addArrayValue(_ c: Character) throws {
+            guard !values.isEmpty else { throw JSONError.wrongFormat }
+            values[values.count - 1].append(c)
+        }
+        func nextArray() {
+            values.append("")
+        }
+        func endArray() throws {
+            json.type = decisionType(values)
+            try endValue()
             state = .prepareKey
         }
 
@@ -125,28 +143,35 @@ public extension JSONtoCodable {
                     startArray()
                 default:
                     startValue()
-                    addValue(character)
+                    try addValue(character)
                 }
             case .inValue:
                 switch character {
                 case "\"":
-                    addValue(character)
+                    try addValue(character)
                     try endValue()
                 case " ", "\r", "\n":
                     if decisionType(json.value) == .string {
-                        addValue(character)
+                        try addValue(character)
                     } else {
                         try endValue()
                     }
                 default:
-                    addValue(character)
+                    try addValue(character)
                 }
             case .inArray:
                 switch character {
                 case "]":
-                    endArray()
+                    try endArray()
+                case ",":
+                    nextArray()
+                case " ", "\r", "\n":
+                    guard !values.isEmpty else { throw JSONError.wrongFormat }
+                    if decisionType(values[values.count - 1]) == .string {
+                        try addArrayValue(character)
+                    }
                 default:
-                    break
+                    try addArrayValue(character)
                 }
             }
         }
@@ -179,6 +204,10 @@ extension JSONtoCodable {
         default:
             return .any
         }
+    }
+
+    func decisionType(_ values: [String]) -> Type {
+        return values.map { decisionType($0) }.sumType()
     }
 
     func createImmutable(_ json: RawJSON) -> String? {
