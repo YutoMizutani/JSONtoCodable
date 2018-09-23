@@ -127,6 +127,36 @@ public extension Type {
             return .optionalStructArray(v)
         }
     }
+
+    func toArray() -> Type {
+        switch self {
+        case .string, .stringArray:
+            return .stringArray
+        case .bool, .boolArray:
+            return .boolArray
+        case .int, .intArray:
+            return .intArray
+        case .double, .doubleArray:
+            return .doubleArray
+        case .any, .anyArray:
+            return .anyArray
+        case .struct(let v), .structArray(let v):
+            return .structArray(v)
+
+        case .optionalString, .optionalStringArray:
+            return .optionalStringArray
+        case .optionalBool, .optionalBoolArray:
+            return .optionalBoolArray
+        case .optionalInt, .optionalIntArray:
+            return .optionalIntArray
+        case .optionalDouble, .optionalDoubleArray:
+            return .optionalDoubleArray
+        case .optionalAny, .optionalAnyArray:
+            return .optionalAnyArray
+        case .optionalStruct(let v), .optionalStructArray(let v):
+            return .optionalStructArray(v)
+        }
+    }
 }
 
 public extension Array where Element == Type {
@@ -142,13 +172,13 @@ public extension Array where Element == Type {
         let types: [Type] = self.unique()
         switch types.count {
         case 0:
-            return .optionalAny
+            return .optionalAnyArray
         case 1:
-            return types[0]
+            return types[0].toArray()
         case 2:
             if types[0].hashValue < Type.optionalString.hashValue &&
                 types[1].hashValue - types[0].hashValue == Type.optionalString.hashValue {
-                return types[1]
+                return types[1].toArray()
             } else {
                 fallthrough
             }
