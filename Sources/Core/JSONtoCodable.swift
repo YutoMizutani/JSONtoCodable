@@ -95,25 +95,25 @@ extension JSONtoCodable {
         func nextArray() {
             values.append("")
         }
+        func finishMainArrayObject() throws {
+            guard let property = merge(arrayProperties) else { throw JSONError.wrongFormat }
+            properties = [property]
+        }
         func finishArrayObject() throws {
             let caseType = config.caseType.struct
             let name = config.name
             let structName = json.key.updateCased(with: caseType)
 
             guard let property = merge(arrayProperties) else { throw JSONError.wrongFormat }
-            if structName == "" {
-                properties = [property]
-            } else {
-                json.type = Type.structArray(structName)
-                guard !properties.isEmpty else { throw JSONError.wrongFormat }
-                property.prefix = property.prefix.replacingOccurrences(of: name, with: structName)
-                let structString: String = createStructScope(property)
-                properties[properties.count - 1].structs.append(structString)
-            }
+            json.type = Type.structArray(structName)
+            guard !properties.isEmpty else { throw JSONError.wrongFormat }
+            property.prefix = property.prefix.replacingOccurrences(of: name, with: structName)
+            let structString: String = createStructScope(property)
+            properties[properties.count - 1].structs.append(structString)
         }
         func endArray() throws {
             if isStartedArray == true {
-                try finishArrayObject()
+                try finishMainArrayObject()
             } else {
                 if values.filter({ $0 != "" }).isEmpty && !arrayProperties.isEmpty {
                     try finishArrayObject()
@@ -123,6 +123,7 @@ extension JSONtoCodable {
 
                 try endValue()
             }
+
             state = .prepareKey
         }
 
