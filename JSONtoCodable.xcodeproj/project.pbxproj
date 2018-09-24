@@ -77,6 +77,9 @@
 		99BEE73E2154E76300985499 /* NestingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE73C2154E76300985499 /* NestingTests.swift */; };
 		99BEE73F2154E76300985499 /* NestingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE73C2154E76300985499 /* NestingTests.swift */; };
 		99CD24DF2153275800BB5C2A /* JSONtoCodable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99CD24D62153275700BB5C2A /* JSONtoCodable.framework */; };
+		99FB3F912158C4A600ABEA31 /* MergePropertiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB3F902158C4A600ABEA31 /* MergePropertiesTests.swift */; };
+		99FB3F922158C4A600ABEA31 /* MergePropertiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB3F902158C4A600ABEA31 /* MergePropertiesTests.swift */; };
+		99FB3F932158C4A600ABEA31 /* MergePropertiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB3F902158C4A600ABEA31 /* MergePropertiesTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,6 +135,7 @@
 		99BEE73C2154E76300985499 /* NestingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NestingTests.swift; sourceTree = "<group>"; };
 		99CD24D62153275700BB5C2A /* JSONtoCodable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSONtoCodable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		99CD24DE2153275800BB5C2A /* JSONtoCodable macOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "JSONtoCodable macOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		99FB3F902158C4A600ABEA31 /* MergePropertiesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergePropertiesTests.swift; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -254,6 +258,7 @@
 				99BEE6B72153A40A00985499 /* NoCodingkeysTests.swift */,
 				99BEE73C2154E76300985499 /* NestingTests.swift */,
 				99944953215734690089A08A /* ArrayTests.swift */,
+				99FB3F902158C4A600ABEA31 /* MergePropertiesTests.swift */,
 			);
 			path = JSONtoCodableTests;
 			sourceTree = "<group>";
@@ -669,6 +674,7 @@
 				99944955215734690089A08A /* ArrayTests.swift in Sources */,
 				99BEE73E2154E76300985499 /* NestingTests.swift in Sources */,
 				99BEE6DA2153A52200985499 /* NoCodingkeysTests.swift in Sources */,
+				99FB3F922158C4A600ABEA31 /* MergePropertiesTests.swift in Sources */,
 				99BEE6D52153A52200985499 /* TypeTests.swift in Sources */,
 				99BEE6D82153A52200985499 /* IndentTests.swift in Sources */,
 				99BEE6D72153A52200985499 /* LineTests.swift in Sources */,
@@ -719,6 +725,7 @@
 				99944956215734690089A08A /* ArrayTests.swift in Sources */,
 				99BEE73F2154E76300985499 /* NestingTests.swift in Sources */,
 				99BEE7222153A5DA00985499 /* IndentTests.swift in Sources */,
+				99FB3F932158C4A600ABEA31 /* MergePropertiesTests.swift in Sources */,
 				99BEE7242153A5DA00985499 /* NoCodingkeysTests.swift in Sources */,
 				99BEE7212153A5DA00985499 /* LineTests.swift in Sources */,
 				99BEE71F2153A5DA00985499 /* TypeTests.swift in Sources */,
@@ -752,6 +759,7 @@
 				99944954215734690089A08A /* ArrayTests.swift in Sources */,
 				99BEE73D2154E76300985499 /* NestingTests.swift in Sources */,
 				99BEE6B421539A4200985499 /* IndentTests.swift in Sources */,
+				99FB3F912158C4A600ABEA31 /* MergePropertiesTests.swift in Sources */,
 				99BEE6B82153A40A00985499 /* NoCodingkeysTests.swift in Sources */,
 				99BEE6B22153971C00985499 /* LineTests.swift in Sources */,
 				99BEE6AB215385CB00985499 /* TypeTests.swift in Sources */,

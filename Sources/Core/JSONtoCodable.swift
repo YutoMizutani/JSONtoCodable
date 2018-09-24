@@ -12,7 +12,7 @@ public class JSONtoCodable {
     typealias ImmutableSeed = (key: String, type: Type)
 
     enum GenerateState {
-        case prepareKey, inKey, prepareValue, inValue, inArray
+        case prepareKey, inKey, prepareValue, inValue, inArray, inArrayObject(Int)
     }
 
     public var config: Config = Config()
@@ -26,9 +26,22 @@ public class JSONtoCodable {
 
 public extension JSONtoCodable {
     func generate(_ text: String) throws -> String {
+        let property = try self.generateProperty(text)
+        return self.createStructScope(property)
+    }
+}
+
+// MARK: - internal methods
+
+extension JSONtoCodable {
+    func generateProperty(_ text: String) throws -> Property {
+        var isStartedArray: Bool?
+
         var properties: [Property] = []
         var state: GenerateState = .prepareKey
         var json: RawJSON = (key: "", value: "", type: nil)
+
+        var register: String = ""
 
         /// Array values
         var values: [String] = []
@@ -86,6 +99,29 @@ public extension JSONtoCodable {
             state = .prepareKey
         }
 
+        func startArrayObject() {
+            state = .inArrayObject(1)
+            register = ""
+        }
+        func addArrayObject(_ n: Int) {
+            let n = n + 1
+            state = .inArrayObject(n)
+        }
+        func addArrayObjectValue(_ c: Character) {
+            register.append(c)
+        }
+        func removeArrayObject(_ n: Int) throws {
+            let n = n - 1
+            state = .inArrayObject(n)
+            if n == 0 {
+                try endArrayObject()
+            }
+        }
+        func endArrayObject() throws {
+            let property = try generateProperty(register)
+            state = .inArray
+        }
+
         func startStruct() throws {
             let caseType: CaseType = config.caseType.struct
             let type: String = json.key.updateCased(with: caseType)
@@ -112,11 +148,16 @@ public extension JSONtoCodable {
             case .prepareKey:
                 switch character {
                 case "\"":
+                    if isStartedArray == nil {
+                        isStartedArray = false
+                    }
                     startKey()
                 case " ":
                     ignore()
                 case "}":
                     endStruct()
+                case "[":
+                    startArray()
                 default:
                     ignore()
                 }
@@ -155,6 +196,9 @@ public extension JSONtoCodable {
                 }
             case .inArray:
                 switch character {
+                case "{":
+                    startArrayObject()
+                    addArrayObjectValue(character)
                 case "]":
                     try endArray()
                 case ",":
@@ -167,16 +211,22 @@ public extension JSONtoCodable {
                 default:
                     try addArrayValue(character)
                 }
+            case .inArrayObject(let n):
+                addArrayObjectValue(character)
+                switch character {
+                case "{":
+                    addArrayObject(n)
+                case "}":
+                    try removeArrayObject(n)
+                default:
+                    break
+                }
             }
         }
 
-        return self.createStructScope(properties.first!)
+        return properties.first!
     }
-}
 
-// MARK: - internal methods
-
-extension JSONtoCodable {
     func decisionType(_ value: String) -> Type {
         if String(value.prefix(1)) == "\"" {
             return .string
@@ -248,5 +298,9 @@ extension JSONtoCodable {
             .replacingOccurrences(of: "\(line)\(indent)\(line)", with: "\(line)\(line)")
         contents = indent + contents
         return [prefix, contents, suffix].joined(separator: line)
+    }
+
+    func merge(_ properties: [Property]) -> Property? {
+        return nil
     }
 }
