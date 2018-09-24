@@ -99,20 +99,30 @@ extension JSONtoCodable {
             let caseType = config.caseType.struct
             let name = config.name
             let structName = json.key.updateCased(with: caseType)
-            json.type = Type.structArray(structName)
-            guard !properties.isEmpty, let property = merge(arrayProperties) else { throw JSONError.wrongFormat }
-            property.prefix = property.prefix.replacingOccurrences(of: name, with: structName)
-            let structString: String = createStructScope(property)
-            properties[properties.count - 1].structs.append(structString)
+
+            guard let property = merge(arrayProperties) else { throw JSONError.wrongFormat }
+            if structName == "" {
+                properties = [property]
+            } else {
+                json.type = Type.structArray(structName)
+                guard !properties.isEmpty else { throw JSONError.wrongFormat }
+                property.prefix = property.prefix.replacingOccurrences(of: name, with: structName)
+                let structString: String = createStructScope(property)
+                properties[properties.count - 1].structs.append(structString)
+            }
         }
         func endArray() throws {
-            if arrayProperties.isEmpty {
-                json.type = decisionType(values)
-            } else {
+            if isStartedArray == true {
                 try finishArrayObject()
-            }
+            } else {
+                if values.filter({ $0 != "" }).isEmpty && !arrayProperties.isEmpty {
+                    try finishArrayObject()
+                } else {
+                    json.type = decisionType(values)
+                }
 
-            try endValue()
+                try endValue()
+            }
             state = .prepareKey
         }
 
@@ -175,6 +185,9 @@ extension JSONtoCodable {
                 case "}":
                     endStruct()
                 case "[":
+                    if isStartedArray == nil {
+                        isStartedArray = true
+                    }
                     startArray()
                 default:
                     ignore()
