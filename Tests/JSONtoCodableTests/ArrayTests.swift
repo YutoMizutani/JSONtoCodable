@@ -149,6 +149,27 @@ class ArrayTests: XCTestCase {
         XCTAssertEqual(result, expectation)
     }
 
+    func testRawFormattedMultTypesWithNullOojectArray() {
+        let json: String = """
+        {
+            "a": [
+                    "b",
+                    null,
+                    {
+                        "c": "d"
+                    }
+                ]
+        }
+        """
+        let expectation: String = """
+        struct Result: Codable {
+            let a: [Any?]
+        }
+        """
+        let result: String? = try? self.base.generate(json)
+        XCTAssertEqual(result, expectation)
+    }
+
     func testBeginArray() {
         let json: String = """
         [
