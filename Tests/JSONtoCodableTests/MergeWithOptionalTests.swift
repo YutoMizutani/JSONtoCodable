@@ -91,7 +91,7 @@ class MergeWithOptionalTests: XCTestCase {
             ["d", "e", "f"],
             ["g", "h", "i"],
             ]
-        let expectation: [String] = ["a?", "b?", "c?", "d?", "e?", "f?", "g?", "h?", "i"]
+        let expectation: [String] = ["a?", "b?", "c?", "d?", "e?", "f?", "g?", "h?", "i?"]
         let result: [String] = seed.mergeWithOptional()
         XCTAssertEqual(result, expectation)
     }
