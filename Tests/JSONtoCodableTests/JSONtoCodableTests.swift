@@ -17,25 +17,29 @@ class JSONtoCodableTests: XCTestCase {
     }
 
     func testDecisionType() {
-        XCTAssertEqual(self.base.decisionType("True", isString: true), .string)
-        XCTAssertEqual(self.base.decisionType("false", isString: true), .string)
-        XCTAssertEqual(self.base.decisionType("0", isString: true), .string)
-        XCTAssertEqual(self.base.decisionType("1000", isString: true), .string)
-        XCTAssertEqual(self.base.decisionType("1.0", isString: true), .string)
-        XCTAssertEqual(self.base.decisionType("1000.5", isString: true), .string)
-        XCTAssertEqual(self.base.decisionType("nil", isString: true), .string)
-        XCTAssertEqual(self.base.decisionType("NULL", isString: true), .string)
-        XCTAssertEqual(self.base.decisionType("Hello", isString: true), .string)
+        XCTAssertEqual(self.base.decisionType("\"True\""), .string)
+        XCTAssertEqual(self.base.decisionType("\"false\""), .string)
+        XCTAssertEqual(self.base.decisionType("\"0\""), .string)
+        XCTAssertEqual(self.base.decisionType("\"-10\""), .string)
+        XCTAssertEqual(self.base.decisionType("\"1000\""), .string)
+        XCTAssertEqual(self.base.decisionType("\"1.0\""), .string)
+        XCTAssertEqual(self.base.decisionType("\"-10.0\""), .string)
+        XCTAssertEqual(self.base.decisionType("\"1000.5\""), .string)
+        XCTAssertEqual(self.base.decisionType("\"null\""), .string)
+        XCTAssertEqual(self.base.decisionType("\"NULL\""), .string)
+        XCTAssertEqual(self.base.decisionType("\"Hello\""), .string)
 
-        XCTAssertEqual(self.base.decisionType("True", isString: false), .bool)
-        XCTAssertEqual(self.base.decisionType("false", isString: false), .bool)
-        XCTAssertEqual(self.base.decisionType("0", isString: false), .int)
-        XCTAssertEqual(self.base.decisionType("1000", isString: false), .int)
-        XCTAssertEqual(self.base.decisionType("1.0", isString: false), .double)
-        XCTAssertEqual(self.base.decisionType("1000.5", isString: false), .double)
-        XCTAssertEqual(self.base.decisionType("nil", isString: false), .optionalAny)
-        XCTAssertEqual(self.base.decisionType("NULL", isString: false), .optionalAny)
-        XCTAssertEqual(self.base.decisionType("Hello", isString: false), .any)
+        XCTAssertEqual(self.base.decisionType("True"), .bool)
+        XCTAssertEqual(self.base.decisionType("false"), .bool)
+        XCTAssertEqual(self.base.decisionType("0"), .int)
+        XCTAssertEqual(self.base.decisionType("-10"), .int)
+        XCTAssertEqual(self.base.decisionType("1000"), .int)
+        XCTAssertEqual(self.base.decisionType("1.0"), .double)
+        XCTAssertEqual(self.base.decisionType("-10.0"), .double)
+        XCTAssertEqual(self.base.decisionType("1000.5"), .double)
+        XCTAssertEqual(self.base.decisionType("null"), .optionalAny)
+        XCTAssertEqual(self.base.decisionType("NULL"), .optionalAny)
+        XCTAssertEqual(self.base.decisionType("Hello"), .any)
     }
 
     func testCreateStructproperty() {
@@ -81,29 +85,29 @@ class JSONtoCodableTests: XCTestCase {
         expectation = "let hello: Any"
         XCTAssertEqual(self.base.createImmutable(seed), expectation)
 
-        seed = ("HelloWorld", "", .struct)
+        seed = ("HelloWorld", "", .struct("helloWorld"))
         expectation = "let HelloWorld: helloWorld"
         self.base.config.caseType = (variable: CaseType.pascal, struct: CaseType.camel)
         XCTAssertEqual(self.base.createImmutable(seed), expectation)
-        seed = ("HelloWorld", "", .struct)
+        seed = ("HelloWorld", "", .struct("hello_world"))
         expectation = "let HELLO_WORLD: hello_world"
         self.base.config.caseType = (variable: CaseType.screamingSnake, struct: CaseType.snake)
         XCTAssertEqual(self.base.createImmutable(seed), expectation)
-        seed = ("HELLO_WORLD", "", .struct)
+        seed = ("HELLO_WORLD", "", .struct("HELLO_WORLD"))
         expectation = "let helloWorld: HELLO_WORLD"
         self.base.config.caseType = (variable: CaseType.camel, struct: CaseType.screamingSnake)
         XCTAssertEqual(self.base.createImmutable(seed), expectation)
-        seed = ("HELLO_WORLD", "", .struct)
+        seed = ("HELLO_WORLD", "", .struct("HelloWorld"))
         expectation = "let hello_world: HelloWorld"
         self.base.config.caseType = (variable: CaseType.snake, struct: CaseType.pascal)
         XCTAssertEqual(self.base.createImmutable(seed), expectation)
 
         // NOTE: There will occur compile errors when create the .swift file, but it is not interested this method
-        seed = ("HelloWorld", "", .struct)
+        seed = ("HelloWorld", "", .struct("HelloWorld"))
         expectation = "let HelloWorld: HelloWorld"
         self.base.config.caseType = (variable: CaseType.pascal, struct: CaseType.pascal)
         XCTAssertEqual(self.base.createImmutable(seed), expectation)
-        seed = ("1234", "", .struct)
+        seed = ("1234", "", .struct("1234"))
         expectation = "let 1234: 1234"
         self.base.config.caseType = (variable: CaseType.camel, struct: CaseType.pascal)
         XCTAssertEqual(self.base.createImmutable(seed), expectation)
@@ -200,7 +204,7 @@ class JSONtoCodableTests: XCTestCase {
         internalStructString = "struct Single2: Codable {\n    let double1: String\n\n    private enum CodingKeys: String, CodingKey {\n        case double1 = \"Double1\"\n    }\n}"
         property = Property(structTitle)
         property.structs = [internalStructString]
-        property.immutables = values.map { (key: $0, "", type: $0 != "Single2" ? .string : .struct) }.map { self.base.createImmutable($0)! }
+        property.immutables = values.map { (key: $0, "", type: $0 != "Single2" ? .string : .struct("Single2")) }.map { self.base.createImmutable($0)! }
         property.codingKeys = values.map { self.base.createCodingKey($0) }
         expectation = """
         struct Result: Codable {
@@ -230,7 +234,7 @@ class JSONtoCodableTests: XCTestCase {
         internalStructString = "struct Single2: Codable {\n    let double1: String\n    let double2: Double2\n    let double3: String\n\n    struct Double2: Codable {\n        let triple1: String\n\n        private enum CodingKeys: String, CodingKey {\n            case triple1 = \"Triple1\"\n        }\n    }\n\n    private enum CodingKeys: String, CodingKey {\n        case double1 = \"Double1\"\n        case double2 = \"Double2\"\n        case double3 = \"Double3\"\n    }\n}"
         property = Property(structTitle)
         property.structs = [internalStructString]
-        property.immutables = values.map { (key: $0, "", type: $0 != "Single2" ? .string : .struct) }.map { self.base.createImmutable($0)! }
+        property.immutables = values.map { (key: $0, "", type: $0 != "Single2" ? .string : .struct("Single2")) }.map { self.base.createImmutable($0)! }
         property.codingKeys = values.map { self.base.createCodingKey($0) }
         expectation = """
         struct Result: Codable {

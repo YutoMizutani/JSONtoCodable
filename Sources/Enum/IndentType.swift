@@ -1,6 +1,6 @@
 //
 //  IndentType.swift
-//  JSONtoCodable macOS
+//  JSONtoCodable
 //
 //  Created by Yuto Mizutani on 2018/09/20.
 //

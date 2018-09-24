@@ -7,10 +7,10 @@
 
 import Foundation
 
-class Property {
-    let prefix: String
-    var structs: [String] = []
+class Property: Equatable {
+    var prefix: String
     var immutables: [String] = []
+    var structs: [String] = []
     var codingKeys: [String] = []
     let suffix: String?
 
@@ -18,5 +18,14 @@ class Property {
         let accessModifer: String = accessModiferType == .default ? "" : "\(accessModiferType.rawValue) "
         self.prefix = "\(accessModifer)struct \(key): Codable {"
         self.suffix = "}"
+    }
+
+    static func == (lhs: Property, rhs: Property) -> Bool {
+        return
+            lhs.prefix == rhs.prefix &&
+            lhs.immutables == rhs.immutables &&
+            lhs.structs == rhs.structs &&
+            lhs.codingKeys == rhs.codingKeys &&
+            lhs.suffix == rhs.suffix
     }
 }

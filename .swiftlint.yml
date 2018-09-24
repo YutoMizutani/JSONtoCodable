@@ -6,6 +6,8 @@ disabled_rules:
   - identifier_name
   - file_name
   - nesting
+  - function_body_length
+  - cyclomatic_complexity
 opt_in_rules:
   - array_init
   - attributes
@@ -55,15 +57,9 @@ line_length:
 type_body_length:
   - 300 # warning
   - 400 # error
-function_body_length:
-  warning: 100
-  error: 150
 file_length:
   warning: 500
   error: 1200
-cyclomatic_complexity:
-  warning: 25
-  error: 30
 
 # SwiftLint
 # https://github.com/realm/SwiftLint
