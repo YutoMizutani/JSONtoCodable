@@ -85,7 +85,7 @@ class MergePropertiesTests: XCTestCase {
         let expectation: Property = prop1!
         let result = self.base.merge(properties)
         XCTAssertNotNil(result)
-        XCTAssertNotEqual(result!, expectation)
+        XCTAssertEqual(result!, expectation)
         let resultText: String = self.base.createStructScope(result!)
         let expectationText: String = """
         struct Result: Codable {
@@ -120,7 +120,7 @@ class MergePropertiesTests: XCTestCase {
         let expectation: Property = prop1!
         let result = self.base.merge(properties)
         XCTAssertNotNil(result)
-        XCTAssertNotEqual(result!, expectation)
+        XCTAssertEqual(result!, expectation)
         let resultText: String = self.base.createStructScope(result!)
         let expectationText: String = """
         struct Result: Codable {
