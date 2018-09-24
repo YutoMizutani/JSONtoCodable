@@ -34,11 +34,30 @@ extension String {
     }
 }
 
+private extension Array where Element == String {
+    func optionalAll() -> [String] {
+        return self.map { $0.last != "?" ? "\($0)?" : $0 }
+    }
+}
+
 extension Array where Element == [String] {
     func mergeWithOptional() -> [String] {
         guard !self.isEmpty else { return [] }
-        guard !self[0].isEmpty else { return self[0] }
-        
-        return []
+        guard self.count != 1 else { return self[0] }
+        var array = self.map { NSOrderedSet(array: $0).array as? [String] ?? [] }
+
+        // Could not allow empty
+        guard array.filter({ $0.isEmpty }).isEmpty else {
+            return array.filter({ !$0.isEmpty }).mergeWithOptional().optionalAll()
+        }
+
+        var result: [String] = []
+        var base: [String] = array[0]
+        array = Array(array[1..<array.count])
+
+        for (i, e) in base.enumerated() {
+        }
+
+        return result
     }
 }
