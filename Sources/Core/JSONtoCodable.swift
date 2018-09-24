@@ -45,6 +45,7 @@ extension JSONtoCodable {
 
         /// Array values
         var values: [String] = []
+        var arrayProperties: [Property] = []
 
         func ignore() {}
         func startKey() {
@@ -85,6 +86,7 @@ extension JSONtoCodable {
         func startArray() {
             state = .inArray
             values = [""]
+            arrayProperties = []
         }
         func addArrayValue(_ c: Character) throws {
             guard !values.isEmpty else { throw JSONError.wrongFormat }
@@ -93,8 +95,23 @@ extension JSONtoCodable {
         func nextArray() {
             values.append("")
         }
+        func finishArrayObject() throws {
+            let caseType = config.caseType.struct
+            let name = config.name
+            let structName = json.key.updateCased(with: caseType)
+            json.type = Type.structArray(structName)
+            guard !properties.isEmpty, let property = merge(arrayProperties) else { throw JSONError.wrongFormat }
+            property.prefix = property.prefix.replacingOccurrences(of: name, with: structName)
+            let structString: String = createStructScope(property)
+            properties[properties.count - 1].structs.append(structString)
+        }
         func endArray() throws {
-            json.type = decisionType(values)
+            if arrayProperties.isEmpty {
+                json.type = decisionType(values)
+            } else {
+                try finishArrayObject()
+            }
+
             try endValue()
             state = .prepareKey
         }
@@ -119,6 +136,7 @@ extension JSONtoCodable {
         }
         func endArrayObject() throws {
             let property = try generateProperty(register)
+            arrayProperties.append(property)
             state = .inArray
         }
 
@@ -307,7 +325,7 @@ extension JSONtoCodable {
         property.immutables = properties.map { $0.immutables }.mergeWithOptional()
         guard let structs: [String] = NSOrderedSet(array: properties.map { $0.structs }.flatMap { $0 }).array as? [String] else { return nil }
         property.structs = structs
-        property.codingKeys = properties.map { $0.codingKeys }.mergeWithOptional()
+        property.codingKeys = properties.map { $0.codingKeys }.merge()
         return property
     }
 }

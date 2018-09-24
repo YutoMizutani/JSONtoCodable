@@ -8,7 +8,7 @@
 import Foundation
 
 class Property: Equatable {
-    let prefix: String
+    var prefix: String
     var immutables: [String] = []
     var structs: [String] = []
     var codingKeys: [String] = []
