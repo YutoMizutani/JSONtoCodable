@@ -33,6 +33,26 @@ class MergeWithOptionalTests: XCTestCase {
         XCTAssertEqual(result, expectation)
     }
 
+    func testOptionalWithEmptyArrayFirst() {
+        let seed: [[String]] = [
+            [],
+            ["a", "b"],
+            ]
+        let expectation: [String] = ["a?", "b?"]
+        let result: [String] = seed.mergeWithOptional()
+        XCTAssertEqual(result, expectation)
+    }
+
+    func testOptionalWithEmptyArrayLast() {
+        let seed: [[String]] = [
+            ["a", "b"],
+            [],
+            ]
+        let expectation: [String] = ["a?", "b?"]
+        let result: [String] = seed.mergeWithOptional()
+        XCTAssertEqual(result, expectation)
+    }
+
     func testOptionalWithReturnNonOptionals() {
         let seed: [[String]] = [
             ["a", "b", "d"],
