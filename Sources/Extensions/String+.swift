@@ -33,3 +33,12 @@ extension String {
         return text.split(separator: last).map { String($0) }
     }
 }
+
+extension Array where Element == [String] {
+    func mergeWithOptional() -> [String] {
+        guard !self.isEmpty else { return [] }
+        guard !self[0].isEmpty else { return self[0] }
+        
+        return []
+    }
+}

@@ -80,6 +80,9 @@
 		99FB3F912158C4A600ABEA31 /* MergePropertiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB3F902158C4A600ABEA31 /* MergePropertiesTests.swift */; };
 		99FB3F922158C4A600ABEA31 /* MergePropertiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB3F902158C4A600ABEA31 /* MergePropertiesTests.swift */; };
 		99FB3F932158C4A600ABEA31 /* MergePropertiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB3F902158C4A600ABEA31 /* MergePropertiesTests.swift */; };
+		99FB3F952158D3FC00ABEA31 /* MergeWithOptionalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB3F942158D3FC00ABEA31 /* MergeWithOptionalTests.swift */; };
+		99FB3F962158D3FC00ABEA31 /* MergeWithOptionalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB3F942158D3FC00ABEA31 /* MergeWithOptionalTests.swift */; };
+		99FB3F972158D3FC00ABEA31 /* MergeWithOptionalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB3F942158D3FC00ABEA31 /* MergeWithOptionalTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,6 +139,7 @@
 		99CD24D62153275700BB5C2A /* JSONtoCodable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSONtoCodable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		99CD24DE2153275800BB5C2A /* JSONtoCodable macOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "JSONtoCodable macOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		99FB3F902158C4A600ABEA31 /* MergePropertiesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergePropertiesTests.swift; sourceTree = "<group>"; };
+		99FB3F942158D3FC00ABEA31 /* MergeWithOptionalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeWithOptionalTests.swift; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -259,6 +263,7 @@
 				99BEE73C2154E76300985499 /* NestingTests.swift */,
 				99944953215734690089A08A /* ArrayTests.swift */,
 				99FB3F902158C4A600ABEA31 /* MergePropertiesTests.swift */,
+				99FB3F942158D3FC00ABEA31 /* MergeWithOptionalTests.swift */,
 			);
 			path = JSONtoCodableTests;
 			sourceTree = "<group>";
@@ -679,6 +684,7 @@
 				99BEE6D82153A52200985499 /* IndentTests.swift in Sources */,
 				99BEE6D72153A52200985499 /* LineTests.swift in Sources */,
 				99BEE72F2154943E00985499 /* JSONtoCodableTests.swift in Sources */,
+				99FB3F962158D3FC00ABEA31 /* MergeWithOptionalTests.swift in Sources */,
 				99BEE6D92153A52200985499 /* LessParamsTests.swift in Sources */,
 				99BEE6D62153A52200985499 /* CaseTests.swift in Sources */,
 			);
@@ -730,6 +736,7 @@
 				99BEE7212153A5DA00985499 /* LineTests.swift in Sources */,
 				99BEE71F2153A5DA00985499 /* TypeTests.swift in Sources */,
 				99BEE7302154943E00985499 /* JSONtoCodableTests.swift in Sources */,
+				99FB3F972158D3FC00ABEA31 /* MergeWithOptionalTests.swift in Sources */,
 				99BEE7232153A5DA00985499 /* LessParamsTests.swift in Sources */,
 				99BEE7202153A5DA00985499 /* CaseTests.swift in Sources */,
 			);
@@ -764,6 +771,7 @@
 				99BEE6B22153971C00985499 /* LineTests.swift in Sources */,
 				99BEE6AB215385CB00985499 /* TypeTests.swift in Sources */,
 				99BEE72E2154943E00985499 /* JSONtoCodableTests.swift in Sources */,
+				99FB3F952158D3FC00ABEA31 /* MergeWithOptionalTests.swift in Sources */,
 				99BEE6AF215386BD00985499 /* CaseTests.swift in Sources */,
 				99BEE6B62153A38C00985499 /* LessParamsTests.swift in Sources */,
 			);

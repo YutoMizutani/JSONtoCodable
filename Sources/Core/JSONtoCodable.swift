@@ -301,6 +301,13 @@ extension JSONtoCodable {
     }
 
     func merge(_ properties: [Property]) -> Property? {
-        return nil
+        guard !properties.isEmpty else { return nil }
+
+        let property = properties[0]
+        property.immutables = properties.map { $0.immutables }.mergeWithOptional()
+        guard let structs: [String] = NSOrderedSet(array: properties.map { $0.structs }.flatMap { $0 }).array as? [String] else { return nil }
+        property.structs = structs
+        property.codingKeys = properties.map { $0.immutables }.mergeWithOptional()
+        return property
     }
 }
