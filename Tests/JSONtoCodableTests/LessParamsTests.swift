@@ -49,4 +49,34 @@ class NoBracketTests: XCTestCase {
         let result: String? = try? self.base.generate(json)
         XCTAssertEqual(result, expectation)
     }
+
+    func testBeginSingleSpaceAndNoBracket() {
+        let json: String = " \"Hello\": \"World\""
+        let expectation: String = """
+        struct Result: Codable {
+            let hello: String
+
+            private enum CodingKeys: String, CodingKey {
+                case hello = "Hello"
+            }
+        }
+        """
+        let result: String? = try? self.base.generate(json)
+        XCTAssertEqual(result, expectation)
+    }
+
+    func testBeginSingleSpaceAndNoLines() {
+        let json: String = " {\"Hello\": \"World\"}"
+        let expectation: String = """
+        struct Result: Codable {
+            let hello: String
+
+            private enum CodingKeys: String, CodingKey {
+                case hello = "Hello"
+            }
+        }
+        """
+        let result: String? = try? self.base.generate(json)
+        XCTAssertEqual(result, expectation)
+    }
 }
