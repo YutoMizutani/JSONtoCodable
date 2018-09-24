@@ -26,8 +26,6 @@ public class JSONtoCodable {
 
 public extension JSONtoCodable {
     func generate(_ text: String) throws -> String {
-        var isStartCurlyBracket: Bool?
-
         var properties: [Property] = []
         var state: GenerateState = .prepareKey
         var json: RawJSON = (key: "", value: "", type: nil)
@@ -112,10 +110,6 @@ public extension JSONtoCodable {
         for character in text {
             switch state {
             case .prepareKey:
-                if isStartCurlyBracket == nil {
-                    isStartCurlyBracket = character == "{"
-                }
-
                 switch character {
                 case "\"":
                     startKey()
@@ -174,10 +168,6 @@ public extension JSONtoCodable {
                     try addArrayValue(character)
                 }
             }
-        }
-
-        if let isStartCurlyBracket = isStartCurlyBracket, !isStartCurlyBracket {
-            endStruct()
         }
 
         return self.createStructScope(properties.first!)
