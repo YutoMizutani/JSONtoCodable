@@ -8,6 +8,8 @@
 
 **JSONtoCodable** is a generating tool from Raw JSON to Codable (Swift4) text written in Swift4.
 
+![demo_macos.png](https://raw.githubusercontent.com/YutoMizutani/JSONtoCodable/media/media/demo_macos.png)
+
 ## TL;DR
 
 From JSON,
@@ -59,6 +61,16 @@ public struct Result: Codable {
 }
 ```
 
+## Demo
+
+- [macOS demo](https://github.com/YutoMizutani/JSONtoCodable/tree/master/Demo/macOS)
+
+![demo_macos.png](https://raw.githubusercontent.com/YutoMizutani/JSONtoCodable/media/media/demo_macos.png)
+
+- [CLI demo](https://github.com/YutoMizutani/JSONtoCodable/tree/master/Demo/CLI)
+
+![demo_cli.png](https://raw.githubusercontent.com/YutoMizutani/JSONtoCodable/media/media/demo_cli.png)
+
 ## Translations
 
 |JSON Value|Swift Type|
@@ -69,11 +81,6 @@ public struct Result: Codable {
 |1.0|Double|
 |any|Any|
 |null|Any?|
-
-## Demo
-
-- [CLI](https://github.com/YutoMizutani/JSONtoCodable/tree/master/Demo/CLI)
-- [macOS](https://github.com/YutoMizutani/JSONtoCodable/tree/master/Demo/macOS)
 
 ## Installation
 
