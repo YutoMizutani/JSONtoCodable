@@ -27,6 +27,7 @@ public class JSONtoCodable {
 public extension JSONtoCodable {
     func generate(_ text: String) throws -> String {
         let property = try self.generateProperty(text)
+        print(self.createStructScope(property))
         return self.createStructScope(property)
     }
 }
@@ -298,7 +299,7 @@ extension JSONtoCodable {
         let caseType = config.caseType.variable
 
         let key: String = jsonKey.updateCased(with: caseType)
-        return "case \(key == jsonKey ? key : "\(key) = \"\(jsonKey)\"")"
+        return "case \((key == jsonKey || key == jsonKey.escaped()) ? key : "\(key) = \"\(jsonKey)\"")"
     }
 
     func createCodingKeyScope(_ keys: [String]) -> String? {
