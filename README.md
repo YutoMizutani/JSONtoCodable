@@ -73,11 +73,22 @@ public struct Result: Codable {
 
 ## Support formats
 
-:white_check_mark: Start array  
-:white_check_mark: Start bracket  
-:white_check_mark: Muptiple array  
-:white_check_mark: Null array  
-:white_check_mark: No lines  
+- Type
+	- String
+	- Bool
+	- Int
+	- Double
+	- struct(s)
+	- Optional<T>
+- Array
+	- Start array
+	- Muptiple array
+	- Arrayed objects
+	- Optional array
+- Number of nested array and objects
+	- Infinity
+- Number of spaces in entered JSON
+	- 0 to infinity
 
 ## Translations
 
@@ -85,10 +96,10 @@ public struct Result: Codable {
 |:-:|:-:|
 |"text"|String|
 |true|Bool|
-|0|Int|
+|-10|Int|
 |1.0|Double|
-|any|Any|
-|null|Any?|
+|null|\<Foo\>?|
+|(the others)|Any|
 
 ## Usage
 
@@ -115,6 +126,19 @@ struct Result: Codable {
 }
 */
 ```
+
+## Config
+
+```swift
+let config = Config()
+config.name = "Result" // struct Result: Codable {}
+config.accessModifer = AccessModifer.public // public struct
+config.caseType = (variable: CaseType.camel, struct: CaseType.pascal)
+config.lineType = LineType.lineFeed
+config.indentType = IndentType.space(4)
+```
+
+[See more: Config.swift](https://github.com/YutoMizutani/JSONtoCodable/blob/master/Sources/Core/Config.swift)
 
 ## Installation
 
