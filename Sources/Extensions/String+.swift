@@ -10,7 +10,7 @@ import Foundation
 
 extension String {
     func updateCased(with caseType: CaseType) -> String {
-        return self.separated.joined(with: caseType)
+        return self.escapeSymbols().separated.joined(with: caseType)
     }
 
     private func changeCased() -> String {
@@ -31,6 +31,13 @@ extension String {
             text = text.replacingOccurrences(of: String(key), with: String(last))
         }
         return text.split(separator: last).map { String($0) }
+    }
+
+    private func escapeSymbols() -> String {
+        let symbols: [String] = ["@"]
+        var escaped: String = self
+        symbols.forEach { escaped = escaped.replacingOccurrences(of: $0, with: "") }
+        return escaped
     }
 
     fileprivate func optional() -> String {
