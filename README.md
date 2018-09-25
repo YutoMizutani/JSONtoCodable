@@ -85,7 +85,7 @@ public struct Result: Codable {
 ## Usage
 
 ```swift
-import JSONtoCodable()
+import JSONtoCodable
 
 let json: String = """
 {
