@@ -19,7 +19,7 @@ class NestingTests: XCTestCase {
     func testNestSingle() {
         let json: String = """
         {
-            "Single1": "Hello, world!!"
+            "Single1": "Hello, world!!",
             "Single2": "Hello, world!!"
         }
         """
@@ -41,10 +41,10 @@ class NestingTests: XCTestCase {
     func testNestDouble() {
         let json: String = """
         {
-            "Single1": "Hello, world!!"
+            "Single1": "Hello, world!!",
             "Single2": {
                 "Double1": "Hello, world!!"
-            }
+            },
             "Single3": "Hello, world!!"
         }
         """
@@ -76,12 +76,12 @@ class NestingTests: XCTestCase {
     func testNestTriple() {
         let json: String = """
         {
-            "Single1": "Hello, world!!"
+            "Single1": "Hello, world!!",
             "Single2": {
-                "Double1": "Hello, world!!"
+                "Double1": "Hello, world!!",
                 "Double2": {
                     "Triple1": "Hello, world!!"
-                }
+                },
                 "Double3": "Hello, world!!"
             }
             "Single3": "Hello, world!!"

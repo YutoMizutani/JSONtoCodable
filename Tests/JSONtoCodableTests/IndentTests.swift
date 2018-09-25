@@ -19,7 +19,7 @@ class IndentTests: XCTestCase {
     func testDefault() {
         let json: String = """
         {
-            "Hello": "Hello, world!!"
+            "Hello": "Hello, world!!",
             "HelloWorld": "Hello, world!!"
         }
         """
@@ -41,7 +41,7 @@ class IndentTests: XCTestCase {
     func testZeroSpace() {
         let json: String = """
         {
-            "Hello": "Hello, world!!"
+            "Hello": "Hello, world!!",
             "HelloWorld": "Hello, world!!"
         }
         """
@@ -64,7 +64,7 @@ class IndentTests: XCTestCase {
     func testTwoSpace() {
         let json: String = """
         {
-            "Hello": "Hello, world!!"
+            "Hello": "Hello, world!!",
             "HelloWorld": "Hello, world!!"
         }
         """
@@ -87,7 +87,7 @@ class IndentTests: XCTestCase {
     func testFourSpace() {
         let json: String = """
         {
-            "Hello": "Hello, world!!"
+            "Hello": "Hello, world!!",
             "HelloWorld": "Hello, world!!"
         }
         """
@@ -110,7 +110,7 @@ class IndentTests: XCTestCase {
     func testEightSpace() {
         let json: String = """
         {
-            "Hello": "Hello, world!!"
+            "Hello": "Hello, world!!",
             "HelloWorld": "Hello, world!!"
         }
         """
@@ -133,7 +133,7 @@ class IndentTests: XCTestCase {
     func testZeroTab() {
         let json: String = """
         {
-            "Hello": "Hello, world!!"
+            "Hello": "Hello, world!!",
             "HelloWorld": "Hello, world!!"
         }
         """
@@ -156,7 +156,7 @@ class IndentTests: XCTestCase {
     func testOneTab() {
         let json: String = """
         {
-            "Hello": "Hello, world!!"
+            "Hello": "Hello, world!!",
             "HelloWorld": "Hello, world!!"
         }
         """
@@ -179,7 +179,7 @@ class IndentTests: XCTestCase {
     func testTwoTab() {
         let json: String = """
         {
-            "Hello": "Hello, world!!"
+            "Hello": "Hello, world!!",
             "HelloWorld": "Hello, world!!"
         }
         """

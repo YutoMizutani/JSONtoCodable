@@ -217,7 +217,7 @@ extension JSONtoCodable {
                 case "\"":
                     try addValue(character)
                     try endValue()
-                case " ", "\r", "\n":
+                case " ", "\r", "\n", ",":
                     if decisionType(json.value) == .string {
                         try addValue(character)
                     } else {
