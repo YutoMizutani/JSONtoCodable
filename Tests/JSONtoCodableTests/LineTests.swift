@@ -19,7 +19,7 @@ class LineTests: XCTestCase {
     func testDefault() {
         let json: String = """
         {
-            "Hello": "Hello, world!!"
+            "Hello": "Hello, world!!",
             "HelloWorld": "Hello, world!!"
         }
         """
@@ -41,7 +41,7 @@ class LineTests: XCTestCase {
     func testLF() {
         let json: String = """
         {
-            "Hello": "Hello, world!!"
+            "Hello": "Hello, world!!",
             "HelloWorld": "Hello, world!!"
         }
         """
@@ -56,7 +56,7 @@ class LineTests: XCTestCase {
     func testCR() {
         let json: String = """
         {
-            "Hello": "Hello, world!!"
+            "Hello": "Hello, world!!",
             "HelloWorld": "Hello, world!!"
         }
         """
@@ -71,7 +71,7 @@ class LineTests: XCTestCase {
     func testCRLF() {
         let json: String = """
         {
-            "Hello": "Hello, world!!"
+            "Hello": "Hello, world!!",
             "HelloWorld": "Hello, world!!"
         }
         """

@@ -174,11 +174,11 @@ class ArrayTests: XCTestCase {
         let json: String = """
         [
             {
-                "a": 1
+                "a": 1,
                 "b": 2
             },
             {
-                "a": 1
+                "a": 1,
                 "b": 2
             },
         ]
@@ -197,11 +197,11 @@ class ArrayTests: XCTestCase {
         let json: String = """
         [
             {
-                "a": 1
+                "a": 1,
                 "b": 2
             },
             {
-                "a": 1
+                "a": 1,
                 "c": 3
             },
         ]
@@ -221,11 +221,11 @@ class ArrayTests: XCTestCase {
         let json: String = """
         [
             {
-                "A": 1
+                "A": 1,
                 "B": 2
             },
             {
-                "A": 1
+                "A": 1,
                 "B": 2
             },
         ]
@@ -249,11 +249,11 @@ class ArrayTests: XCTestCase {
         let json: String = """
         [
             {
-                "A": 1
+                "A": 1,
                 "B": 2
             },
             {
-                "A": 1
+                "A": 1,
                 "C": 3
             },
         ]
@@ -306,11 +306,11 @@ class ArrayTests: XCTestCase {
         {
             "array": [
                 {
-                    "a": 1
+                    "a": 1,
                     "b": 2
                 },
                 {
-                    "a": 1
+                    "a": 1,
                     "c": 3
                 },
             ]
@@ -366,11 +366,11 @@ class ArrayTests: XCTestCase {
         {
             "Array": [
                 {
-                    "a": 1
+                    "a": 1,
                     "b": 2
                 },
                 {
-                    "a": 1
+                    "a": 1,
                     "c": 3
                 },
             ]
@@ -430,11 +430,11 @@ class ArrayTests: XCTestCase {
         {
             "array": [
                 {
-                    "A": 1
+                    "A": 1,
                     "B": 2
                 },
                 {
-                    "A": 1
+                    "A": 1,
                     "C": 3
                 },
             ]
@@ -466,11 +466,11 @@ class ArrayTests: XCTestCase {
         {
             "Array": [
                 {
-                    "A": 1
+                    "A": 1,
                     "B": 2
                 },
                 {
-                    "A": 1
+                    "A": 1,
                     "C": 3
                 },
             ]
@@ -506,11 +506,11 @@ class ArrayTests: XCTestCase {
         {
             "Array": [
                 {
-                    "A": 1
+                    "A": 1,
                     "B": [2]
                 },
                 {
-                    "A": 1
+                    "A": 1,
                     "C": [3]
                 },
             ]
@@ -548,11 +548,11 @@ class ArrayTests: XCTestCase {
                 "test": "test"
                 "Array": [
                     {
-                        "A": 1
+                        "A": 1,
                         "B": 2
                     },
                     {
-                        "A": 1
+                        "A": 1,
                         "C": 3
                     },
                 ]
@@ -560,11 +560,11 @@ class ArrayTests: XCTestCase {
             {
                 "Array": [
                     {
-                        "A": 1
+                        "A": 1,
                         "B": 2
                     },
                     {
-                        "A": 1
+                        "A": 1,
                         "C": 3
                     },
                 ]

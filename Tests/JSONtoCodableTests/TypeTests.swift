@@ -35,11 +35,11 @@ class TypeTests: XCTestCase {
     func testTypes() {
         let json: String = """
         {
-            "string": "String"
-            "bool": true
-            "int": 0
-            "double": 1.0
-            "any": any
+            "string": "String",
+            "bool": true,
+            "int": 0,
+            "double": 1.0,
+            "any": any,
             "optionalany": nil
         }
         """
@@ -75,7 +75,7 @@ class TypeTests: XCTestCase {
     func testBool() {
         let json: String = """
         {
-            "booltrue": true
+            "booltrue": true,
             "boolfalse": false
         }
         """
