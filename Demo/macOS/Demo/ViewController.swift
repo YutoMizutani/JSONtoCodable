@@ -36,13 +36,13 @@ private extension ViewController {
         {
             "user": {
                 "Name": "Yuto Mizutani"
-            }
+            },
             "lib": {
-                "lib-name": "JSONtoCodable"
-                "year": 2018
-                "version": "1.0.2"
+                "lib-name": "JSONtoCodable",
+                "year": 2018,
+                "version": "1.0.2",
                 "released": "2018-09-22"
-            }
+            },
             "text": "Hello, world!!"
         }
         """
