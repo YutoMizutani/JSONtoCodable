@@ -19,7 +19,7 @@ class CaseTests: XCTestCase {
     func testPascalCase() {
         let json: String = """
         {
-            "Hello": "Hello, world!!"
+            "Hello": "Hello, world!!",
             "HelloWorld": "Hello, world!!"
         }
         """
@@ -37,7 +37,7 @@ class CaseTests: XCTestCase {
     func testCamelCase() {
         let json: String = """
         {
-            "Hello": "Hello, world!!"
+            "Hello": "Hello, world!!",
             "HelloWorld": "Hello, world!!"
         }
         """
@@ -60,7 +60,7 @@ class CaseTests: XCTestCase {
     func testSnakeCase() {
         let json: String = """
         {
-            "Hello": "Hello, world!!"
+            "Hello": "Hello, world!!",
             "HelloWorld": "Hello, world!!"
         }
         """
@@ -83,7 +83,7 @@ class CaseTests: XCTestCase {
     func testScreamingSnakeCase() {
         let json: String = """
         {
-            "Hello": "Hello, world!!"
+            "Hello": "Hello, world!!",
             "HelloWorld": "Hello, world!!"
         }
         """

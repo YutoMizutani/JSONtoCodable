@@ -43,13 +43,13 @@ class MergePropertiesTests: XCTestCase {
     func testSameJSONProperties() {
         let json1: String = """
         {
-            "a": 1
+            "a": 1,
             "b": 2
         }
         """
         let json2: String = """
         {
-            "a": 1
+            "a": 1,
             "b": 2
         }
         """
@@ -67,13 +67,13 @@ class MergePropertiesTests: XCTestCase {
     func testDifferentJSONProperties() {
         let json1: String = """
         {
-            "a": 1
+            "a": 1,
             "b": 2
         }
         """
         let json2: String = """
         {
-            "a": 1
+            "a": 1,
             "c": 3
         }
         """
@@ -100,15 +100,15 @@ class MergePropertiesTests: XCTestCase {
     func testDifferentJSONPropertiesWithReturnNonOptionals() {
         let json1: String = """
         {
-            "a": 1
-            "b": 2
+            "a": 1,
+            "b": 2,
             "d": 4
         }
         """
         let json2: String = """
         {
-            "a": 1
-            "c": 3
+            "a": 1,
+            "c": 3,
             "d": 4
         }
         """
