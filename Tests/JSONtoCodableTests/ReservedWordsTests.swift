@@ -116,7 +116,7 @@ class ReservedWordsTests: XCTestCase {
         XCTAssertEqual(result, expectation)
     }
 
-    func testExpressions() {
+    func testLowerExpressions() {
         let json: String = """
         {
             "as": "Hello, world!!"
@@ -124,7 +124,6 @@ class ReservedWordsTests: XCTestCase {
             "new": "Hello, world!!"
             "super": "Hello, world!!"
             "self": "Hello, world!!"
-            "Self": "Hello, world!!"
             "type": "Hello, world!!"
         }
         """
@@ -135,10 +134,25 @@ class ReservedWordsTests: XCTestCase {
             let `new`: String
             let `super`: String
             let `self`: String
-            let `Self`: String
             let `type`: String
         }
         """
+        let result: String? = try? self.base.generate(json)
+        XCTAssertEqual(result, expectation)
+    }
+
+    func testUpperExpressions() {
+        let json: String = """
+        {
+            "Self": "Hello, world!!"
+        }
+        """
+        let expectation: String = """
+        struct Result: Codable {
+            let `Self`: String
+        }
+        """
+        self.base.config.caseType.variable = .pascal
         let result: String? = try? self.base.generate(json)
         XCTAssertEqual(result, expectation)
     }
