@@ -181,7 +181,7 @@ extension JSONtoCodable {
                         isStartedArray = false
                     }
                     startKey()
-                case " ":
+                case " ", ",":
                     ignore()
                 case "}":
                     endStruct()
@@ -216,7 +216,9 @@ extension JSONtoCodable {
                 switch character {
                 case "\"":
                     try addValue(character)
-                    try endValue()
+                    if String(json.value.suffix(2)) != "\\\"" {
+                        try endValue()
+                    }
                 case " ", "\r", "\n", ",":
                     if decisionType(json.value) == .string {
                         try addValue(character)
