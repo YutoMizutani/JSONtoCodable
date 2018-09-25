@@ -10,7 +10,7 @@ import Foundation
 
 extension String {
     func updateCased(with caseType: CaseType) -> String {
-        return self.escapeSymbols().separated.joined(with: caseType)
+        return self.escapeSymbols().separated.joined(with: caseType).escapedByReservedWords()
     }
 
     private func changeCased() -> String {
@@ -31,6 +31,58 @@ extension String {
             text = text.replacingOccurrences(of: String(key), with: String(last))
         }
         return text.split(separator: last).map { String($0) }
+    }
+
+    func escaped() -> String {
+        return "`\(self)`"
+    }
+
+    private func escapedByReservedWords() -> String {
+        let declarationsAndTypeKeywords: [String] = [
+            "class",
+            "destructor",
+            "extension",
+            "import",
+            "init",
+            "func",
+            "enum",
+            "protocol",
+            "struct",
+            "subscript",
+            "Type",
+            "typealias",
+            "var",
+            "where"
+        ]
+        let statements: [String] = [
+            "break",
+            "case",
+            "continue",
+            "default",
+            "do",
+            "else",
+            "if",
+            "in",
+            "for",
+            "return",
+            "switch",
+            "then",
+            "while"
+        ]
+        let expressions: [String] = [
+            "as",
+            "is",
+            "new",
+            "super",
+            "self",
+            "Self",
+            "type",
+            "__COLUMN__",
+            "__FILE__",
+            "__LINE__"
+        ]
+
+        return (declarationsAndTypeKeywords + statements + expressions).filter({ $0 == self }).isEmpty ? self : self.escaped()
     }
 
     private func escapeSymbols() -> String {
