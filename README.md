@@ -71,6 +71,14 @@ public struct Result: Codable {
 
 ![demo_cli.png](https://raw.githubusercontent.com/YutoMizutani/JSONtoCodable/media/media/demo_cli.png)
 
+## Support formats
+
+:white_check_mark: Start array  
+:white_check_mark: Start bracket  
+:white_check_mark: Muptiple array  
+:white_check_mark: Null array  
+:white_check_mark: No lines  
+
 ## Translations
 
 |JSON Value|Swift Type|
