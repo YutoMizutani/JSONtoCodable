@@ -82,6 +82,32 @@ public struct Result: Codable {
 |any|Any|
 |null|Any?|
 
+## Usage
+
+```swift
+import JSONtoCodable()
+
+let json: String = """
+{
+    "Hello": "Hello, world!!"
+}
+"""
+
+let jsonToCodable = JSONtoCodable()
+let codable = try? jsonToCodable.generate(json)
+
+print(codable)
+/*
+struct Result: Codable {
+    let hello: String
+
+    private enum CodingKeys: String, CodingKey {
+        case hello = "Hello"
+    }
+}
+*/
+```
+
 ## Installation
 
 #### Cocoapods
