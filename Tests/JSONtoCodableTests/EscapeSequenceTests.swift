@@ -19,7 +19,7 @@ class EscapeSequenceTests: XCTestCase {
     func testEscapeSequence() {
         let json: String = """
         {
-            "hello": "Hello, \"world!!\""
+            "hello": "Hello, \\"world!!\\""
         }
         """
         let expectation: String = """
@@ -34,40 +34,8 @@ class EscapeSequenceTests: XCTestCase {
     func testDoubleEscapeSequence() {
         let json: String = """
         {
-            "hello": "Hello, \"world!!\"",
-            "hello2nd": "Hello, \"world!!\""
-        }
-        """
-        let expectation: String = """
-        struct Result: Codable {
-            let hello: String
-            let hello2nd: String
-        }
-        """
-        let result: String? = try? self.base.generate(json)
-        XCTAssertEqual(result, expectation)
-    }
-
-    func testKeyValueEscapeSequence() {
-        let json: String = """
-        {
-            "\"hello\"": "Hello, \"world!!\""
-        }
-        """
-        let expectation: String = """
-        struct Result: Codable {
-            let hello: String
-        }
-        """
-        let result: String? = try? self.base.generate(json)
-        XCTAssertEqual(result, expectation)
-    }
-
-    func testDoubleKeyValueEscapeSequence() {
-        let json: String = """
-        {
-            "\"hello\"": "Hello, \"world!!\"",
-            "\"hello2nd\"": "Hello, \"world!!\""
+            "hello": "Hello, \\"world!!\\"",
+            "hello2nd": "Hello, \\"world!!\\""
         }
         """
         let expectation: String = """
