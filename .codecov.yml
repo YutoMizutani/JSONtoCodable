@@ -6,3 +6,6 @@ coverage:
   ignore:
   - Demo/*
   - Tests/*
+
+  status:
+    patch: false
