@@ -22,14 +22,58 @@ class TypeTests: XCTestCase {
         XCTAssertEqual(Type.int.optional(), Type.optionalInt)
         XCTAssertEqual(Type.double.optional(), Type.optionalDouble)
         XCTAssertEqual(Type.any.optional(), Type.optionalAny)
-        XCTAssertEqual(Type.struct("").optional(), Type.optionalStruct(""))
+        XCTAssertEqual(Type.struct("Test").optional(), Type.optionalStruct("Test"))
 
         XCTAssertEqual(Type.optionalString.optional(), Type.optionalString)
         XCTAssertEqual(Type.optionalBool.optional(), Type.optionalBool)
         XCTAssertEqual(Type.optionalInt.optional(), Type.optionalInt)
         XCTAssertEqual(Type.optionalDouble.optional(), Type.optionalDouble)
         XCTAssertEqual(Type.optionalAny.optional(), Type.optionalAny)
-        XCTAssertEqual(Type.optionalStruct("").optional(), Type.optionalStruct(""))
+        XCTAssertEqual(Type.optionalStruct("Test").optional(), Type.optionalStruct("Test"))
+
+        XCTAssertEqual(Type.stringArray.optional(), Type.stringOptionalArray)
+        XCTAssertEqual(Type.boolArray.optional(), Type.boolOptionalArray)
+        XCTAssertEqual(Type.intArray.optional(), Type.intOptionalArray)
+        XCTAssertEqual(Type.doubleArray.optional(), Type.doubleOptionalArray)
+        XCTAssertEqual(Type.anyArray.optional(), Type.anyOptionalArray)
+        XCTAssertEqual(Type.structArray("Test").optional(), Type.structOptionalArray("Test"))
+
+        XCTAssertEqual(Type.stringOptionalArray.optional(), Type.stringOptionalArray)
+        XCTAssertEqual(Type.boolOptionalArray.optional(), Type.boolOptionalArray)
+        XCTAssertEqual(Type.intOptionalArray.optional(), Type.intOptionalArray)
+        XCTAssertEqual(Type.doubleOptionalArray.optional(), Type.doubleOptionalArray)
+        XCTAssertEqual(Type.anyOptionalArray.optional(), Type.anyOptionalArray)
+        XCTAssertEqual(Type.structOptionalArray("Test").optional(), Type.structOptionalArray("Test"))
+    }
+
+    func testRawValueTypes() {
+        XCTAssertEqual(Type.string.rawValue, "String")
+        XCTAssertEqual(Type.bool.rawValue, "Bool")
+        XCTAssertEqual(Type.int.rawValue, "Int")
+        XCTAssertEqual(Type.double.rawValue, "Double")
+        XCTAssertEqual(Type.any.rawValue, "Any")
+        XCTAssertEqual(Type.struct("Test").rawValue, "Test")
+
+        XCTAssertEqual(Type.optionalString.rawValue, "String?")
+        XCTAssertEqual(Type.optionalBool.rawValue, "Bool?")
+        XCTAssertEqual(Type.optionalInt.rawValue, "Int?")
+        XCTAssertEqual(Type.optionalDouble.rawValue, "Double?")
+        XCTAssertEqual(Type.optionalAny.rawValue, "Any?")
+        XCTAssertEqual(Type.optionalStruct("Test").rawValue, "Test?")
+
+        XCTAssertEqual(Type.stringArray.rawValue, "[String]")
+        XCTAssertEqual(Type.boolArray.rawValue, "[Bool]")
+        XCTAssertEqual(Type.intArray.rawValue, "[Int]")
+        XCTAssertEqual(Type.doubleArray.rawValue, "[Double]")
+        XCTAssertEqual(Type.anyArray.rawValue, "[Any]")
+        XCTAssertEqual(Type.structArray("Test").rawValue, "[Test]")
+
+        XCTAssertEqual(Type.stringOptionalArray.rawValue, "[String?]")
+        XCTAssertEqual(Type.boolOptionalArray.rawValue, "[Bool?]")
+        XCTAssertEqual(Type.intOptionalArray.rawValue, "[Int?]")
+        XCTAssertEqual(Type.doubleOptionalArray.rawValue, "[Double?]")
+        XCTAssertEqual(Type.anyOptionalArray.rawValue, "[Any?]")
+        XCTAssertEqual(Type.structOptionalArray("Test").rawValue, "[Test?]")
     }
 
     func testTypes() {
