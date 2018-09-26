@@ -63,12 +63,7 @@ extension JSONtoCodable {
             state = .inValue
         }
         func addValue(_ c: Character) throws {
-            if case GenerateState.inArray = state {
-                guard !values.isEmpty else { throw JSONError.wrongFormat }
-                values[values.count - 1].append(c)
-            } else {
-                json.value.append(c)
-            }
+            json.value.append(c)
         }
         func endValue() throws {
             guard !properties.isEmpty else { throw JSONError.wrongFormat }

@@ -29,12 +29,12 @@ public enum Type: Hashable {
     case optionalAny
     case optionalStruct(String)
 
-    case stringOptionalArray
-    case boolOptionalArray
-    case intOptionalArray
-    case doubleOptionalArray
-    case anyOptionalArray
-    case structOptionalArray(String)
+    case optionalStringArray
+    case optionalBoolArray
+    case optionalIntArray
+    case optionalDoubleArray
+    case optionalAnyArray
+    case optionalStructArray(String)
 }
 
 public extension Type {
@@ -79,17 +79,17 @@ public extension Type {
         case .optionalStruct:
             return 17
 
-        case .stringOptionalArray:
+        case .optionalStringArray:
             return 18
-        case .boolOptionalArray:
+        case .optionalBoolArray:
             return 19
-        case .intOptionalArray:
+        case .optionalIntArray:
             return 20
-        case .doubleOptionalArray:
+        case .optionalDoubleArray:
             return 21
-        case .anyOptionalArray:
+        case .optionalAnyArray:
             return 22
-        case .structOptionalArray:
+        case .optionalStructArray:
             return 23
         }
     }
@@ -135,17 +135,17 @@ public extension Type {
         case .optionalStruct(let v):
             return "\(Type.struct(v).rawValue)?"
 
-        case .stringOptionalArray:
+        case .optionalStringArray:
             return "[\(Type.optionalString.rawValue)]"
-        case .boolOptionalArray:
+        case .optionalBoolArray:
             return "[\(Type.optionalBool.rawValue)]"
-        case .intOptionalArray:
+        case .optionalIntArray:
             return "[\(Type.optionalInt.rawValue)]"
-        case .doubleOptionalArray:
+        case .optionalDoubleArray:
             return "[\(Type.optionalDouble.rawValue)]"
-        case .anyOptionalArray:
+        case .optionalAnyArray:
             return "[\(Type.optionalAny.rawValue)]"
-        case .structOptionalArray(let v):
+        case .optionalStructArray(let v):
             return "[\(Type.optionalStruct(v).rawValue)]"
         }
     }
@@ -169,18 +169,18 @@ public extension Type {
         case .struct(let v), .optionalStruct(let v):
             return .optionalStruct(v)
 
-        case .stringArray, .stringOptionalArray:
-            return .stringOptionalArray
-        case .boolArray, .boolOptionalArray:
-            return .boolOptionalArray
-        case .intArray, .intOptionalArray:
-            return .intOptionalArray
-        case .doubleArray, .doubleOptionalArray:
-            return .doubleOptionalArray
-        case .anyArray, .anyOptionalArray:
-            return .anyOptionalArray
-        case .structArray(let v), .structOptionalArray(let v):
-            return .structOptionalArray(v)
+        case .stringArray, .optionalStringArray:
+            return .optionalStringArray
+        case .boolArray, .optionalBoolArray:
+            return .optionalBoolArray
+        case .intArray, .optionalIntArray:
+            return .optionalIntArray
+        case .doubleArray, .optionalDoubleArray:
+            return .optionalDoubleArray
+        case .anyArray, .optionalAnyArray:
+            return .optionalAnyArray
+        case .structArray(let v), .optionalStructArray(let v):
+            return .optionalStructArray(v)
         }
     }
 
@@ -199,18 +199,18 @@ public extension Type {
         case .struct(let v), .structArray(let v):
             return .structArray(v)
 
-        case .optionalString, .stringOptionalArray:
-            return .stringOptionalArray
-        case .optionalBool, .boolOptionalArray:
-            return .boolOptionalArray
-        case .optionalInt, .intOptionalArray:
-            return .intOptionalArray
-        case .optionalDouble, .doubleOptionalArray:
-            return .doubleOptionalArray
-        case .optionalAny, .anyOptionalArray:
-            return .anyOptionalArray
-        case .optionalStruct(let v), .structOptionalArray(let v):
-            return .structOptionalArray(v)
+        case .optionalString, .optionalStringArray:
+            return .optionalStringArray
+        case .optionalBool, .optionalBoolArray:
+            return .optionalBoolArray
+        case .optionalInt, .optionalIntArray:
+            return .optionalIntArray
+        case .optionalDouble, .optionalDoubleArray:
+            return .optionalDoubleArray
+        case .optionalAny, .optionalAnyArray:
+            return .optionalAnyArray
+        case .optionalStruct(let v), .optionalStructArray(let v):
+            return .optionalStructArray(v)
         }
     }
 }
@@ -228,7 +228,7 @@ public extension Array where Element == Type {
         let types: [Type] = self.unique()
         switch types.count {
         case 0:
-            return .anyOptionalArray
+            return .optionalAnyArray
         case 1:
             return types[0].toArray()
         case 2:
@@ -239,7 +239,7 @@ public extension Array where Element == Type {
                 fallthrough
             }
         default:
-            return self.hasOptional() ? Type.anyOptionalArray : Type.anyArray
+            return self.hasOptional() ? Type.optionalAnyArray : Type.anyArray
         }
     }
 }

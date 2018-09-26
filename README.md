@@ -5,6 +5,7 @@
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/YutoMizutani/JSONtoCodable/blob/master/LICENSE)
 [![CocoaPods](https://img.shields.io/cocoapods/v/JSONtoCodable.svg)](https://github.com/YutoMizutani/JSONtoCodable)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/YutoMizutani/JSONtoCodable)
+[![codecov](https://codecov.io/gh/YutoMizutani/JSONtoCodable/branch/master/graph/badge.svg)](https://codecov.io/gh/YutoMizutani/JSONtoCodable)
 
 **JSONtoCodable** is a generating tool from Raw JSON to Codable (Swift4) text written in Swift4.
 
