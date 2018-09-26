@@ -35,6 +35,25 @@ class SymbolsTests: XCTestCase {
         XCTAssertEqual(result, expectation)
     }
 
+    func testColon() {
+        let json: String = """
+        {
+            "hello:world": "Hello, world!!"
+        }
+        """
+        let expectation: String = """
+        struct Result: Codable {
+            let helloWorld: String
+
+            private enum CodingKeys: String, CodingKey {
+                case helloWorld = "hello:world"
+            }
+        }
+        """
+        let result: String? = try? self.base.generate(json)
+        XCTAssertEqual(result, expectation)
+    }
+
     func testUnderScore() {
         let json: String = """
         {

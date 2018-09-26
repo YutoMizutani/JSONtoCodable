@@ -24,7 +24,7 @@ extension String {
     }
 
     private var separated: [String] {
-        let replaceWords: [Character] = ["-", "_"]
+        let replaceWords: [Character] = ["-", "_", ":"]
         let last: Character = replaceWords.last!
         var text = self != self.uppercased() ? self.changeCased() : self
         Array(replaceWords.dropLast()).forEach { key in
