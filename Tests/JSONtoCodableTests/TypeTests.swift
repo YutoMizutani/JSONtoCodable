@@ -16,36 +16,6 @@ class TypeTests: XCTestCase {
         self.base = JSONtoCodable()
     }
 
-    func testOptionalTypes() {
-        XCTAssertEqual(Type.string.optional(), Type.optionalString)
-        XCTAssertEqual(Type.bool.optional(), Type.optionalBool)
-        XCTAssertEqual(Type.int.optional(), Type.optionalInt)
-        XCTAssertEqual(Type.double.optional(), Type.optionalDouble)
-        XCTAssertEqual(Type.any.optional(), Type.optionalAny)
-        XCTAssertEqual(Type.struct("Test").optional(), Type.optionalStruct("Test"))
-
-        XCTAssertEqual(Type.optionalString.optional(), Type.optionalString)
-        XCTAssertEqual(Type.optionalBool.optional(), Type.optionalBool)
-        XCTAssertEqual(Type.optionalInt.optional(), Type.optionalInt)
-        XCTAssertEqual(Type.optionalDouble.optional(), Type.optionalDouble)
-        XCTAssertEqual(Type.optionalAny.optional(), Type.optionalAny)
-        XCTAssertEqual(Type.optionalStruct("Test").optional(), Type.optionalStruct("Test"))
-
-        XCTAssertEqual(Type.stringArray.optional(), Type.optionalStringArray)
-        XCTAssertEqual(Type.boolArray.optional(), Type.optionalBoolArray)
-        XCTAssertEqual(Type.intArray.optional(), Type.optionalIntArray)
-        XCTAssertEqual(Type.doubleArray.optional(), Type.optionalDoubleArray)
-        XCTAssertEqual(Type.anyArray.optional(), Type.optionalAnyArray)
-        XCTAssertEqual(Type.structArray("Test").optional(), Type.optionalStructArray("Test"))
-
-        XCTAssertEqual(Type.optionalStringArray.optional(), Type.optionalStringArray)
-        XCTAssertEqual(Type.optionalBoolArray.optional(), Type.optionalBoolArray)
-        XCTAssertEqual(Type.optionalIntArray.optional(), Type.optionalIntArray)
-        XCTAssertEqual(Type.optionalDoubleArray.optional(), Type.optionalDoubleArray)
-        XCTAssertEqual(Type.optionalAnyArray.optional(), Type.optionalAnyArray)
-        XCTAssertEqual(Type.optionalStructArray("Test").optional(), Type.optionalStructArray("Test"))
-    }
-
     func testRawValueTypes() {
         XCTAssertEqual(Type.string.rawValue, "String")
         XCTAssertEqual(Type.bool.rawValue, "Bool")
@@ -74,6 +44,36 @@ class TypeTests: XCTestCase {
         XCTAssertEqual(Type.optionalDoubleArray.rawValue, "[Double?]")
         XCTAssertEqual(Type.optionalAnyArray.rawValue, "[Any?]")
         XCTAssertEqual(Type.optionalStructArray("Test").rawValue, "[Test?]")
+    }
+
+    func testOptionalTypes() {
+        XCTAssertEqual(Type.string.optional(), Type.optionalString)
+        XCTAssertEqual(Type.bool.optional(), Type.optionalBool)
+        XCTAssertEqual(Type.int.optional(), Type.optionalInt)
+        XCTAssertEqual(Type.double.optional(), Type.optionalDouble)
+        XCTAssertEqual(Type.any.optional(), Type.optionalAny)
+        XCTAssertEqual(Type.struct("Test").optional(), Type.optionalStruct("Test"))
+
+        XCTAssertEqual(Type.optionalString.optional(), Type.optionalString)
+        XCTAssertEqual(Type.optionalBool.optional(), Type.optionalBool)
+        XCTAssertEqual(Type.optionalInt.optional(), Type.optionalInt)
+        XCTAssertEqual(Type.optionalDouble.optional(), Type.optionalDouble)
+        XCTAssertEqual(Type.optionalAny.optional(), Type.optionalAny)
+        XCTAssertEqual(Type.optionalStruct("Test").optional(), Type.optionalStruct("Test"))
+
+        XCTAssertEqual(Type.stringArray.optional(), Type.optionalStringArray)
+        XCTAssertEqual(Type.boolArray.optional(), Type.optionalBoolArray)
+        XCTAssertEqual(Type.intArray.optional(), Type.optionalIntArray)
+        XCTAssertEqual(Type.doubleArray.optional(), Type.optionalDoubleArray)
+        XCTAssertEqual(Type.anyArray.optional(), Type.optionalAnyArray)
+        XCTAssertEqual(Type.structArray("Test").optional(), Type.optionalStructArray("Test"))
+
+        XCTAssertEqual(Type.optionalStringArray.optional(), Type.optionalStringArray)
+        XCTAssertEqual(Type.optionalBoolArray.optional(), Type.optionalBoolArray)
+        XCTAssertEqual(Type.optionalIntArray.optional(), Type.optionalIntArray)
+        XCTAssertEqual(Type.optionalDoubleArray.optional(), Type.optionalDoubleArray)
+        XCTAssertEqual(Type.optionalAnyArray.optional(), Type.optionalAnyArray)
+        XCTAssertEqual(Type.optionalStructArray("Test").optional(), Type.optionalStructArray("Test"))
     }
 
     func testTypes() {
