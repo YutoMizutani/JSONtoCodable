@@ -27,7 +27,6 @@ public class JSONtoCodable {
 public extension JSONtoCodable {
     func generate(_ text: String) throws -> String {
         let property = try self.generateProperty(text)
-        print(self.createStructScope(property))
         return self.createStructScope(property)
     }
 }
