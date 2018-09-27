@@ -721,6 +721,138 @@ class ArrayTests: XCTestCase {
         XCTAssertEqual(result, expectation)
     }
 
+    func testArrayObjectWithOptionals() {
+        let json: String = """
+        {
+            "array": [
+                {
+                    "InArray-Object:WithOptionals": {
+                        "hello": "world"
+                    }
+                },
+                {
+                    "InArray-Object:WithOptionals": {
+                        "hello": "world",
+                        "number": 1
+                    }
+                }
+            ]
+        }
+        """
+        let expectation: String = """
+        struct Result: Codable {
+            let array: [Array]
+
+            struct Array: Codable {
+                let inArrayObjectWithOptionals: InArrayObjectWithOptionals
+
+                struct InArrayObjectWithOptionals: Codable {
+                    let hello: String
+                    let number: Int?
+                }
+
+                private enum CodingKeys: String, CodingKey {
+                    case inArrayObjectWithOptionals = "InArray-Object:WithOptionals"
+                }
+            }
+        }
+        """
+        let result: String? = try? self.base.generate(json)
+        XCTAssertEqual(result, expectation)
+    }
+
+    func testMultArrayObjectWithOptionals() {
+        let json: String = """
+        {
+            "array": [
+                {
+                    "Obj:First": {
+                        "hello": "world"
+                    }
+                },
+                {
+                    "Obj:First": {
+                        "hello": "world"
+                    },
+                    "Obj:Second": {
+                        "hello": "world"
+                    }
+                }
+            ]
+        }
+        """
+        let expectation: String = """
+        struct Result: Codable {
+            let array: [Array]
+
+            struct Array: Codable {
+                let objFirst: ObjFirst
+                let objSecond: ObjSecond?
+
+                struct ObjFirst: Codable {
+                    let hello: String
+                }
+
+                struct ObjSecond: Codable {
+                    let hello: String
+                }
+
+                private enum CodingKeys: String, CodingKey {
+                    case objFirst = "Obj:First"
+                    case objSecond = "Obj:Second"
+                }
+            }
+        }
+        """
+        let result: String? = try? self.base.generate(json)
+        XCTAssertEqual(result, expectation)
+    }
+
+    func testArrayObjectWithOptionalsWithAllCodingKeys() {
+        let json: String = """
+        {
+            "array": [
+                {
+                    "InArray-Object:WithOptionals": {
+                        "hello": "world"
+                    }
+                },
+                {
+                    "InArray-Object:WithOptionals": {
+                        "hello": "world",
+                        "Number": 1
+                    }
+                }
+            ]
+        }
+        """
+        let expectation: String = """
+        struct Result: Codable {
+            let array: [Array]
+
+            struct Array: Codable {
+                let inArrayObjectWithOptionals: InArrayObjectWithOptionals
+
+                struct InArrayObjectWithOptionals: Codable {
+                    let hello: String
+                    let number: Int?
+
+                    private enum CodingKeys: String, CodingKey {
+                        case hello
+                        case number = "Number"
+                    }
+                }
+
+                private enum CodingKeys: String, CodingKey {
+                    case inArrayObjectWithOptionals = "InArray-Object:WithOptionals"
+                }
+            }
+        }
+        """
+        let result: String? = try? self.base.generate(json)
+        XCTAssertEqual(result, expectation)
+    }
+
     func testNestedArrayOptionalObjectInObject() {
         let json: String = """
         {
