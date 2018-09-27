@@ -62,7 +62,7 @@ extension JSONtoCodable {
         func startValue() {
             state = .inValue
         }
-        func addValue(_ c: Character) throws {
+        func addValue(_ c: Character) {
             json.value.append(c)
         }
         func endValue() throws {
@@ -205,23 +205,23 @@ extension JSONtoCodable {
                     startArray()
                 default:
                     startValue()
-                    try addValue(character)
+                    addValue(character)
                 }
             case .inValue:
                 switch character {
                 case "\"":
-                    try addValue(character)
+                    addValue(character)
                     if String(json.value.suffix(2)) != "\\\"" {
                         try endValue()
                     }
                 case " ", "\r", "\n", ",":
                     if decisionType(json.value) == .string {
-                        try addValue(character)
+                        addValue(character)
                     } else {
                         try endValue()
                     }
                 default:
-                    try addValue(character)
+                    addValue(character)
                 }
             case .inArray:
                 switch character {
