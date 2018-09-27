@@ -597,4 +597,176 @@ class ArrayTests: XCTestCase {
         let result: String? = try? self.base.generate(json)
         XCTAssertEqual(result, expectation)
     }
+
+    func testArrayInObject() {
+        let json: String = """
+        {
+            "Object": {
+                "array": [
+                    1,
+                    2,
+                    3
+                ]
+            }
+        }
+        """
+        let expectation: String = """
+        struct Result: Codable {
+            let object: Object
+
+            struct Object: Codable {
+                let array: [Int]
+            }
+
+            private enum CodingKeys: String, CodingKey {
+                case object = "Object"
+            }
+        }
+        """
+        let result: String? = try? self.base.generate(json)
+        XCTAssertEqual(result, expectation)
+    }
+
+    func testArrayObject() {
+        let json: String = """
+        {
+            "array": [
+                {
+                    "number": 1,
+                    "InArray-Object": {
+                        "hello": "world"
+                    }
+                },
+                {
+                    "number": 1,
+                    "InArray-Object": {
+                        "hello": "world"
+                    }
+                }
+            ]
+        }
+        """
+        let expectation: String = """
+        struct Result: Codable {
+            let array: [Array]
+
+            struct Array: Codable {
+                let number: Int
+                let inArrayObject: InArrayObject
+
+                struct InArrayObject: Codable {
+                    let hello: String
+                }
+
+                private enum CodingKeys: String, CodingKey {
+                    case number
+                    case inArrayObject = "InArray-Object"
+                }
+            }
+        }
+        """
+        let result: String? = try? self.base.generate(json)
+        XCTAssertEqual(result, expectation)
+    }
+
+    func testNestedArrayObjectInObject() {
+        let json: String = """
+        {
+            "Object": {
+                "array": [
+                    {
+                        "InArray-Object": {
+                            "hello": "world"
+                        },
+                        "number": 1
+                    },
+                    {
+                        "InArray-Object": {
+                            "hello": "world"
+                        },
+                        "number": 1
+                    }
+                ]
+            }
+        }
+        """
+        let expectation: String = """
+        struct Result: Codable {
+            let object: Object
+
+            struct Object: Codable {
+                let array: [Array]
+
+                struct Array: Codable {
+                    let inArrayObject: InArrayObject
+                    let number: Int
+
+                    struct InArrayObject: Codable {
+                        let hello: String
+                    }
+
+                    private enum CodingKeys: String, CodingKey {
+                        case inArrayObject = "InArray-Object"
+                        case number
+                    }
+                }
+            }
+
+            private enum CodingKeys: String, CodingKey {
+                case object = "Object"
+            }
+        }
+        """
+        let result: String? = try? self.base.generate(json)
+        XCTAssertEqual(result, expectation)
+    }
+
+    func testNestedArrayOptionalObjectInObject() {
+        let json: String = """
+        {
+            "Object": {
+                "array": [
+                    {
+                        "number": 1,
+                        "Optional-Object": {
+                            "hello": "world"
+                        }
+                    },
+                    {
+                        "number": 1
+                    }
+                ]
+            }
+        }
+        """
+        let expectation: String = """
+        struct Result: Codable {
+            let object: Object
+
+            struct Object: Codable {
+                let array: [Array]
+
+                struct Array: Codable {
+                    let number: Int
+                    let optionalObject: OptionalObject?
+
+                    struct OptionalObject: Codable {
+                        let hello: String
+                    }
+
+                    private enum CodingKeys: String, CodingKey {
+                        case number
+                        case optionalObject = "Optional-Object"
+                    }
+                }
+            }
+
+            private enum CodingKeys: String, CodingKey {
+                case object = "Object"
+            }
+        }
+        """
+        let result: String? = try? self.base.generate(json)
+        XCTAssertEqual(result, expectation)
+    }
 }
