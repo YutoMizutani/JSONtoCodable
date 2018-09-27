@@ -761,6 +761,53 @@ class ArrayTests: XCTestCase {
         XCTAssertEqual(result, expectation)
     }
 
+    func testMultArrayObjectWithOptionals() {
+        let json: String = """
+        {
+            "array": [
+                {
+                    "Obj:First": {
+                        "hello": "world"
+                    }
+                },
+                {
+                    "Obj:First": {
+                        "hello": "world"
+                    },
+                    "Obj:Second": {
+                        "hello": "world"
+                    }
+                }
+            ]
+        }
+        """
+        let expectation: String = """
+        struct Result: Codable {
+            let array: [Array]
+
+            struct Array: Codable {
+                let objFirst: ObjFirst
+                let objSecond: ObjSecond?
+
+                struct ObjFirst: Codable {
+                    let hello: String
+                }
+
+                struct ObjSecond: Codable {
+                    let hello: String
+                }
+
+                private enum CodingKeys: String, CodingKey {
+                    case objFirst = "Obj:First"
+                    case objSecond = "Obj:Second"
+                }
+            }
+        }
+        """
+        let result: String? = try? self.base.generate(json)
+        XCTAssertEqual(result, expectation)
+    }
+
     func testArrayObjectWithOptionalsWithAllCodingKeys() {
         let json: String = """
         {
