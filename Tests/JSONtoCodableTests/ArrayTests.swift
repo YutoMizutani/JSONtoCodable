@@ -753,7 +753,51 @@ class ArrayTests: XCTestCase {
 
                 private enum CodingKeys: String, CodingKey {
                     case inArrayObjectWithOptionals = "InArray-Object:WithOptionals"
-                    case number
+                }
+            }
+        }
+        """
+        let result: String? = try? self.base.generate(json)
+        XCTAssertEqual(result, expectation)
+    }
+
+    func testArrayObjectWithOptionalsWithAllCodingKeys() {
+        let json: String = """
+        {
+            "array": [
+                {
+                    "InArray-Object:WithOptionals": {
+                        "hello": "world"
+                    }
+                },
+                {
+                    "InArray-Object:WithOptionals": {
+                        "hello": "world",
+                        "Number": 1
+                    }
+                }
+            ]
+        }
+        """
+        let expectation: String = """
+        struct Result: Codable {
+            let array: [Array]
+
+            struct Array: Codable {
+                let inArrayObjectWithOptionals: InArrayObjectWithOptionals
+
+                struct InArrayObjectWithOptionals: Codable {
+                    let hello: String
+                    let number: Int?
+
+                    private enum CodingKeys: String, CodingKey {
+                        case hello
+                        case number = "Number"
+                    }
+                }
+
+                private enum CodingKeys: String, CodingKey {
+                    case inArrayObjectWithOptionals = "InArray-Object:WithOptionals"
                 }
             }
         }
