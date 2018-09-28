@@ -264,7 +264,7 @@ extension JSONtoCodable {
         switch value.lowercased() {
         case "true", "false":
             return .bool
-        case "nil", "null":
+        case "null":
             return.optionalAny
         case let value where value == Int(value)?.description:
             return .int
