@@ -230,7 +230,7 @@ class TypeTests: XCTestCase {
             "int": 0,
             "double": 1.0,
             "any": any,
-            "optionalany": nil
+            "optionalany": null
         }
         """
         let expectation: String = """
@@ -327,7 +327,7 @@ class TypeTests: XCTestCase {
     func testOptionalAny() {
         let json: String = """
         {
-            "optionalany": nil
+            "optionalany": null
         }
         """
         let expectation: String = """
