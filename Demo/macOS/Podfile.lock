@@ -1,5 +1,5 @@
 PODS:
-  - JSONtoCodable (2.0.0)
+  - JSONtoCodable (2.0.1)
 
 DEPENDENCIES:
   - JSONtoCodable
@@ -9,7 +9,7 @@ SPEC REPOS:
     - JSONtoCodable
 
 SPEC CHECKSUMS:
-  JSONtoCodable: 61ae99a33cc3190af9cf54a902fd678a3771af67
+  JSONtoCodable: cdc77208dbcf4bf6009bc17988fd4ea66f1032f7
 
 PODFILE CHECKSUM: f0a78a1328b0f8ae75213577e51a6dd001d5b639
 
