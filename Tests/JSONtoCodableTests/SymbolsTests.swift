@@ -23,8 +23,8 @@ class SymbolsTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let hello: String
+        public struct Result: Codable {
+            public let hello: String
 
             private enum CodingKeys: String, CodingKey {
                 case hello = "@hello"
@@ -42,8 +42,8 @@ class SymbolsTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let helloWorld: String
+        public struct Result: Codable {
+            public let helloWorld: String
 
             private enum CodingKeys: String, CodingKey {
                 case helloWorld = "hello:world"
@@ -61,8 +61,8 @@ class SymbolsTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let hello: String
+        public struct Result: Codable {
+            public let hello: String
 
             private enum CodingKeys: String, CodingKey {
                 case hello = "_hello"

@@ -234,13 +234,13 @@ class TypeTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let string: String
-            let bool: Bool
-            let int: Int
-            let double: Double
-            let any: Any
-            let optionalany: Any?
+        public struct Result: Codable {
+            public let string: String
+            public let bool: Bool
+            public let int: Int
+            public let double: Double
+            public let any: Any
+            public let optionalany: Any?
         }
         """
         let result: String? = try? self.base.generate(json)
@@ -254,8 +254,8 @@ class TypeTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let string: String
+        public struct Result: Codable {
+            public let string: String
         }
         """
         let result: String? = try? self.base.generate(json)
@@ -270,9 +270,9 @@ class TypeTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let booltrue: Bool
-            let boolfalse: Bool
+        public struct Result: Codable {
+            public let booltrue: Bool
+            public let boolfalse: Bool
         }
         """
         let result: String? = try? self.base.generate(json)
@@ -286,8 +286,8 @@ class TypeTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let int: Int
+        public struct Result: Codable {
+            public let int: Int
         }
         """
         let result: String? = try? self.base.generate(json)
@@ -301,8 +301,8 @@ class TypeTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let double: Double
+        public struct Result: Codable {
+            public let double: Double
         }
         """
         let result: String? = try? self.base.generate(json)
@@ -316,8 +316,8 @@ class TypeTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let any: Any
+        public struct Result: Codable {
+            public let any: Any
         }
         """
         let result: String? = try? self.base.generate(json)
@@ -331,8 +331,8 @@ class TypeTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let optionalany: Any?
+        public struct Result: Codable {
+            public let optionalany: Any?
         }
         """
         let result: String? = try? self.base.generate(json)

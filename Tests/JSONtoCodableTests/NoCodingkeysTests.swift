@@ -23,8 +23,8 @@ class NoCodingkeysTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let hello: String
+        public struct Result: Codable {
+            public let hello: String
         }
         """
         let result: String? = try? self.base.generate(json)

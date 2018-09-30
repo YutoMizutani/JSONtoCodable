@@ -41,20 +41,20 @@ class ReservedWordsTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let `class`: String
-            let `destructor`: String
-            let `extension`: String
-            let `import`: String
-            let `init`: String
-            let `func`: String
-            let `enum`: String
-            let `protocol`: String
-            let `struct`: String
-            let `subscript`: String
-            let `typealias`: String
-            let `var`: String
-            let `where`: String
+        public struct Result: Codable {
+            public let `class`: String
+            public let `destructor`: String
+            public let `extension`: String
+            public let `import`: String
+            public let `init`: String
+            public let `func`: String
+            public let `enum`: String
+            public let `protocol`: String
+            public let `struct`: String
+            public let `subscript`: String
+            public let `typealias`: String
+            public let `var`: String
+            public let `where`: String
         }
         """
         let result: String? = try? self.base.generate(json)
@@ -68,8 +68,8 @@ class ReservedWordsTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let `Type`: String
+        public struct Result: Codable {
+            public let `Type`: String
         }
         """
         self.base.config.caseType.variable = .pascal
@@ -96,20 +96,20 @@ class ReservedWordsTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let `break`: String
-            let `case`: String
-            let `continue`: String
-            let `default`: String
-            let `do`: String
-            let `else`: String
-            let `if`: String
-            let `in`: String
-            let `for`: String
-            let `return`: String
-            let `switch`: String
-            let `then`: String
-            let `while`: String
+        public struct Result: Codable {
+            public let `break`: String
+            public let `case`: String
+            public let `continue`: String
+            public let `default`: String
+            public let `do`: String
+            public let `else`: String
+            public let `if`: String
+            public let `in`: String
+            public let `for`: String
+            public let `return`: String
+            public let `switch`: String
+            public let `then`: String
+            public let `while`: String
         }
         """
         let result: String? = try? self.base.generate(json)
@@ -128,13 +128,13 @@ class ReservedWordsTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let `as`: String
-            let `is`: String
-            let `new`: String
-            let `super`: String
-            let `self`: String
-            let `type`: String
+        public struct Result: Codable {
+            public let `as`: String
+            public let `is`: String
+            public let `new`: String
+            public let `super`: String
+            public let `self`: String
+            public let `type`: String
         }
         """
         let result: String? = try? self.base.generate(json)
@@ -148,8 +148,8 @@ class ReservedWordsTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let `Self`: String
+        public struct Result: Codable {
+            public let `Self`: String
         }
         """
         self.base.config.caseType.variable = .pascal

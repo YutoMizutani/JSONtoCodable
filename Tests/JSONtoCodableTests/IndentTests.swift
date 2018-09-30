@@ -24,9 +24,9 @@ class IndentTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let hello: String
-            let helloWorld: String
+        public struct Result: Codable {
+            public let hello: String
+            public let helloWorld: String
 
             private enum CodingKeys: String, CodingKey {
                 case hello = "Hello"
@@ -46,9 +46,9 @@ class IndentTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-        let hello: String
-        let helloWorld: String
+        public struct Result: Codable {
+        public let hello: String
+        public let helloWorld: String
 
         private enum CodingKeys: String, CodingKey {
         case hello = "Hello"
@@ -69,9 +69,9 @@ class IndentTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-          let hello: String
-          let helloWorld: String
+        public struct Result: Codable {
+          public let hello: String
+          public let helloWorld: String
 
           private enum CodingKeys: String, CodingKey {
             case hello = "Hello"
@@ -92,9 +92,9 @@ class IndentTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let hello: String
-            let helloWorld: String
+        public struct Result: Codable {
+            public let hello: String
+            public let helloWorld: String
 
             private enum CodingKeys: String, CodingKey {
                 case hello = "Hello"
@@ -115,9 +115,9 @@ class IndentTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-                let hello: String
-                let helloWorld: String
+        public struct Result: Codable {
+                public let hello: String
+                public let helloWorld: String
 
                 private enum CodingKeys: String, CodingKey {
                         case hello = "Hello"
@@ -138,9 +138,9 @@ class IndentTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-        let hello: String
-        let helloWorld: String
+        public struct Result: Codable {
+        public let hello: String
+        public let helloWorld: String
 
         private enum CodingKeys: String, CodingKey {
         case hello = "Hello"
@@ -161,9 +161,9 @@ class IndentTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-        \tlet hello: String
-        \tlet helloWorld: String
+        public struct Result: Codable {
+        \tpublic let hello: String
+        \tpublic let helloWorld: String
 
         \tprivate enum CodingKeys: String, CodingKey {
         \t\tcase hello = "Hello"
@@ -184,9 +184,9 @@ class IndentTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-        \t\tlet hello: String
-        \t\tlet helloWorld: String
+        public struct Result: Codable {
+        \t\tpublic let hello: String
+        \t\tpublic let helloWorld: String
 
         \t\tprivate enum CodingKeys: String, CodingKey {
         \t\t\t\tcase hello = "Hello"

@@ -82,6 +82,9 @@
 		99BEE73D2154E76300985499 /* NestingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE73C2154E76300985499 /* NestingTests.swift */; };
 		99BEE73E2154E76300985499 /* NestingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE73C2154E76300985499 /* NestingTests.swift */; };
 		99BEE73F2154E76300985499 /* NestingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEE73C2154E76300985499 /* NestingTests.swift */; };
+		99C179D42160966800705243 /* MergeStructTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C179D32160966800705243 /* MergeStructTests.swift */; };
+		99C179D52160966800705243 /* MergeStructTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C179D32160966800705243 /* MergeStructTests.swift */; };
+		99C179D62160966800705243 /* MergeStructTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C179D32160966800705243 /* MergeStructTests.swift */; };
 		99CD24DF2153275800BB5C2A /* JSONtoCodable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99CD24D62153275700BB5C2A /* JSONtoCodable.framework */; };
 		99FB3F912158C4A600ABEA31 /* MergePropertiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB3F902158C4A600ABEA31 /* MergePropertiesTests.swift */; };
 		99FB3F922158C4A600ABEA31 /* MergePropertiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB3F902158C4A600ABEA31 /* MergePropertiesTests.swift */; };
@@ -147,6 +150,7 @@
 		99BEE72D2154943E00985499 /* JSONtoCodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONtoCodableTests.swift; sourceTree = "<group>"; };
 		99BEE7372154D3B700985499 /* Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
 		99BEE73C2154E76300985499 /* NestingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NestingTests.swift; sourceTree = "<group>"; };
+		99C179D32160966800705243 /* MergeStructTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeStructTests.swift; sourceTree = "<group>"; };
 		99CD24D62153275700BB5C2A /* JSONtoCodable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSONtoCodable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		99CD24DE2153275800BB5C2A /* JSONtoCodable macOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "JSONtoCodable macOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		99FB3F902158C4A600ABEA31 /* MergePropertiesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergePropertiesTests.swift; sourceTree = "<group>"; };
@@ -279,6 +283,7 @@
 				99FB3FA72159E24500ABEA31 /* EscapeSequenceTests.swift */,
 				99127349215A3B0A00D8ECE1 /* SymbolsTests.swift */,
 				9912734D215A4A4100D8ECE1 /* ReservedWordsTests.swift */,
+				99C179D32160966800705243 /* MergeStructTests.swift */,
 			);
 			path = JSONtoCodableTests;
 			sourceTree = "<group>";
@@ -711,6 +716,7 @@
 				99FB3FA92159E24500ABEA31 /* EscapeSequenceTests.swift in Sources */,
 				99BEE6D92153A52200985499 /* LessParamsTests.swift in Sources */,
 				9912734B215A3B0A00D8ECE1 /* SymbolsTests.swift in Sources */,
+				99C179D52160966800705243 /* MergeStructTests.swift in Sources */,
 				99BEE6D62153A52200985499 /* CaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -766,6 +772,7 @@
 				99FB3FAA2159E24500ABEA31 /* EscapeSequenceTests.swift in Sources */,
 				99BEE7232153A5DA00985499 /* LessParamsTests.swift in Sources */,
 				9912734C215A3B0A00D8ECE1 /* SymbolsTests.swift in Sources */,
+				99C179D62160966800705243 /* MergeStructTests.swift in Sources */,
 				99BEE7202153A5DA00985499 /* CaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -804,6 +811,7 @@
 				99FB3FA82159E24500ABEA31 /* EscapeSequenceTests.swift in Sources */,
 				99BEE6AF215386BD00985499 /* CaseTests.swift in Sources */,
 				9912734A215A3B0A00D8ECE1 /* SymbolsTests.swift in Sources */,
+				99C179D42160966800705243 /* MergeStructTests.swift in Sources */,
 				99BEE6B62153A38C00985499 /* LessParamsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

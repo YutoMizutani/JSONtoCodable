@@ -24,9 +24,9 @@ class NestingTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let single1: String
-            let single2: String
+        public struct Result: Codable {
+            public let single1: String
+            public let single2: String
 
             private enum CodingKeys: String, CodingKey {
                 case single1 = "Single1"
@@ -49,13 +49,13 @@ class NestingTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let single1: String
-            let single2: Single2
-            let single3: String
+        public struct Result: Codable {
+            public let single1: String
+            public let single2: Single2
+            public let single3: String
 
-            struct Single2: Codable {
-                let double1: String
+            public struct Single2: Codable {
+                public let double1: String
 
                 private enum CodingKeys: String, CodingKey {
                     case double1 = "Double1"
@@ -88,18 +88,18 @@ class NestingTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let single1: String
-            let single2: Single2
-            let single3: String
+        public struct Result: Codable {
+            public let single1: String
+            public let single2: Single2
+            public let single3: String
 
-            struct Single2: Codable {
-                let double1: String
-                let double2: Double2
-                let double3: String
+            public struct Single2: Codable {
+                public let double1: String
+                public let double2: Double2
+                public let double3: String
 
-                struct Double2: Codable {
-                    let triple1: String
+                public struct Double2: Codable {
+                    public let triple1: String
 
                     private enum CodingKeys: String, CodingKey {
                         case triple1 = "Triple1"

@@ -23,8 +23,8 @@ class EscapeSequenceTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let hello: String
+        public struct Result: Codable {
+            public let hello: String
         }
         """
         let result: String? = try? self.base.generate(json)
@@ -39,9 +39,9 @@ class EscapeSequenceTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let hello: String
-            let hello2nd: String
+        public struct Result: Codable {
+            public let hello: String
+            public let hello2nd: String
         }
         """
         let result: String? = try? self.base.generate(json)

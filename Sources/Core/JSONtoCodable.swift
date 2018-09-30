@@ -30,14 +30,14 @@ public extension JSONtoCodable {
         self.config.indentType = .space(4)
         let property = try self.generateProperty(text)
         let duplicatedResult: String = self.createStructScope(property)
-        var result = removeDuplicated(duplicatedResult)
+        var result = mergeStructs(duplicatedResult)
         result = result.replacingOccurrences(of: self.config.indentType.rawValue, with: indentType.rawValue)
         return result
     }
 }
 
 extension JSONtoCodable {
-    func removeDuplicated(_ text: String) -> String {
+    func mergeStructs(_ text: String) -> String {
         let lineType: LineType = config.lineType
         let indentType = config.indentType
         let accessModifer = config.accessModifer
