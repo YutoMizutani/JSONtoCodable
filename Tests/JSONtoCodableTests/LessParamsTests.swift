@@ -21,8 +21,8 @@ class NoBracketTests: XCTestCase {
         "Hello": "World"
         """
         let expectation: String = """
-        struct Result: Codable {
-            let hello: String
+        public struct Result: Codable {
+            public let hello: String
 
             private enum CodingKeys: String, CodingKey {
                 case hello = "Hello"
@@ -38,8 +38,8 @@ class NoBracketTests: XCTestCase {
         {"Hello": "World"}
         """
         let expectation: String = """
-        struct Result: Codable {
-            let hello: String
+        public struct Result: Codable {
+            public let hello: String
 
             private enum CodingKeys: String, CodingKey {
                 case hello = "Hello"
@@ -53,8 +53,8 @@ class NoBracketTests: XCTestCase {
     func testBeginSingleSpaceAndNoBracket() {
         let json: String = " \"Hello\": \"World\""
         let expectation: String = """
-        struct Result: Codable {
-            let hello: String
+        public struct Result: Codable {
+            public let hello: String
 
             private enum CodingKeys: String, CodingKey {
                 case hello = "Hello"
@@ -68,8 +68,8 @@ class NoBracketTests: XCTestCase {
     func testBeginSingleSpaceAndNoLines() {
         let json: String = " {\"Hello\": \"World\"}"
         let expectation: String = """
-        struct Result: Codable {
-            let hello: String
+        public struct Result: Codable {
+            public let hello: String
 
             private enum CodingKeys: String, CodingKey {
                 case hello = "Hello"

@@ -24,9 +24,9 @@ class CaseTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let Hello: String
-            let HelloWorld: String
+        public struct Result: Codable {
+            public let Hello: String
+            public let HelloWorld: String
         }
         """
         self.base.config.caseType.variable = .pascal
@@ -42,9 +42,9 @@ class CaseTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let hello: String
-            let helloWorld: String
+        public struct Result: Codable {
+            public let hello: String
+            public let helloWorld: String
 
             private enum CodingKeys: String, CodingKey {
                 case hello = "Hello"
@@ -65,9 +65,9 @@ class CaseTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let hello: String
-            let hello_world: String
+        public struct Result: Codable {
+            public let hello: String
+            public let hello_world: String
 
             private enum CodingKeys: String, CodingKey {
                 case hello = "Hello"
@@ -88,9 +88,9 @@ class CaseTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let HELLO: String
-            let HELLO_WORLD: String
+        public struct Result: Codable {
+            public let HELLO: String
+            public let HELLO_WORLD: String
 
             private enum CodingKeys: String, CodingKey {
                 case HELLO = "Hello"

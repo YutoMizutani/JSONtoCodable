@@ -88,10 +88,10 @@ class MergePropertiesTests: XCTestCase {
         XCTAssertEqual(result!, expectation)
         let resultText: String = self.base.createStructScope(result!)
         let expectationText: String = """
-        struct Result: Codable {
-            let a: Int
-            let b: Int?
-            let c: Int?
+        public struct Result: Codable {
+            public let a: Int
+            public let b: Int?
+            public let c: Int?
         }
         """
         XCTAssertEqual(resultText, expectationText)
@@ -123,11 +123,11 @@ class MergePropertiesTests: XCTestCase {
         XCTAssertEqual(result!, expectation)
         let resultText: String = self.base.createStructScope(result!)
         let expectationText: String = """
-        struct Result: Codable {
-            let a: Int
-            let b: Int?
-            let c: Int?
-            let d: Int
+        public struct Result: Codable {
+            public let a: Int
+            public let b: Int?
+            public let c: Int?
+            public let d: Int
         }
         """
         XCTAssertEqual(resultText, expectationText)

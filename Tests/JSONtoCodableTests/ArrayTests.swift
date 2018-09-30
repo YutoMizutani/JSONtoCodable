@@ -23,8 +23,8 @@ class ArrayTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let a: [Any]
+        public struct Result: Codable {
+            public let a: [Any]
         }
         """
         let result: String? = try? self.base.generate(json)
@@ -38,8 +38,8 @@ class ArrayTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let a: [String]
+        public struct Result: Codable {
+            public let a: [String]
         }
         """
         let result: String? = try? self.base.generate(json)
@@ -57,8 +57,8 @@ class ArrayTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let a: [String]
+        public struct Result: Codable {
+            public let a: [String]
         }
         """
         let result: String? = try? self.base.generate(json)
@@ -72,8 +72,8 @@ class ArrayTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let a: [Int]
+        public struct Result: Codable {
+            public let a: [Int]
         }
         """
         let result: String? = try? self.base.generate(json)
@@ -91,8 +91,8 @@ class ArrayTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let a: [Int]
+        public struct Result: Codable {
+            public let a: [Int]
         }
         """
         let result: String? = try? self.base.generate(json)
@@ -106,8 +106,8 @@ class ArrayTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let a: [Any]
+        public struct Result: Codable {
+            public let a: [Any]
         }
         """
         let result: String? = try? self.base.generate(json)
@@ -121,8 +121,8 @@ class ArrayTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let a: [Any?]
+        public struct Result: Codable {
+            public let a: [Any?]
         }
         """
         let result: String? = try? self.base.generate(json)
@@ -141,8 +141,8 @@ class ArrayTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let a: [Any]
+        public struct Result: Codable {
+            public let a: [Any]
         }
         """
         let result: String? = try? self.base.generate(json)
@@ -162,8 +162,8 @@ class ArrayTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let a: [Any?]
+        public struct Result: Codable {
+            public let a: [Any?]
         }
         """
         let result: String? = try? self.base.generate(json)
@@ -184,9 +184,9 @@ class ArrayTests: XCTestCase {
         ]
         """
         let expectation: String = """
-        struct Result: Codable {
-            let a: Int
-            let b: Int
+        public struct Result: Codable {
+            public let a: Int
+            public let b: Int
         }
         """
         let result: String? = try? self.base.generate(json)
@@ -207,10 +207,10 @@ class ArrayTests: XCTestCase {
         ]
         """
         let expectation: String = """
-        struct Result: Codable {
-            let a: Int
-            let b: Int?
-            let c: Int?
+        public struct Result: Codable {
+            public let a: Int
+            public let b: Int?
+            public let c: Int?
         }
         """
         let result: String? = try? self.base.generate(json)
@@ -231,9 +231,9 @@ class ArrayTests: XCTestCase {
         ]
         """
         let expectation: String = """
-        struct Result: Codable {
-            let a: Int
-            let b: Int
+        public struct Result: Codable {
+            public let a: Int
+            public let b: Int
 
             private enum CodingKeys: String, CodingKey {
                 case a = "A"
@@ -259,10 +259,10 @@ class ArrayTests: XCTestCase {
         ]
         """
         let expectation: String = """
-        struct Result: Codable {
-            let a: Int
-            let b: Int?
-            let c: Int?
+        public struct Result: Codable {
+            public let a: Int
+            public let b: Int?
+            public let c: Int?
 
             private enum CodingKeys: String, CodingKey {
                 case a = "A"
@@ -289,11 +289,11 @@ class ArrayTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let array: [Array]
+        public struct Result: Codable {
+            public let array: [Array]
 
-            struct Array: Codable {
-                let a: Int
+            public struct Array: Codable {
+                public let a: Int
             }
         }
         """
@@ -317,13 +317,13 @@ class ArrayTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let array: [Array]
+        public struct Result: Codable {
+            public let array: [Array]
 
-            struct Array: Codable {
-                let a: Int
-                let b: Int?
-                let c: Int?
+            public struct Array: Codable {
+                public let a: Int
+                public let b: Int?
+                public let c: Int?
             }
         }
         """
@@ -345,11 +345,11 @@ class ArrayTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let array: [Array]
+        public struct Result: Codable {
+            public let array: [Array]
 
-            struct Array: Codable {
-                let a: Int
+            public struct Array: Codable {
+                public let a: Int
             }
 
             private enum CodingKeys: String, CodingKey {
@@ -377,13 +377,13 @@ class ArrayTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let array: [Array]
+        public struct Result: Codable {
+            public let array: [Array]
 
-            struct Array: Codable {
-                let a: Int
-                let b: Int?
-                let c: Int?
+            public struct Array: Codable {
+                public let a: Int
+                public let b: Int?
+                public let c: Int?
             }
 
             private enum CodingKeys: String, CodingKey {
@@ -409,11 +409,11 @@ class ArrayTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let array: [Array]
+        public struct Result: Codable {
+            public let array: [Array]
 
-            struct Array: Codable {
-                let a: Int
+            public struct Array: Codable {
+                public let a: Int
 
                 private enum CodingKeys: String, CodingKey {
                     case a = "A"
@@ -441,13 +441,13 @@ class ArrayTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let array: [Array]
+        public struct Result: Codable {
+            public let array: [Array]
 
-            struct Array: Codable {
-                let a: Int
-                let b: Int?
-                let c: Int?
+            public struct Array: Codable {
+                public let a: Int
+                public let b: Int?
+                public let c: Int?
 
                 private enum CodingKeys: String, CodingKey {
                     case a = "A"
@@ -477,13 +477,13 @@ class ArrayTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let array: [Array]
+        public struct Result: Codable {
+            public let array: [Array]
 
-            struct Array: Codable {
-                let a: Int
-                let b: Int?
-                let c: Int?
+            public struct Array: Codable {
+                public let a: Int
+                public let b: Int?
+                public let c: Int?
 
                 private enum CodingKeys: String, CodingKey {
                     case a = "A"
@@ -517,13 +517,13 @@ class ArrayTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let array: [Array]
+        public struct Result: Codable {
+            public let array: [Array]
 
-            struct Array: Codable {
-                let a: Int
-                let b: [Int]?
-                let c: [Int]?
+            public struct Array: Codable {
+                public let a: Int
+                public let b: [Int]?
+                public let c: [Int]?
 
                 private enum CodingKeys: String, CodingKey {
                     case a = "A"
@@ -572,14 +572,14 @@ class ArrayTests: XCTestCase {
         ]
         """
         let expectation: String = """
-        struct Result: Codable {
-            let test: String?
-            let array: [Array]
+        public struct Result: Codable {
+            public let test: String?
+            public let array: [Array]
 
-            struct Array: Codable {
-                let a: Int
-                let b: Int?
-                let c: Int?
+            public struct Array: Codable {
+                public let a: Int
+                public let b: Int?
+                public let c: Int?
 
                 private enum CodingKeys: String, CodingKey {
                     case a = "A"
@@ -611,11 +611,11 @@ class ArrayTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let object: Object
+        public struct Result: Codable {
+            public let object: Object
 
-            struct Object: Codable {
-                let array: [Int]
+            public struct Object: Codable {
+                public let array: [Int]
             }
 
             private enum CodingKeys: String, CodingKey {
@@ -647,15 +647,15 @@ class ArrayTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let array: [Array]
+        public struct Result: Codable {
+            public let array: [Array]
 
-            struct Array: Codable {
-                let number: Int
-                let inArrayObject: InArrayObject
+            public struct Array: Codable {
+                public let number: Int
+                public let inArrayObject: InArrayObject
 
-                struct InArrayObject: Codable {
-                    let hello: String
+                public struct InArrayObject: Codable {
+                    public let hello: String
                 }
 
                 private enum CodingKeys: String, CodingKey {
@@ -691,18 +691,18 @@ class ArrayTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let object: Object
+        public struct Result: Codable {
+            public let object: Object
 
-            struct Object: Codable {
-                let array: [Array]
+            public struct Object: Codable {
+                public let array: [Array]
 
-                struct Array: Codable {
-                    let inArrayObject: InArrayObject
-                    let number: Int
+                public struct Array: Codable {
+                    public let inArrayObject: InArrayObject
+                    public let number: Int
 
-                    struct InArrayObject: Codable {
-                        let hello: String
+                    public struct InArrayObject: Codable {
+                        public let hello: String
                     }
 
                     private enum CodingKeys: String, CodingKey {
@@ -740,15 +740,15 @@ class ArrayTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let array: [Array]
+        public struct Result: Codable {
+            public let array: [Array]
 
-            struct Array: Codable {
-                let inArrayObjectWithOptionals: InArrayObjectWithOptionals
+            public struct Array: Codable {
+                public let inArrayObjectWithOptionals: InArrayObjectWithOptionals
 
-                struct InArrayObjectWithOptionals: Codable {
-                    let hello: String
-                    let number: Int?
+                public struct InArrayObjectWithOptionals: Codable {
+                    public let hello: String
+                    public let number: Int?
                 }
 
                 private enum CodingKeys: String, CodingKey {
@@ -782,19 +782,19 @@ class ArrayTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let array: [Array]
+        public struct Result: Codable {
+            public let array: [Array]
 
-            struct Array: Codable {
-                let objFirst: ObjFirst
-                let objSecond: ObjSecond?
+            public struct Array: Codable {
+                public let objFirst: ObjFirst
+                public let objSecond: ObjSecond?
 
-                struct ObjFirst: Codable {
-                    let hello: String
+                public struct ObjFirst: Codable {
+                    public let hello: String
                 }
 
-                struct ObjSecond: Codable {
-                    let hello: String
+                public struct ObjSecond: Codable {
+                    public let hello: String
                 }
 
                 private enum CodingKeys: String, CodingKey {
@@ -827,15 +827,15 @@ class ArrayTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let array: [Array]
+        public struct Result: Codable {
+            public let array: [Array]
 
-            struct Array: Codable {
-                let inArrayObjectWithOptionals: InArrayObjectWithOptionals
+            public struct Array: Codable {
+                public let inArrayObjectWithOptionals: InArrayObjectWithOptionals
 
-                struct InArrayObjectWithOptionals: Codable {
-                    let hello: String
-                    let number: Int?
+                public struct InArrayObjectWithOptionals: Codable {
+                    public let hello: String
+                    public let number: Int?
 
                     private enum CodingKeys: String, CodingKey {
                         case hello
@@ -872,18 +872,18 @@ class ArrayTests: XCTestCase {
         }
         """
         let expectation: String = """
-        struct Result: Codable {
-            let object: Object
+        public struct Result: Codable {
+            public let object: Object
 
-            struct Object: Codable {
-                let array: [Array]
+            public struct Object: Codable {
+                public let array: [Array]
 
-                struct Array: Codable {
-                    let number: Int
-                    let optionalObject: OptionalObject?
+                public struct Array: Codable {
+                    public let number: Int
+                    public let optionalObject: OptionalObject?
 
-                    struct OptionalObject: Codable {
-                        let hello: String
+                    public struct OptionalObject: Codable {
+                        public let hello: String
                     }
 
                     private enum CodingKeys: String, CodingKey {

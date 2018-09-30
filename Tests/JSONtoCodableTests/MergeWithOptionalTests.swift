@@ -27,7 +27,7 @@ class MergeWithOptionalTests: XCTestCase {
         let seed: [[String]] = [
             ["a", "b"],
             ["a", "c"],
-            ]
+        ]
         let expectation: [String] = ["a", "b?", "c?"]
         let result: [String] = seed.mergeWithOptional()
         XCTAssertEqual(result, expectation)
@@ -37,7 +37,7 @@ class MergeWithOptionalTests: XCTestCase {
         let seed: [[String]] = [
             [],
             ["a", "b"],
-            ]
+        ]
         let expectation: [String] = ["a?", "b?"]
         let result: [String] = seed.mergeWithOptional()
         XCTAssertEqual(result, expectation)
@@ -47,7 +47,7 @@ class MergeWithOptionalTests: XCTestCase {
         let seed: [[String]] = [
             ["a", "b"],
             [],
-            ]
+        ]
         let expectation: [String] = ["a?", "b?"]
         let result: [String] = seed.mergeWithOptional()
         XCTAssertEqual(result, expectation)
@@ -57,7 +57,7 @@ class MergeWithOptionalTests: XCTestCase {
         let seed: [[String]] = [
             ["a", "b", "d"],
             ["a", "c", "d"],
-            ]
+        ]
         let expectation: [String] = ["a", "b?", "c?", "d"]
         let result: [String] = seed.mergeWithOptional()
         XCTAssertEqual(result, expectation)
@@ -68,7 +68,7 @@ class MergeWithOptionalTests: XCTestCase {
             ["a", "c", "d"],
             ["a", "b", "d"],
             ["a", "e", "d"],
-            ]
+        ]
         let expectation: [String] = ["a", "c?", "b?", "e?", "d"]
         let result: [String] = seed.mergeWithOptional()
         XCTAssertEqual(result, expectation)
@@ -79,7 +79,7 @@ class MergeWithOptionalTests: XCTestCase {
             ["a"],
             ["b", "d"],
             ["e", "d"],
-            ]
+        ]
         let expectation: [String] = ["a?", "b?", "e?", "d?"]
         let result: [String] = seed.mergeWithOptional()
         XCTAssertEqual(result, expectation)
@@ -90,7 +90,7 @@ class MergeWithOptionalTests: XCTestCase {
             ["a", "b", "c"],
             ["d", "e", "f"],
             ["g", "h", "i"],
-            ]
+        ]
         let expectation: [String] = ["a?", "b?", "c?", "d?", "e?", "f?", "g?", "h?", "i?"]
         let result: [String] = seed.mergeWithOptional()
         XCTAssertEqual(result, expectation)
