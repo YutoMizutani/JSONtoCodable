@@ -520,59 +520,6 @@ extension JSONtoCodable {
         return [prefix, contents, suffix].joined(separator: line)
     }
 
-    func mergeStructs(_ structs: [String]) -> [String] {
-        let lineType = config.lineType
-        let indentType = config.indentType
-
-        func merge(_ lhs: String, _ rhs: String) -> String? {
-            func split(_ text: String) -> [String] {
-                let replacedLine: Character = "\n"
-                return text.replacingOccurrences(of: lineType.rawValue, with: "\(replacedLine)")
-                    .split(separator: replacedLine)
-                    .map { $0.replacingOccurrences(of: "\(replacedLine)", with: lineType.rawValue) }
-            }
-            var lhs: [String] = split(lhs)
-            var rhs: [String] = split(rhs)
-
-            guard lhs.count >= 2, lhs.first == rhs.first, lhs.last == rhs.last else { return nil }
-            let prefix = [lhs.first!]
-            let suffix = [lhs.last!]
-            lhs = Array(lhs[1..<lhs.count - 1])
-            rhs = Array(rhs[1..<rhs.count - 1])
-
-            var rawContents: [String] = [lhs, rhs].mergeWithOptional()
-            FixFormat: for (i, e) in rawContents.enumerated() {
-                // Remove optional mark in CodingKeys and Brackets
-                if e.last == "?" && !e.contains("let") {
-                    rawContents[i] = String(e[e.startIndex..<e.index(before: e.endIndex)])
-                }
-                // Add lines on CodingKeys
-                if rawContents[i].contains("enum CodingKeys: String, CodingKey {") || rawContents[i].contains(": Codable {") {
-                    rawContents[i] = lineType.rawValue + rawContents[i]
-                }
-            }
-
-            return (prefix + rawContents + suffix).joined(separator: lineType.rawValue)
-        }
-
-        guard !structs.isEmpty else { return structs }
-
-        var result: [String] = [structs.first!]
-        for r in Array(structs[1..<structs.count]) {
-            for (ri, re) in result.enumerated() {
-                if let mergedStruct = merge(re, r) {
-                    result[ri] = mergedStruct
-                    break
-                }
-                if ri == result.count - 1 {
-                    result.append(r)
-                }
-            }
-        }
-
-        return result
-    }
-
     func merge(_ properties: [Property]) -> Property? {
         guard !properties.isEmpty else { return nil }
 
