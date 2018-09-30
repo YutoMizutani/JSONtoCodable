@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "JSONtoCodable"
-  s.version          = "1.3.3"
+  s.version          = "2.0.0"
   s.summary          = "A generating tool from Raw JSON to Codable"
 
   s.description      = <<-DESC
