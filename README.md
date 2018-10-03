@@ -30,7 +30,7 @@ From JSON,
 }
 ```
 
-To Codable.
+to Codable.
 
 ```swift
 public struct Result: Codable {
