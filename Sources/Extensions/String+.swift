@@ -40,7 +40,6 @@ extension String {
     private func escapedByReservedWords() -> String {
         let declarationsAndTypeKeywords: [String] = [
             "class",
-            "destructor",
             "extension",
             "import",
             "init",
@@ -49,8 +48,8 @@ extension String {
             "protocol",
             "struct",
             "subscript",
-            "Type",
             "typealias",
+            "let",
             "var",
             "where"
         ]
@@ -66,17 +65,14 @@ extension String {
             "for",
             "return",
             "switch",
-            "then",
             "while"
         ]
         let expressions: [String] = [
             "as",
             "is",
-            "new",
             "super",
             "self",
             "Self",
-            "type",
             "__COLUMN__",
             "__FILE__",
             "__LINE__"

@@ -26,7 +26,6 @@ class ReservedWordsTests: XCTestCase {
         let json: String = """
         {
             "class": "Hello, world!!"
-            "destructor": "Hello, world!!"
             "extension": "Hello, world!!"
             "import": "Hello, world!!"
             "init": "Hello, world!!"
@@ -36,6 +35,7 @@ class ReservedWordsTests: XCTestCase {
             "struct": "Hello, world!!"
             "subscript": "Hello, world!!"
             "typealias": "Hello, world!!"
+            "let": "Hello, world!!"
             "var": "Hello, world!!"
             "where": "Hello, world!!"
         }
@@ -43,7 +43,6 @@ class ReservedWordsTests: XCTestCase {
         let expectation: String = """
         public struct Result: Codable {
             public let `class`: String
-            public let `destructor`: String
             public let `extension`: String
             public let `import`: String
             public let `init`: String
@@ -53,26 +52,11 @@ class ReservedWordsTests: XCTestCase {
             public let `struct`: String
             public let `subscript`: String
             public let `typealias`: String
+            public let `let`: String
             public let `var`: String
             public let `where`: String
         }
         """
-        let result: String? = try? self.base.generate(json)
-        XCTAssertEqual(result, expectation)
-    }
-
-    func testUpperDeclarationsAndTypeKeywords() {
-        let json: String = """
-        {
-            "Type": "Hello, world!!"
-        }
-        """
-        let expectation: String = """
-        public struct Result: Codable {
-            public let `Type`: String
-        }
-        """
-        self.base.config.caseType.variable = .pascal
         let result: String? = try? self.base.generate(json)
         XCTAssertEqual(result, expectation)
     }
@@ -91,7 +75,6 @@ class ReservedWordsTests: XCTestCase {
             "for": "Hello, world!!"
             "return": "Hello, world!!"
             "switch": "Hello, world!!"
-            "then": "Hello, world!!"
             "while": "Hello, world!!"
         }
         """
@@ -108,7 +91,6 @@ class ReservedWordsTests: XCTestCase {
             public let `for`: String
             public let `return`: String
             public let `switch`: String
-            public let `then`: String
             public let `while`: String
         }
         """
@@ -121,20 +103,16 @@ class ReservedWordsTests: XCTestCase {
         {
             "as": "Hello, world!!"
             "is": "Hello, world!!"
-            "new": "Hello, world!!"
             "super": "Hello, world!!"
             "self": "Hello, world!!"
-            "type": "Hello, world!!"
         }
         """
         let expectation: String = """
         public struct Result: Codable {
             public let `as`: String
             public let `is`: String
-            public let `new`: String
             public let `super`: String
             public let `self`: String
-            public let `type`: String
         }
         """
         let result: String? = try? self.base.generate(json)
