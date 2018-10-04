@@ -133,7 +133,7 @@ struct Result: Codable {
 ```swift
 let config = Config()
 config.name = "Result" // struct Result: Codable {}
-config.accessModifer = AccessModifer.public // public struct
+config.accessModifier = AccessModifier.public // public struct
 config.caseType = (variable: CaseType.camel, struct: CaseType.pascal)
 config.lineType = LineType.lineFeed
 config.indentType = IndentType.space(4)

@@ -14,9 +14,9 @@ class Property: Equatable {
     var codingKeys: [String] = []
     let suffix: String?
 
-    init(_ key: String, accessModifer accessModiferType: AccessModifer = .default) {
-        let accessModifer: String = accessModiferType == .default ? "" : "\(accessModiferType.rawValue) "
-        self.prefix = "\(accessModifer)struct \(key): Codable {"
+    init(_ key: String, accessModifier accessModifierType: AccessModifier = .default) {
+        let accessModifier: String = accessModifierType == .default ? "" : "\(accessModifierType.rawValue) "
+        self.prefix = "\(accessModifier)struct \(key): Codable {"
         self.suffix = "}"
     }
 
