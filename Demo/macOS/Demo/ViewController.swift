@@ -28,7 +28,7 @@ class ViewController: NSViewController {
 
 private extension ViewController {
     private func configureSetting() {
-        self.codable.config.accessModifer = .public
+        self.codable.config.accessModifier = .public
     }
 
     private func configureView() {
