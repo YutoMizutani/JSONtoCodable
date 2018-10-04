@@ -54,18 +54,18 @@ class JSONtoCodableTests: XCTestCase {
         XCTAssertEqual(Property(key).prefix, expectation)
         key = "HelloWorld"
         expectation = "fileprivate struct HelloWorld: Codable {"
-        XCTAssertEqual(Property(key, accessModifer: .fileprivate).prefix, expectation)
+        XCTAssertEqual(Property(key, accessModifier: .fileprivate).prefix, expectation)
 
         // NOTE: There will occur compile errors when create the .swift file, but it is not interested this method
         key = "1234"
         expectation = "open struct 1234: Codable {"
-        XCTAssertEqual(Property(key, accessModifer: .open).prefix, expectation)
+        XCTAssertEqual(Property(key, accessModifier: .open).prefix, expectation)
     }
 
     func testCreateImmutable() {
         var seed: (key: String, value: String, type: Type?)
         var expectation: String
-        self.base.config.accessModifer = .default
+        self.base.config.accessModifier = .default
 
         seed = ("hello", "", .string)
         expectation = "let hello: String"
@@ -169,7 +169,7 @@ class JSONtoCodableTests: XCTestCase {
         var property: Property
         var expectation: String
 
-        self.base.config.accessModifer = .default
+        self.base.config.accessModifier = .default
         values = ["Single1", "Single2"]
         property = Property(structTitle)
         property.immutables = values.map { (key: $0, "", type: .string) }.map { self.base.createImmutable($0)! }
@@ -187,7 +187,7 @@ class JSONtoCodableTests: XCTestCase {
         """
         XCTAssertEqual(self.base.createStructScope(property), expectation)
 
-        self.base.config.accessModifer = .default
+        self.base.config.accessModifier = .default
         values = ["single1", "single2", "single3"]
         property = Property(structTitle)
         property.immutables = values.map { (key: $0, "", type: .string) }.map { self.base.createImmutable($0)! }
@@ -202,7 +202,7 @@ class JSONtoCodableTests: XCTestCase {
 
         var internalStructString: String
 
-        self.base.config.accessModifer = .default
+        self.base.config.accessModifier = .default
         values = ["Single1", "Single2", "Single3"]
         property = Property(structTitle)
         internalStructString = "struct Single2: Codable {\n    let double1: String\n\n    private enum CodingKeys: String, CodingKey {\n        case double1 = \"Double1\"\n    }\n}"
@@ -233,7 +233,7 @@ class JSONtoCodableTests: XCTestCase {
         """
         XCTAssertEqual(self.base.createStructScope(property), expectation)
 
-        self.base.config.accessModifer = .default
+        self.base.config.accessModifier = .default
         values = ["Single1", "Single2", "Single3"]
         property = Property(structTitle)
         internalStructString = "struct Single2: Codable {\n    let double1: String\n    let double2: Double2\n    let double3: String\n\n    struct Double2: Codable {\n        let triple1: String\n\n        private enum CodingKeys: String, CodingKey {\n            case triple1 = \"Triple1\"\n        }\n    }\n\n    private enum CodingKeys: String, CodingKey {\n        case double1 = \"Double1\"\n        case double2 = \"Double2\"\n        case double3 = \"Double3\"\n    }\n}"

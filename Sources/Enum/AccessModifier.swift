@@ -1,5 +1,5 @@
 //
-//  AccessModifer.swift
+//  AccessModifier.swift
 //  JSONtoCodable
 //
 //  Created by Yuto Mizutani on 2018/09/19.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum AccessModifer: String {
+public enum AccessModifier: String {
     case `default` = ""
     case `private`, `fileprivate`, `internal`, `public`, open
 }

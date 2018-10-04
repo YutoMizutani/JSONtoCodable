@@ -40,7 +40,7 @@ extension JSONtoCodable {
     func mergeStructs(_ text: String) -> String {
         let lineType: LineType = config.lineType
         let indentType = config.indentType
-        let accessModifer = config.accessModifer
+        let accessModifier = config.accessModifier
 
         let replacedLine: Character = "\n"
         let array = text.replacingOccurrences(of: lineType.rawValue, with: "\(replacedLine)").components(separatedBy: .newlines)
@@ -66,14 +66,14 @@ extension JSONtoCodable {
             var directory = directory
             let array = directory.contents
             var ignoreLine: Int = 0
-            let accessModiferText = accessModifer.rawValue != "" ? "\(accessModifer.rawValue) " : ""
+            let accessModifierText = accessModifier.rawValue != "" ? "\(accessModifier.rawValue) " : ""
             var hasStruct: Bool = false
 
             for (i, e) in array.enumerated() {
                 guard i >= ignoreLine else { continue }
-                if e.hasSuffix(": Codable {") && e.replacingOccurrences(of: indentType.rawValue, with: "").hasPrefix("\(accessModiferText)struct") {
+                if e.hasSuffix(": Codable {") && e.replacingOccurrences(of: indentType.rawValue, with: "").hasPrefix("\(accessModifierText)struct") {
                     hasStruct = true
-                    let indents: String = String(e[e.startIndex..<e.replacingOccurrences(of: accessModiferText, with: "").range(of: "struct")!.lowerBound])
+                    let indents: String = String(e[e.startIndex..<e.replacingOccurrences(of: accessModifierText, with: "").range(of: "struct")!.lowerBound])
                     let bracket: String = "\(indents)}"
                     for (si, se) in array.enumerated() {
                         guard si > i else { continue }
@@ -346,7 +346,7 @@ extension JSONtoCodable {
             try endValue()
 
             // add property
-            let property = Property(type, accessModifer: config.accessModifer)
+            let property = Property(type, accessModifier: config.accessModifier)
             properties.append(property)
             state = .prepareKey
         }
@@ -357,7 +357,7 @@ extension JSONtoCodable {
             properties[properties.count - 1].structs.append(structString)
         }
 
-        properties.append(Property(config.name, accessModifer: config.accessModifer))
+        properties.append(Property(config.name, accessModifier: config.accessModifier))
         for character in text {
             switch state {
             case .prepareKey:
@@ -472,10 +472,10 @@ extension JSONtoCodable {
 
     func createImmutable(_ json: RawJSON) -> String? {
         guard let type = json.type?.rawValue else { return nil }
-        let accessModifer: AccessModifer = config.accessModifer
+        let accessModifier: AccessModifier = config.accessModifier
         let caseTypes = config.caseType
 
-        let prefix: String = accessModifer == .default ? "" : "\(accessModifer.rawValue) "
+        let prefix: String = accessModifier == .default ? "" : "\(accessModifier.rawValue) "
         let key: String = json.key.updateCased(with: caseTypes.variable)
         return "\(prefix)let \(key): \(type)"
     }
