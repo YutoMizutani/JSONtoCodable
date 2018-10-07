@@ -17,14 +17,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		99944935215547BE0089A08A /* PBXContainerItemProxy */ = {
+		99944940215547BE0089A08A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9994491A215547BC0089A08A /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 99944921215547BC0089A08A;
 			remoteInfo = Demo;
 		};
-		99944940215547BE0089A08A /* PBXContainerItemProxy */ = {
+		99E156DC2169FB2A00AC4F07 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9994491A215547BC0089A08A /* Project object */;
 			proxyType = 1;
@@ -35,7 +35,7 @@
 
 /* Begin PBXFileReference section */
 		484E3377DE3DA9DEED77EFC2 /* Pods_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		99944922215547BC0089A08A /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		99944922215547BC0089A08A /* JSONtoCodable Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JSONtoCodable Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		99944925215547BC0089A08A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99944927215547BC0089A08A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		99944929215547BD0089A08A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -102,7 +102,7 @@
 		99944923215547BC0089A08A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				99944922215547BC0089A08A /* Demo.app */,
+				99944922215547BC0089A08A /* JSONtoCodable Demo.app */,
 				99944934215547BE0089A08A /* DemoTests.xctest */,
 				9994493F215547BE0089A08A /* DemoUITests.xctest */,
 			);
@@ -167,7 +167,7 @@
 			);
 			name = Demo;
 			productName = Demo;
-			productReference = 99944922215547BC0089A08A /* Demo.app */;
+			productReference = 99944922215547BC0089A08A /* JSONtoCodable Demo.app */;
 			productType = "com.apple.product-type.application";
 		};
 		99944933215547BE0089A08A /* DemoTests */ = {
@@ -181,7 +181,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				99944936215547BE0089A08A /* PBXTargetDependency */,
+				99E156DD2169FB2A00AC4F07 /* PBXTargetDependency */,
 			);
 			name = DemoTests;
 			productName = DemoTests;
@@ -343,15 +343,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		99944936215547BE0089A08A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 99944921215547BC0089A08A /* Demo */;
-			targetProxy = 99944935215547BE0089A08A /* PBXContainerItemProxy */;
-		};
 		99944941215547BE0089A08A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 99944921215547BC0089A08A /* Demo */;
 			targetProxy = 99944940215547BE0089A08A /* PBXContainerItemProxy */;
+		};
+		99E156DD2169FB2A00AC4F07 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 99944921215547BC0089A08A /* Demo */;
+			targetProxy = 99E156DC2169FB2A00AC4F07 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -496,7 +496,7 @@
 					"@executable_path/../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ym.Demo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "JSONtoCodable Demo";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 			};
@@ -518,7 +518,7 @@
 					"@executable_path/../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ym.Demo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "JSONtoCodable Demo";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 			};
@@ -541,7 +541,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ym.DemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Demo.app/Contents/MacOS/Demo";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JSONtoCodable Demo.app/Contents/MacOS/JSONtoCodable Demo";
 			};
 			name = Debug;
 		};
@@ -562,7 +562,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ym.DemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Demo.app/Contents/MacOS/Demo";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JSONtoCodable Demo.app/Contents/MacOS/JSONtoCodable Demo";
 			};
 			name = Release;
 		};
