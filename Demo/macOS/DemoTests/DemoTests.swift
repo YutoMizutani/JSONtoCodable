@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import Demo
+@testable import JSONtoCodable_Demo
 
 class DemoTests: XCTestCase {
     
