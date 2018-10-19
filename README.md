@@ -9,6 +9,8 @@
 
 **JSONtoCodable** is a generating tool from Raw JSON to Codable (Swift4) text written in Swift4.
 
+Qiita: [JSONからCodable化されたstructを自動生成するツールを作った話 - Qiita](https://qiita.com/YutoMizutani/items/106cae55091f26bba641)
+
 ![demo_macos.png](https://raw.githubusercontent.com/YutoMizutani/JSONtoCodable/media/media/demo_macos.png)
 
 ## TL;DR
