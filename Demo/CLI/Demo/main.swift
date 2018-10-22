@@ -9,10 +9,20 @@
 import JSONtoCodable
 
 let codable = JSONtoCodable()
+let argv = ProcessInfo.processInfo.arguments
 
-let args = ProcessInfo.processInfo.arguments
+let args = Array(argv[1..<argv.count])
 for (i, e) in args.enumerated() {
     switch e {
+
+    case "-h", "help":
+        if i + 1 < args.count {
+            helpCommand(args[i + 1])
+        } else {
+            help()
+        }
+        exit(EXIT_SUCCESS)
+
     // Struct name
     case "-n", "--name":
         if i + 1 < args.count {
@@ -48,7 +58,10 @@ for (i, e) in args.enumerated() {
             let indentType = IndentType(args[i + 1]) {
             codable.config.indentType = indentType
         }
+
     default:
+        print("Error: Unknown command: \(e)")
+        exit(EXIT_FAILURE)
         break
     }
 }
@@ -57,9 +70,12 @@ if let input = String(data: FileHandle.standardInput.availableData, encoding: .u
     do {
         let result = try codable.generate(input)
         print(result)
+        exit(EXIT_SUCCESS)
     } catch JSONError.wrongFormat {
         print("Wrong JSON format!!")
+        exit(EXIT_FAILURE)
     } catch let e {
         print(e.localizedDescription)
+        exit(EXIT_FAILURE)
     }
 }

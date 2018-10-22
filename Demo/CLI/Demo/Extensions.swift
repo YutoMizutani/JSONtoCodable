@@ -27,6 +27,23 @@ extension AccessModifier {
             return nil
         }
     }
+
+    var parameterString: String {
+        switch self {
+        case .default:
+            return "default"
+        case .private:
+            return "private"
+        case .fileprivate:
+            return "fileprivate"
+        case .internal:
+            return "internal"
+        case .public:
+            return "public"
+        case .open:
+            return "open"
+        }
+    }
 }
 
 extension CaseType {
@@ -38,10 +55,23 @@ extension CaseType {
             self = .camel
         case "sn", "snake":
             self = .snake
-        case "ss", "screamingSnake":
+        case "ss", "screaming-snake":
             self = .screamingSnake
         default:
             return nil
+        }
+    }
+
+    var parameterString: String {
+        switch self {
+        case .pascal:
+            return "PascalCase"
+        case .camel:
+            return "camelCase"
+        case .snake:
+            return "snake_case"
+        case .screamingSnake:
+            return "SCREAMING_SNAKE_CASE"
         }
     }
 }
@@ -49,14 +79,25 @@ extension CaseType {
 extension LineType {
     init?(_ text: String) {
         switch text {
-        case "\n", "n", "lineFeed":
+        case "\n", "\\n", "n", "line-feed":
             self = .lineFeed
-        case "\r", "r", "carriageReturn":
+        case "\r", "\\r", "r", "carriage-return":
             self = .carriageReturn
-        case "\r\n", "rn", "both":
+        case "\r\n", "\\r\\n", "rn", "both":
             self = .both
         default:
             return nil
+        }
+    }
+
+    var parameterString: String {
+        switch self {
+        case .lineFeed:
+            return "Line Feed (LF)"
+        case .carriageReturn:
+            return "Carriage Return (CR)"
+        case .both:
+            return "Both (CRLF)"
         }
     }
 }
@@ -72,5 +113,14 @@ extension IndentType {
         }
 
         return nil
+    }
+
+    var parameterString: String {
+        switch self {
+        case .space(let n):
+            return "\(n) spaces"
+        case .tab(let n):
+            return "\(n) tabs"
+        }
     }
 }
