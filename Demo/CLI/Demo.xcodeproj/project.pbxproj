@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		31BCA6483BCCAC15771437EB /* libPods-Demo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4154A9756B29452622762EC /* libPods-Demo.a */; };
+		991F0544217DC3D500BB31B6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991F0543217DC3D500BB31B6 /* Extensions.swift */; };
+		991F0546217DCB5600BB31B6 /* Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991F0545217DCB5600BB31B6 /* Help.swift */; };
 		99944952215699B70089A08A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99944951215699B70089A08A /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -25,8 +27,10 @@
 
 /* Begin PBXFileReference section */
 		55DE7E3F6CF79705B8FCD524 /* Pods-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Demo/Pods-Demo.release.xcconfig"; sourceTree = "<group>"; };
+		991F0543217DC3D500BB31B6 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		991F0545217DCB5600BB31B6 /* Help.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Help.swift; sourceTree = "<group>"; };
 		99944951215699B70089A08A /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		99BEE74921551B0900985499 /* Demo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Demo; sourceTree = BUILT_PRODUCTS_DIR; };
+		99BEE74921551B0900985499 /* jc */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = jc; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4154A9756B29452622762EC /* libPods-Demo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Demo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE16CC36B1FD1647733A32E4 /* Pods-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Demo/Pods-Demo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,7 +77,7 @@
 		99BEE74A21551B0900985499 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				99BEE74921551B0900985499 /* Demo */,
+				99BEE74921551B0900985499 /* jc */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -82,6 +86,8 @@
 			isa = PBXGroup;
 			children = (
 				99944951215699B70089A08A /* main.swift */,
+				991F0543217DC3D500BB31B6 /* Extensions.swift */,
+				991F0545217DCB5600BB31B6 /* Help.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -104,7 +110,7 @@
 			);
 			name = Demo;
 			productName = Demo;
-			productReference = 99BEE74921551B0900985499 /* Demo */;
+			productReference = 99BEE74921551B0900985499 /* jc */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -166,6 +172,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				99944952215699B70089A08A /* main.swift in Sources */,
+				991F0544217DC3D500BB31B6 /* Extensions.swift in Sources */,
+				991F0546217DCB5600BB31B6 /* Help.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,7 +300,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y3FSN97W3M;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = jc;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 			};
@@ -305,7 +313,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y3FSN97W3M;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = jc;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 			};

@@ -20,9 +20,10 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
             name: "JSONtoCodable",
-            dependencies: []),
+            path: "Sources"),
         .testTarget(
             name: "JSONtoCodableTests",
-            dependencies: ["JSONtoCodable"]),
+            dependencies: ["JSONtoCodable"],
+            path: "Tests"),
     ]
 )

@@ -6,75 +6,76 @@
 //  Copyright © 2018 Yuto Mizutani. All rights reserved.
 //
 
-import Foundation
 import JSONtoCodable
 
 let codable = JSONtoCodable()
-let wait: Double = 0.05
-var input: String?
-var date = Date()
+let argv = ProcessInfo.processInfo.arguments
 
-// MARK: - methods
+let args = Array(argv[1..<argv.count])
+for (i, e) in args.enumerated() {
+    switch e {
 
-/// Copyright
-func copyright() {
-    print("JSONtoCodable - CLI Demo")
-    print("Copyright © 2018 Yuto Mizutani.")
-    print("This software is released under the MIT License.")
-    print()
+    case "-h", "help":
+        if i + 1 < args.count {
+            helpCommand(args[i + 1])
+        } else {
+            help()
+        }
+        exit(EXIT_SUCCESS)
+
+    // Struct name
+    case "-n", "--name":
+        if i + 1 < args.count {
+            codable.config.name = args[i + 1]
+        }
+    // AccessModifier
+    case "-a", "--access-modifier":
+        if i + 1 < args.count,
+            let accessModifier = AccessModifier(args[i + 1]) {
+            codable.config.accessModifier = accessModifier
+        }
+    // caseType: variable
+    case "-cv", "--case-variable":
+        if i + 1 < args.count,
+            let caseVariable = CaseType(args[i + 1]) {
+            codable.config.caseType.variable = caseVariable
+        }
+    // CaseType: struct
+    case "-cs", "--case-struct":
+        if i + 1 < args.count,
+            let caseStruct = CaseType(args[i + 1]) {
+                codable.config.caseType.struct = caseStruct
+        }
+    // LineType
+    case "-l", "--line-type":
+        if i + 1 < args.count,
+            let lineType = LineType(args[i + 1]) {
+            codable.config.lineType = lineType
+        }
+    // IndentType
+    case "-i", "--indent-type":
+        if i + 1 < args.count,
+            let indentType = IndentType(args[i + 1]) {
+            codable.config.indentType = indentType
+        }
+
+    default:
+        print("Error: Unknown command: \(e)")
+        exit(EXIT_FAILURE)
+        break
+    }
 }
 
-/// Decision exit command
-func decisionExit(_ input: String) -> Bool {
-    let input = input.lowercased()
-    return !["e", "-e", "exit", "exit()"].filter({ $0 == input }).isEmpty
-}
-
-/// Generate from JSON to Codable
-func generate(_ input: String) {
-    print("Your input:")
-    print("------ ------ ------ ------ ------")
-    print(input)
-    print("------ ------ ------ ------ ------")
-    print()
-
+if let input = String(data: FileHandle.standardInput.availableData, encoding: .utf8) {
     do {
         let result = try codable.generate(input)
-        print("Collect JSON format!!")
-        print()
-        print("Generated text:")
-        print("====== ====== ====== ====== ======")
         print(result)
-        print("====== ====== ====== ====== ======")
+        exit(EXIT_SUCCESS)
     } catch JSONError.wrongFormat {
         print("Wrong JSON format!!")
+        exit(EXIT_FAILURE)
     } catch let e {
-        print("An Unknown error occurred: \(e.localizedDescription)")
-    }
-
-    print()
-}
-
-// MARK: - main
-
-copyright()
-while true {
-    guard input != nil else {
-        print(">> ", terminator: "")
-        guard let readLine = readLine() else { continue }
-        input = readLine + "\n"
-        date = Date()
-        continue
-    }
-
-    guard let readLine = readLine() else { continue }
-    if Double(Date().timeIntervalSince(date)) > wait {
-        input!.append(readLine)
-        let text = input!
-        input = nil
-        guard !decisionExit(text) else { break }
-        generate(text)
-    } else {
-        input!.append(readLine + "\n")
+        print(e.localizedDescription)
+        exit(EXIT_FAILURE)
     }
 }
