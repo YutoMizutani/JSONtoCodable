@@ -64,36 +64,40 @@ public struct Result: Codable {
 }
 ```
 
-## macOS App
-
-- [macOS demo](https://github.com/YutoMizutani/JSONtoCodable/tree/master/Demo/macOS)
+## [macOS App](https://github.com/YutoMizutani/JSONtoCodable/tree/master/Demo/macOS)
 
 ![demo_macos.png](https://raw.githubusercontent.com/YutoMizutani/JSONtoCodable/media/media/demo_macos.png)
 
-## CLI App
+## [jc (CLI App)](https://github.com/YutoMizutani/JSONtoCodable/tree/master/Demo/CLI/jc)
 
-- [jc](https://github.com/YutoMizutani/JSONtoCodable/tree/master/Demo/CLI/jc)
-
-![demo_cli.png](https://raw.githubusercontent.com/YutoMizutani/JSONtoCodable/media/media/demo_cli.png)
-
-#### Installation
+### Installation
 
 ```
 $ brew tap YutoMizutani/jc
 $ brew install jc
 ```
 
-#### Usage example
+### Usage example
 
 ```
 $ curl https://httpbin.org/get | jc
 ```
 
-#### Help command
+or generate *.swift* file,
+
+```
+$ curl https://httpbin.org/get | jc > Result.swift
+```
+
+### Help command
 
 ```
 $ jc -h
 ```
+
+### Screen shot
+
+![demo_cli.png](https://raw.githubusercontent.com/YutoMizutani/JSONtoCodable/media/media/demo_cli.png)
 
 ## Support formats
 
