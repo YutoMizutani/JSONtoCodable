@@ -74,6 +74,8 @@ public struct Result: Codable {
 
 - [jc](https://github.com/YutoMizutani/JSONtoCodable/tree/master/Demo/CLI/jc)
 
+![demo_cli.png](https://raw.githubusercontent.com/YutoMizutani/JSONtoCodable/media/media/demo_cli.png)
+
 #### Installation
 
 ```
