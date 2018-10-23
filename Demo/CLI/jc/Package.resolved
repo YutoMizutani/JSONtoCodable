@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "JSONtoCodable",
+        "repositoryURL": "https://github.com/YutoMizutani/JSONtoCodable.git",
+        "state": {
+          "branch": null,
+          "revision": "1f636f1bff9462e299cce7feccd0f9315c6c64de",
+          "version": "2.0.4"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
