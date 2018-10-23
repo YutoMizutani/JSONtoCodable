@@ -1,11 +1,12 @@
 //
 //  main.swift
-//  Demo
+//  jc
 //
 //  Created by Yuto Mizutani on 2018/09/21.
 //  Copyright © 2018 Yuto Mizutani. All rights reserved.
 //
 
+import Foundation
 import JSONtoCodable
 
 let codable = JSONtoCodable()
