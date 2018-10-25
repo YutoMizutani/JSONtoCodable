@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  Demo
+//  JaCo
 //
 //  Created by Yuto Mizutani on 2018/09/22.
 //  Copyright © 2018 Yuto Mizutani. All rights reserved.

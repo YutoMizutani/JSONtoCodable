@@ -1,0 +1,735 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2AD8350DC40DF8C7138717D8 /* Pods_JaCo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8619E93665BD1452DF1C4722 /* Pods_JaCo.framework */; };
+		75E7A83F00E2E767FB405CF6 /* Pods_JaCoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54270D16D41083657EA9BB8 /* Pods_JaCoUITests.framework */; };
+		99AF4F9821818F1F00027605 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AF4F9721818F1F00027605 /* AppDelegate.swift */; };
+		99AF4F9A21818F1F00027605 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AF4F9921818F1F00027605 /* ViewController.swift */; };
+		99AF4F9C21818F2100027605 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99AF4F9B21818F2100027605 /* Assets.xcassets */; };
+		99AF4F9F21818F2100027605 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99AF4F9D21818F2100027605 /* Main.storyboard */; };
+		99AF4FAB21818F2100027605 /* JaCoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AF4FAA21818F2100027605 /* JaCoTests.swift */; };
+		99AF4FB621818F2100027605 /* JaCoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AF4FB521818F2100027605 /* JaCoUITests.swift */; };
+		99AF4FC52181941900027605 /* NSTextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AF4FC42181941900027605 /* NSTextView+.swift */; };
+		AB61D5BC15D0C4C2265FEFF7 /* Pods_JaCoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 758A5A22C05155635A003D8D /* Pods_JaCoTests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		99AF4FA721818F2100027605 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 99AF4F8C21818F1F00027605 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 99AF4F9321818F1F00027605;
+			remoteInfo = JaCo;
+		};
+		99AF4FB221818F2100027605 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 99AF4F8C21818F1F00027605 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 99AF4F9321818F1F00027605;
+			remoteInfo = JaCo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		03800CD50B8C00A3FE04FF37 /* Pods-JaCo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JaCo.release.xcconfig"; path = "Target Support Files/Pods-JaCo/Pods-JaCo.release.xcconfig"; sourceTree = "<group>"; };
+		53204FF8CF6D7F52A1DEE9F3 /* Pods-JaCoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JaCoUITests.release.xcconfig"; path = "Target Support Files/Pods-JaCoUITests/Pods-JaCoUITests.release.xcconfig"; sourceTree = "<group>"; };
+		645ED567B250A6FC2C731763 /* Pods-JaCoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JaCoTests.debug.xcconfig"; path = "Target Support Files/Pods-JaCoTests/Pods-JaCoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		758A5A22C05155635A003D8D /* Pods_JaCoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JaCoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8619E93665BD1452DF1C4722 /* Pods_JaCo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JaCo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		99AF4F9421818F1F00027605 /* JaCo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JaCo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		99AF4F9721818F1F00027605 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		99AF4F9921818F1F00027605 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		99AF4F9B21818F2100027605 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		99AF4F9E21818F2100027605 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		99AF4FA021818F2100027605 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		99AF4FA121818F2100027605 /* JaCo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JaCo.entitlements; sourceTree = "<group>"; };
+		99AF4FA621818F2100027605 /* JaCoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JaCoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		99AF4FAA21818F2100027605 /* JaCoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JaCoTests.swift; sourceTree = "<group>"; };
+		99AF4FAC21818F2100027605 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		99AF4FB121818F2100027605 /* JaCoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JaCoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		99AF4FB521818F2100027605 /* JaCoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JaCoUITests.swift; sourceTree = "<group>"; };
+		99AF4FB721818F2100027605 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		99AF4FC42181941900027605 /* NSTextView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTextView+.swift"; sourceTree = "<group>"; };
+		A54270D16D41083657EA9BB8 /* Pods_JaCoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JaCoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C96E23882D1D30BFE139CBFC /* Pods-JaCoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JaCoUITests.debug.xcconfig"; path = "Target Support Files/Pods-JaCoUITests/Pods-JaCoUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		E8023022EFBF2DC0497060E0 /* Pods-JaCo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JaCo.debug.xcconfig"; path = "Target Support Files/Pods-JaCo/Pods-JaCo.debug.xcconfig"; sourceTree = "<group>"; };
+		F48CE4A67860C7BDCD713B6F /* Pods-JaCoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JaCoTests.release.xcconfig"; path = "Target Support Files/Pods-JaCoTests/Pods-JaCoTests.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		99AF4F9121818F1F00027605 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2AD8350DC40DF8C7138717D8 /* Pods_JaCo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		99AF4FA321818F2100027605 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB61D5BC15D0C4C2265FEFF7 /* Pods_JaCoTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		99AF4FAE21818F2100027605 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75E7A83F00E2E767FB405CF6 /* Pods_JaCoUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0F856B368C228981E64C278E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8619E93665BD1452DF1C4722 /* Pods_JaCo.framework */,
+				758A5A22C05155635A003D8D /* Pods_JaCoTests.framework */,
+				A54270D16D41083657EA9BB8 /* Pods_JaCoUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3219E7F63AE621908456BD47 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E8023022EFBF2DC0497060E0 /* Pods-JaCo.debug.xcconfig */,
+				03800CD50B8C00A3FE04FF37 /* Pods-JaCo.release.xcconfig */,
+				645ED567B250A6FC2C731763 /* Pods-JaCoTests.debug.xcconfig */,
+				F48CE4A67860C7BDCD713B6F /* Pods-JaCoTests.release.xcconfig */,
+				C96E23882D1D30BFE139CBFC /* Pods-JaCoUITests.debug.xcconfig */,
+				53204FF8CF6D7F52A1DEE9F3 /* Pods-JaCoUITests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		99AF4F8B21818F1F00027605 = {
+			isa = PBXGroup;
+			children = (
+				99AF4F9621818F1F00027605 /* JaCo */,
+				99AF4FA921818F2100027605 /* JaCoTests */,
+				99AF4FB421818F2100027605 /* JaCoUITests */,
+				99AF4F9521818F1F00027605 /* Products */,
+				3219E7F63AE621908456BD47 /* Pods */,
+				0F856B368C228981E64C278E /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		99AF4F9521818F1F00027605 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				99AF4F9421818F1F00027605 /* JaCo.app */,
+				99AF4FA621818F2100027605 /* JaCoTests.xctest */,
+				99AF4FB121818F2100027605 /* JaCoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		99AF4F9621818F1F00027605 /* JaCo */ = {
+			isa = PBXGroup;
+			children = (
+				99AF4FC32181941900027605 /* Extensions */,
+				99AF4F9721818F1F00027605 /* AppDelegate.swift */,
+				99AF4F9921818F1F00027605 /* ViewController.swift */,
+				99AF4F9B21818F2100027605 /* Assets.xcassets */,
+				99AF4F9D21818F2100027605 /* Main.storyboard */,
+				99AF4FA021818F2100027605 /* Info.plist */,
+				99AF4FA121818F2100027605 /* JaCo.entitlements */,
+			);
+			path = JaCo;
+			sourceTree = "<group>";
+		};
+		99AF4FA921818F2100027605 /* JaCoTests */ = {
+			isa = PBXGroup;
+			children = (
+				99AF4FAA21818F2100027605 /* JaCoTests.swift */,
+				99AF4FAC21818F2100027605 /* Info.plist */,
+			);
+			path = JaCoTests;
+			sourceTree = "<group>";
+		};
+		99AF4FB421818F2100027605 /* JaCoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				99AF4FB521818F2100027605 /* JaCoUITests.swift */,
+				99AF4FB721818F2100027605 /* Info.plist */,
+			);
+			path = JaCoUITests;
+			sourceTree = "<group>";
+		};
+		99AF4FC32181941900027605 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				99AF4FC42181941900027605 /* NSTextView+.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		99AF4F9321818F1F00027605 /* JaCo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 99AF4FBA21818F2100027605 /* Build configuration list for PBXNativeTarget "JaCo" */;
+			buildPhases = (
+				D3DAE412BCB2ACCF0014C445 /* [CP] Check Pods Manifest.lock */,
+				99AF4F9021818F1F00027605 /* Sources */,
+				99AF4F9121818F1F00027605 /* Frameworks */,
+				99AF4F9221818F1F00027605 /* Resources */,
+				812EB3D852654B7297C7BF29 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JaCo;
+			productName = JaCo;
+			productReference = 99AF4F9421818F1F00027605 /* JaCo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		99AF4FA521818F2100027605 /* JaCoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 99AF4FBD21818F2100027605 /* Build configuration list for PBXNativeTarget "JaCoTests" */;
+			buildPhases = (
+				EEB7D439F221FE1644E3214C /* [CP] Check Pods Manifest.lock */,
+				99AF4FA221818F2100027605 /* Sources */,
+				99AF4FA321818F2100027605 /* Frameworks */,
+				99AF4FA421818F2100027605 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				99AF4FA821818F2100027605 /* PBXTargetDependency */,
+			);
+			name = JaCoTests;
+			productName = JaCoTests;
+			productReference = 99AF4FA621818F2100027605 /* JaCoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		99AF4FB021818F2100027605 /* JaCoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 99AF4FC021818F2100027605 /* Build configuration list for PBXNativeTarget "JaCoUITests" */;
+			buildPhases = (
+				431AA205722DA8DF21C46DDA /* [CP] Check Pods Manifest.lock */,
+				99AF4FAD21818F2100027605 /* Sources */,
+				99AF4FAE21818F2100027605 /* Frameworks */,
+				99AF4FAF21818F2100027605 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				99AF4FB321818F2100027605 /* PBXTargetDependency */,
+			);
+			name = JaCoUITests;
+			productName = JaCoUITests;
+			productReference = 99AF4FB121818F2100027605 /* JaCoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		99AF4F8C21818F1F00027605 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1000;
+				LastUpgradeCheck = 1000;
+				ORGANIZATIONNAME = "Yuto Mizutani";
+				TargetAttributes = {
+					99AF4F9321818F1F00027605 = {
+						CreatedOnToolsVersion = 10.0;
+					};
+					99AF4FA521818F2100027605 = {
+						CreatedOnToolsVersion = 10.0;
+						TestTargetID = 99AF4F9321818F1F00027605;
+					};
+					99AF4FB021818F2100027605 = {
+						CreatedOnToolsVersion = 10.0;
+						TestTargetID = 99AF4F9321818F1F00027605;
+					};
+				};
+			};
+			buildConfigurationList = 99AF4F8F21818F1F00027605 /* Build configuration list for PBXProject "JaCo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 99AF4F8B21818F1F00027605;
+			productRefGroup = 99AF4F9521818F1F00027605 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				99AF4F9321818F1F00027605 /* JaCo */,
+				99AF4FA521818F2100027605 /* JaCoTests */,
+				99AF4FB021818F2100027605 /* JaCoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		99AF4F9221818F1F00027605 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				99AF4F9C21818F2100027605 /* Assets.xcassets in Resources */,
+				99AF4F9F21818F2100027605 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		99AF4FA421818F2100027605 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		99AF4FAF21818F2100027605 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		431AA205722DA8DF21C46DDA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JaCoUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		812EB3D852654B7297C7BF29 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JaCo/Pods-JaCo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/JSONtoCodable/JSONtoCodable.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSONtoCodable.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JaCo/Pods-JaCo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D3DAE412BCB2ACCF0014C445 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JaCo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EEB7D439F221FE1644E3214C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JaCoTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		99AF4F9021818F1F00027605 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				99AF4F9A21818F1F00027605 /* ViewController.swift in Sources */,
+				99AF4F9821818F1F00027605 /* AppDelegate.swift in Sources */,
+				99AF4FC52181941900027605 /* NSTextView+.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		99AF4FA221818F2100027605 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				99AF4FAB21818F2100027605 /* JaCoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		99AF4FAD21818F2100027605 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				99AF4FB621818F2100027605 /* JaCoUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		99AF4FA821818F2100027605 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 99AF4F9321818F1F00027605 /* JaCo */;
+			targetProxy = 99AF4FA721818F2100027605 /* PBXContainerItemProxy */;
+		};
+		99AF4FB321818F2100027605 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 99AF4F9321818F1F00027605 /* JaCo */;
+			targetProxy = 99AF4FB221818F2100027605 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		99AF4F9D21818F2100027605 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				99AF4F9E21818F2100027605 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		99AF4FB821818F2100027605 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		99AF4FB921818F2100027605 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		99AF4FBB21818F2100027605 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E8023022EFBF2DC0497060E0 /* Pods-JaCo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = JaCo/JaCo.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = Y3FSN97W3M;
+				INFOPLIST_FILE = JaCo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ym.JaCo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+			};
+			name = Debug;
+		};
+		99AF4FBC21818F2100027605 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 03800CD50B8C00A3FE04FF37 /* Pods-JaCo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = JaCo/JaCo.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = Y3FSN97W3M;
+				INFOPLIST_FILE = JaCo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ym.JaCo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+			};
+			name = Release;
+		};
+		99AF4FBE21818F2100027605 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 645ED567B250A6FC2C731763 /* Pods-JaCoTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = Y3FSN97W3M;
+				INFOPLIST_FILE = JaCoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ym.JaCoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JaCo.app/Contents/MacOS/JaCo";
+			};
+			name = Debug;
+		};
+		99AF4FBF21818F2100027605 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F48CE4A67860C7BDCD713B6F /* Pods-JaCoTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = Y3FSN97W3M;
+				INFOPLIST_FILE = JaCoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ym.JaCoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JaCo.app/Contents/MacOS/JaCo";
+			};
+			name = Release;
+		};
+		99AF4FC121818F2100027605 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C96E23882D1D30BFE139CBFC /* Pods-JaCoUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = Y3FSN97W3M;
+				INFOPLIST_FILE = JaCoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ym.JaCoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TEST_TARGET_NAME = JaCo;
+			};
+			name = Debug;
+		};
+		99AF4FC221818F2100027605 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 53204FF8CF6D7F52A1DEE9F3 /* Pods-JaCoUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = Y3FSN97W3M;
+				INFOPLIST_FILE = JaCoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ym.JaCoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TEST_TARGET_NAME = JaCo;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		99AF4F8F21818F1F00027605 /* Build configuration list for PBXProject "JaCo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				99AF4FB821818F2100027605 /* Debug */,
+				99AF4FB921818F2100027605 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		99AF4FBA21818F2100027605 /* Build configuration list for PBXNativeTarget "JaCo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				99AF4FBB21818F2100027605 /* Debug */,
+				99AF4FBC21818F2100027605 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		99AF4FBD21818F2100027605 /* Build configuration list for PBXNativeTarget "JaCoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				99AF4FBE21818F2100027605 /* Debug */,
+				99AF4FBF21818F2100027605 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		99AF4FC021818F2100027605 /* Build configuration list for PBXNativeTarget "JaCoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				99AF4FC121818F2100027605 /* Debug */,
+				99AF4FC221818F2100027605 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 99AF4F8C21818F1F00027605 /* Project object */;
+}
