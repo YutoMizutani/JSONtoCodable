@@ -57,7 +57,6 @@ private extension ViewController {
 
 private extension ViewController {
     @objc private func generate() {
-        print(self.textView.string)
         guard let text = try? self.codable.generate(self.textView.string) else { return }
         self.textView.string = text
     }
