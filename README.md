@@ -64,11 +64,11 @@ public struct Result: Codable {
 }
 ```
 
-## [macOS App](https://github.com/YutoMizutani/JSONtoCodable/tree/master/Demo/macOS)
+## [JaCo (macOS App)](https://github.com/YutoMizutani/JSONtoCodable/tree/master/Apps/JaCo)
 
 ![demo_macos.png](https://raw.githubusercontent.com/YutoMizutani/JSONtoCodable/media/media/demo_macos.png)
 
-## [jc (CLI App)](https://github.com/YutoMizutani/JSONtoCodable/tree/master/Demo/CLI/jc)
+## [jc (CLI App)](https://github.com/YutoMizutani/JSONtoCodable/tree/master/Apps/jc)
 
 ### Installation
 
@@ -168,7 +168,7 @@ config.indentType = IndentType.space(4)
 
 [See more: Config.swift](https://github.com/YutoMizutani/JSONtoCodable/blob/master/Sources/Core/Config.swift)
 
-## Develop to use installation
+## Installation
 
 #### Cocoapods
 
