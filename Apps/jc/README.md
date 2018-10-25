@@ -2,6 +2,8 @@
 
 A generating tool from Raw **JSON to Codable** output application *JSONtoCodable* for CLI.
 
+#### Current version: 2.1.1 [[Download](https://github.com/YutoMizutani/JSONtoCodable/releases/download/2.1.1/jc.zip)] or [brew install](https://github.com/YutoMizutani/JSONtoCodable/tree/master/Apps/jc#installation)
+
 ![demo_cli.png](https://raw.githubusercontent.com/YutoMizutani/JSONtoCodable/media/media/demo_cli.png)
 
 ## Installation
