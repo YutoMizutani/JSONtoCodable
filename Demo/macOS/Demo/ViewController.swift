@@ -40,7 +40,7 @@ private extension ViewController {
             "lib": {
                 "lib-name": "JSONtoCodable",
                 "year": 2018,
-                "version": "1.0.2",
+                "version": "2.1.1",
                 "released": "2018-09-22"
             },
             "text": "Hello, world!!"
@@ -57,9 +57,7 @@ private extension ViewController {
 
 private extension ViewController {
     @objc private func generate() {
-        print(self.textView.string)
         guard let text = try? self.codable.generate(self.textView.string) else { return }
         self.textView.string = text
     }
 }
-
